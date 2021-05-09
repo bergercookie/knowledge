@@ -1,0 +1,15 @@
+= Change Background from Dark to Light in your dev environment =
+
+A must-have if working with your laptop outdoors, with the sun hitting directly
+on your screen
+
+Make changes in the following places:
+
+* `colorscheme` in `vimrc` - use `:colorscheme<TAB>` to experiment interactively
+* Airline theme in `vimrc` - Use `:AirlineTheme<TAB>` to experiment
+* colours section in `alacritty.yml` - Put it in `{{{ ... }}}` for easy fold
+  unfold when editing with Vim
+* i3 colors section
+  NOTE: Color management and switching is not really maintainable in i3, should
+  either skip this altogether, or find a plugin / another way of doing it.
+* BG in tmux (No real need for this in the end)

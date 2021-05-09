@@ -1,0 +1,42 @@
+= On the use of std::marker::PhantomData =
+:rust:
+:programming:
+
+Link: https://doc.rust-lang.org/beta/nomicon/phantom-data.html
+
+{{{rust
+struct Iter<'a, T: 'a> { // <-- Error, I have to associate the lifetime with something...
+    ptr: *const T,
+    end: *const T,
+}
+
+// iter is valid as long as the underlying elements it's iterating are valid and
+// this relationship is not captured
+
+// And that's why I'm using a dummy PhantomData type, so that I can use the
+// lifetime
+
+use std::marker;
+struct Iter<'a, T: 'a> {
+    ptr: *const T,
+    end: *const T,
+    _marker: marker::PhantomData<&'a T>,
+}
+
+}}}
+
+* They can enable the use of lifetimes, when you don't have fields to bind them
+  to.
+* They 're just special markers, they don't consume space but just ^simulate^ a
+  field of the given type for the purpose of static analysis
+
+== Usage in Vector ==
+
+The drop checker will generously determine that Vec<T> does not own any values
+of type T. This will in turn make it conclude that it doesn't need to worry
+about Vec dropping any T's in its destructor for determining drop check
+soundness. This will in turn allow people to create unsoundness using Vec's
+destructor.
+
+In order to tell dropck that we do own values of type T, and therefore may drop
+some T's when we drop, we must add an extra PhantomData saying exactly that:

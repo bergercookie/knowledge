@@ -1,0 +1,6 @@
+= Interesting Posts =
+:snippet:
+:rust:
+:programming:
+
+* Different panic strategies e.g., abort: https://github.com/rust-lang/rfcs/blob/master/text/1513-less-unwinding.md

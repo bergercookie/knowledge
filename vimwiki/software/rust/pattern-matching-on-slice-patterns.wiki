@@ -1,0 +1,34 @@
+= pattern matching on slice patterns.rs =
+
+:programming:
+:snippet:
+:rust:
+
+You can pattern match on slice patterns: https://doc.rust-lang.org/edition-guide/rust-2018/slice-patterns.html
+
+Use syntax like the following:
+
+{{{rust
+fn greet(people: &[&str]) {
+    match people {
+        [] => println!("Bummer, there's no one here :("),
+        [only_one] => println!("Hey, there {}! You seem to be alone.", only_one),
+        [first, second] => println!(
+            "Hello, {} and {}. Nice to see you are exactly 2!",
+            first, second
+        ),
+        _ => println!("Hey everyone, we seem to be {} here today.", people.len()),
+    }
+}
+}}}
+
+OR
+
+{{{rust
+assert_eq!("ends with 3", match arr {
+    [_, _, 3] => "ends with 3",
+    [a, b, c] => "ends with something else",
+});
+}}}
+
+

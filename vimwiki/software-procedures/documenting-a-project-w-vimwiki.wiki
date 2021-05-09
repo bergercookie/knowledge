@@ -1,0 +1,38 @@
+= Project Overview: %FILE% =
+
+This file was generated using [[https://github.com/tibabit/vim-templates/|vim-template]]
+
+Start Date: %DATE%
+Target Date: 
+
+:organise:
+:productivity:
+:programming:
+
+== Specifications/Goals ==
+
+* ...
+* ...
+
+== Daily Checklist ==
+
+* You can manage this using either taskwiki or just a dummy check list
+
+[ΧΧ/ΧΧ/202Χ]
+
+* ...
+* ...
+* ...
+
+[ΧΧ/ΧΧ/202Χ]
+[ΧΧ/ΧΧ/202Χ]
+[ΧΧ/ΧΧ/202Χ]
+
+== For later ==
+
+== Personal Message ==
+
+What do you think about this project?
+Make this as personal as you 'd like
+
+# vim: ft=vimwiki

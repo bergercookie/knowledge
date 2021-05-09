@@ -1,0 +1,20 @@
+= Change the Username of an account in Linux =
+
+{{{sh
+# Login as root - kill all your user sessions
+# You could also ssh-in as root
+
+usermod -l [newname] [oldname]
+groupmod -n [newname] [oldname]
+usermod -d /home/[newname] -m [newname]
+
+# Optional
+# usermod -c "[full name (new)]" [newname]
+
+# Verify
+id [newname]
+
+# Add a symbolic link to your old user for programs that use absolute paths to
+# still work
+ln -s /home/[newname] /home/[oldname]
+}}}

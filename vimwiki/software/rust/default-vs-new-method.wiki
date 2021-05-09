@@ -1,0 +1,13 @@
+= Default vs New Method of a struct =
+
+:rust:
+:programming:
+
+While Rust provides a `Default` trait for specifying the moral equivalent of a
+default constructor, *it's incredibly rare for this trait to be used*. This is
+because variables aren't implicitly initialized. Default is basically only
+useful for generic programming.
+
+In concrete contexts, `a type will provide a static new method for any kind of
+"default" constructor`. This has no relation to new in other languages and has
+no special meaning. It's just a naming convention.

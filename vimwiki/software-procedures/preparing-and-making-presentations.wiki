@@ -1,0 +1,40 @@
+= Creating and Delivering Presentations =
+
+== First slide ==
+
+* Title of the presentation
+* Your name
+* QR Code to the presentation slides
+* Include handles for github, SO, LinkedIn
+* Company Name
+
+== slides ==
+
+What should I include? What should be the format?
+
+== TODO ==
+
+* Buy a proper microphone
+* Start using beamer?
+    * Be fast with it
+    * auto-refresh -> [[https://github.com/pwmt/zathura|zathura]]
+    * Animations?
+    * Add templates (e.g., first slide)
+* Different background for every slide?
+* Find beamer-enabled docker container
+
+== Hints ==
+
+* Sum up your presentation to *up to 5 points*
+  Put them to a slide *both* at the beginning and at the end
+* Take a video of you *multiple times* before the presentation!!
+  How do you look?
+  Anything to improve?
+* Ask members of the audience after your talk (privately) or friends of yours
+  before your presentation *what points they remember*, or *what slides were
+  interesting!* If they don't remember or say something vague, then you've
+  failed!
+
+== Phrases ==
+
+* Welcome to my talk

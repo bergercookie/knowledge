@@ -1,0 +1,18 @@
+= Rust Bits and Bobs =
+
+A collection of snippets, examples and thoughts regarding `Rust`.
+
+== Contents ==
+
+* [[pass-path-as-ref.wiki|Pass Path or PathBuf by reference]]
+* [[phantom-data.wiki|On the use of std::marker::PhantomData]]
+* [[default-vs-new-method.wiki|Default vs New Method of a struct]]
+* [[dispatch-and-fat-pointers.wiki|dispatch and fat pointers]]
+* [[hashmap.wiki|Examples of std::collections::HashMap]]
+* [[pattern-matching-on-slice-patterns.wiki|pattern matching on slice patterns.rs]]
+* [[associated-types.wiki|rust_associated_types]]
+* [[too-many-linked-lists.wiki|linked-lists]]
+* [[wasm.wiki|Rust and Web Assembly]]
+* [[embedonomicon.wiki|Embedonomicon]]
+* [[module-system.wiki|Rust Module System]]
+* [[interesting-posts.wiki|Interesting Posts]]

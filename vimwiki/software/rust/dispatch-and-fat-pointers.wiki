@@ -1,0 +1,167 @@
+= dispatch and fat pointers =
+
+:snippet:
+:rust:
+:programming:
+
+Notes I took while going through this excellent video:  https://youtu.be/xcygqF5LVmM
+
+== Trait objects ==
+
+*An obect whose only property is that it represents a Trait*
+
+* Basically, something behind a `&` or `Box` or `Arc` etc.
+* You generally can't go from `Box` to the actual object it represents
+* This is basically type-erasure. I don't care about the particular type of
+  all these objects, but rather that they implement a certain trait
+* When you're using an object behind `Box`, you *only* retain the methods of
+  that `Trait` (not all of the methods of the original object that implements
+  this trait).
+    * https://youtu.be/xcygqF5LVmM?t=2848
+    * You erase all other knowledge about that other type, except of the
+      Boxed trait
+
+* I don't care whether they have the same type. I care about them implementing
+  e.g., a specific trait.
+
+=== Trait: `std::marker::Sized` ===
+
+* *All type parameters (`Foo<T>`) have an implicit bound to `Sized`*.
+  The provided `T` must be Sized
+* `Sized` is auto-implemented for any type that it *can* be implemented for.
+
+My struct is Size-able if all its fields are `Size`-able.
+You *don't* implement yourself manually
+
+A bare `Trait` is not `Sized`
+
+* `str` is not `Sized`, it's an arbitrarily long string, can't decide if `Sized`
+  `&str` is `Sized`, because it's a reference, the address of an arbitrary
+  string
+* `[u8]` is not `Sized`.
+  `&[u8]` *is*.
+* `dyn TraitName` is not Sized, but `Box<...>`, `&...`, `Arc<...>` is always `Sized` since
+  it's the size of a pointer/address.
+
+* Box is a bit of magic; it's defined roughly like: `struct Box<T: ?Sized>`
+    * It opts out of the `Sized` trait, i.e., its `T` doesn't have to be `Sized`.
+
+=== Box vs `&` ===
+
+There's no major pros or cons but:
+
+* `Box` can be used even after the stack frame of the caller goes away
+* `&` cannot
+
+=== Dynamic Dispatch ===
+
+* I have to use: `dyn TraitName`
+
+
+I have something like:
+
+{{{rust
+fn myfunction(arg: Box<dyn SayHello>) {
+  arg.hello();
+}
+}}}
+
+For more, see https://doc.rust-lang.org/book/ch19-04-advanced-types.html
+
+==== Virtual Table - `vtable` ====
+
+Answers the question:
+
+    How does myfunction know where to find the `hello` method for all these
+    types that implement `SayHello`?
+
+
+* Pointers to `Trait objects` also store a pointer to a *vtable*.
+  * --> And this is a *Fat/Wide Pointer*
+* A different vtable gets constructed for each concrete object turned into a
+  trait object.
+* *vtables* are built at compile time.
+
+`&str -> &dyn Hei`
+
+The trait object stores:
+1. Pointer to the `str`
+2. A reference to the `vtable`
+   {{{rust
+   &HeiVtable {
+        hei: &<str as Hei>::hei
+    }
+   }}}
+
+So, what if I want to have a trait object to a type that implements both `Hello`
+and `AsRef`?
+
+* That trait object would need to be a fat pointer of 3 elements (data and 2
+  vtables)
+* You could get around this by implementing a trait that implements the other
+  two traits:
+  {{{rust
+  pub trait HelloAsRef: Hello + AsRef<str> {}
+  }}}
+
+  This sort of signature won't work, you'd have to use the previous supertrait
+  above:
+
+  {{{rust
+  pub fn baz(s: &(dyn Hello + AsRef<str>)) { ... }
+  }}}
+
+  However, aggregating traits that *dont need a vtable*, `marker traits`, such
+  as `Send` *is* possible.
+
+  This works:
+
+  {{{rust
+  pub fn baz(s: &(dyn Hello + Send)) { ... }
+  }}}
+
+
+== `&dyn Fn` vs `fn()` vs `impl Fn` ==
+
+
+* `fn()` is a function pointer, can't handle more than that, e.g., a clojure
+* `impl Fn` is syntactic sugar for a generic function over the provided `Fn`.
+  * Does accept closures as arguments, but will create a new function for every
+    new closure being passed, which is not optimal.
+
+  * Also, if this is a method its generic nature gets propagated, so people that
+    want to inherit will have to be aware of this and handle the generic
+    arguments
+* `&dyn Fn` is a Dynamic Trait Function. Close to `impl Fn` but puts the given
+  arbitrary function behind a fat pointer and redirects to it using the `vtable`
+  at runtime accordingly.
+
+  Contains an extra redirection via the `vtable` but may be a good tactic to
+  simplify the interface of your structrs if they use function members.
+
+  Also, using `&dyn Fn` I can make the structurs taht contain them Trait
+  Objects, while `impl Fn` being a generic type parameter, disallows it.
+
+
+* You can't create a trait object (`dyn Extend<..>`) for `Extend`; The `vtable`
+  would have to include all the implementations of the Extend trait
+
+* for a trait to be object-safe: all methods need to have a receiver (i.e., take
+  `self` (and not consume it))
+  Can't have a method/function that returns Self
+  Not have generic methods
+* See "6.11 Traits Object Safety" regarding the rules of what Traits can be Trait
+  Objects
+* Any vtable for any trait object includes implicitly drop()
+  * same goes for methods size, len
+* `RawWaker` has a dynamically constructed `vtable` inside it
+
+== Misc ==
+
+* `AsRef<...>`: Cheap reference-to-reference conversion
+
+  https://doc.rust-lang.org/std/convert/trait.AsRef.html
+
+* `AsMut<...>`: Cheap mutable-to-mutable reference conversion
+
+  https://doc.rust-lang.org/std/convert/trait.AsMut.html

@@ -1,0 +1,30 @@
+= Logging and Analyzing Logs in Linux =
+
+== Options ==
+
+* Standard `syslog`
+* `journald`
+* `multitail` (for viewing multiple different files on your system)
+
+== syslog ==
+
+* If you want to send logs from CLI to `syslog` you do it via `logger`
+
+== `journald` / `journalctl` ==
+
+* If you want to send logs from CLI to `journald` you do it via `systemd-cat`
+    * It's the equivalent of `logger` on `syslog`
+    * Whatever goes to `syslog` is also getting logged to `journald`
+* https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs
+    * Very good crash course
+
+
+== `systemd-cat` vs `logger` ==
+
+I would stick with logger: it works with any standards-compliant logging system,
+including systemd’s journal as you’ve discovered. Using systemd-cat directly
+would only make your scripts systemd-specific, without adding anything; in fact,
+modern logger is much more flexible, and provides better support for
+systemd-specific features than systemd-cat itself.
+
+Link: https://unix.stackexchange.com/a/393102/84061

@@ -1,0 +1,31 @@
+= Examples of std::collections::HashMap =
+
+:rust:
+:programming:
+:snippet:
+
+== Standard initialisation of a HashMap ==
+
+{{{rust
+    let mut hm = HashMap::new();
+
+    hm.insert(String::from("kalimera"), 1);
+    hm.insert(String::from("kalinuxta"), 2);
+    hm.insert(String::from("Kalispera"), 3);
+
+    println!("hm: {:#?}", hm);
+}}}
+
+== Use `collect` to create it from two independent vectors ==
+
+{{{rust
+/// I need to call Use first, not included in the Prelude
+use std::collections::HashMap;
+
+let teams  = vec![String::from("Blue"), String::from("Yellow")];
+let initial_scores = vec![10, 50];
+
+let scores: HashMap<_, _> = teams.iter().zip(initial_scores.iter()).collect();
+}}}
+
+

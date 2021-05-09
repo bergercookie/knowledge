@@ -1,0 +1,9 @@
+= Knowledge Base =
+
+Hi there, this is my knowledge base, at least the portion of it I'm feeling OK
+with making available to the wider public 😉.
+
+== Software ==
+
+* [[software/rust/index.wiki|The Rust Programming Language]]
+* [[software-procedures/index.wiki|Software Procedures]]

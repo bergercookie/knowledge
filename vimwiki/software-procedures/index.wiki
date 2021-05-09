@@ -1,0 +1,12 @@
+= Software Procedures =
+
+Software-related procedures that I'm following.
+
+
+== Contents ==
+
+* [[change-username-account-linux.wiki|Change the Username of an account in Linux]]
+* [[documenting-a-project-w-vimwiki.wiki|Project Overview: %FILE%]]
+* [[preparing-and-making-presentations.wiki|Creating and Delivering Presentations]]
+* [[logging-and-analyzing-logs-in-linux.wiki|Logging and Analyzing Logs in Linux]]
+* [[change-background-from-dark-to-light.wiki|Change Background from Dark to Light in your dev environment]]

@@ -1,0 +1,22 @@
+= linked-lists =
+:rust:
+:programming:
+
+My notes when going though the  [[https://rust-unofficial.github.io/too-many-lists/|too-many-lists]] Rust book.
+
+== Links ==
+
+Link: https://rust-unofficial.github.io/too-many-lists/
+
+Supplementary links:
+* https://medium.com/@elvis26112009/implementing-linked-lists-in-rust-the-safe-way-8abfb9607c11
+
+
+== Introduction ==
+== A Bad Stack ==
+== An OK Stack ==
+== A Persistent Stack ==
+== A Bad Safe Deque ==
+== An Unsafe Queue ==
+== An OK Unsafe Deque ==
+== A Bunch of Silly Lists ==

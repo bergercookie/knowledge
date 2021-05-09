@@ -1,0 +1,32 @@
+= Rust and Web Assembly =
+
+:rust:
+:programming:
+
+Resources regarding web-assembly
+
+== Resources ==
+
+* MDN - Compiling from Rust to WebAssembly: https://developer.mozilla.org/en-US/docs/WebAssembly/Rust_to_wasm
+* Rust Wasm - Frontend Frameworks: https://www.webassemblyman.com/rustwasm/frontendframeworksrustwebassembly.html
+* wasm-bindgen https://github.com/rustwasm/wasm-bindgen
+    * WebAssembly to Javascript symbol binding
+    * `#[wasm_bindgen]`
+* wasm-bindgen-futures: https://crates.io/crates/wasm-bindgen-futures
+    * Javascript promises <-> Rust futures
+* web-sys: https://crates.io/crates/web-sys
+    * WASM bindgen for Web APIs
+* js-sys: https://crates.io/crates/js-sys
+    * wasm-bindgen structs for ECMAScripts
+* wasm-build: Toolset for building and testing (cargo + wasm): https://rustwasm.github.io/docs/wasm-pack/commands/build.html
+* cargo generate: templates for wasm - https://github.com/ashleygwilliams/cargo-generate
+
+== Compiling for Wasm ==
+
+{{{rust
+# compile the code -> pkg/
+wasm-pack build
+#        template to be used
+#        vvvvvvvv
+npm init wasm-app www
+}}}

@@ -1,0 +1,147 @@
+= Embedonomicon =
+
+:snippet:
+:rust:
+:programming:
+
+Link: https://docs.rust-embedded.org/embedonomicon/
+
+Install `cargo-binutils` and `carg-edit`
+
+eh_personality -> Exception Handling Personality (Strategy)
+
+== What to learn ==
+
+* Memory layout of a Cortex-M program
+* Running Cortex-M architectures inside QEMU
+* Tools for cross-compiling ARM code
+* Using `gdb-multiarch` and remote debugging
+* Using QEMU semihosting to test logging capabilities
+
+== Exception Handling ==
+
+* Includes a `search` phase and a `cleanup` phase.
+
+    In both phases the unwinder walks stack frames from top to bottom using
+    information from the stack frame unwind sections of the current process's
+    modules ("module" here refers to an OS module, i.e. an executable or a
+    dynamic library).
+
+    For each stack frame, it invokes the associated "personality routine", whose
+    address is also stored in the unwind info section.
+
+* Currently Rust uses unwind runtime provided by `libgcc`.
+
+* In a nutshell, `exceptions` are a mechanism the Cortex-M and other architectures
+  provide to `let applications respond to asynchronous, usually external,
+  events`.  The most prominent type of exception, that most people will know, is
+  the classical `(hardware) interrupt`.
+
+  * The processor `uses the vector table to decide what handler to execute`. Each
+    entry in the table contains a pointer to a handler, and each entry
+    corresponds to a different exception type. For example, the second entry is
+    the reset handler, the third entry is the NMI (Non Maskable Interrupt)
+    handler, and so on.
+* The vector table resides in `read-only memory` (or rather in not easily
+  modified memory).
+
+== TODO To correct ==
+
+cargo nm --target thumbv7m-none-eabi -- $PWD/target/thumbv7m-none-eabi/debug/deps/app-*.o | grep '[0-9]* [^N] '
+
+On `Ubuntu 18`, there's no arm-none-eabi-gdb -> Use `gdb-multiarch` instead.
+
+Also, had to use the long  versions of the flags, otherwise llvm-objdump would complain
+
+{{{bash
+cargo objdump --bin app -- -d --no-show-raw-insn
+cargo objdump --bin app -- -s --section .vector_table
+}}}
+
+Needed to install `gcc-arm-none-eabi` before using the `CC` package to
+cross-compile for ARM
+
+https://docs.rust-embedded.org/embedonomicon/exceptions.html
+The second entry points to address 0x0000_0045, the Reset handler.
+
+    The address of the Reset handler can be seen in the disassembly above, being 0x44.
+
+
+    Dissasembly doesn't mention any hexadecimal addresses
+
+
+https://docs.rust-embedded.org/embedonomicon/asm.html#assembly-on-stable
+
+
+Now look at the vector table. The 4th entry should be the address of HardFaultTrampoline plus one.
+
+In the code snippets provided, we can't see the address of the corresponding
+symbols/functions. Running the same command though (with double dashes + direct
+`objdump`) I do get the addresses (see picture)
+
+See https://docs.rust-embedded.org/embedonomicon/singleton.html
+Add link to Singletons in Embedded rust book: https://rust-embedded.github.io/book/peripherals/singletons.html
+
+== Resources ==
+
+* More about exception handling: https://doc.rust-lang.org/1.2.0/std/rt/unwind/index.html
+* Cortex-M Quickstart and FAQ: https://rust-embedded.github.io/cortex-m-quickstart/cortex_m_quickstart/
+
+== Symbol attributes ==
+
+* `#[export_name = "foo"]`   Sets the symbol name to foo.
+* `#[no_mangle]`             Use the function or variable name (not its full path) as its symbol name. `#[no_mangle] fn bar()` will produce a symbol named bar.
+* `#[link_section = ".bar"]` places the symbol in a section named .bar.
+
+== Vector Table Dissasembly ==
+
+https://docs.rust-embedded.org/embedonomicon/exceptions.html
+
+`cargo objdump --bin app --release -- -s -j .vector_table`
+
+app:	file format ELF32-arm-little
+
+Contents of section .vector_table:
+ 0000 `00000120` 45000000 7f000000 7f000000  ... E...........
+ 0010 7f000000 7f000000 7f000000 00000000  ................
+ 0020 00000000 00000000 00000000 7f000000  ................
+ 0030 00000000 00000000 7f000000 7f000000  ................
+
+* Little endian: Read in pairs of digits, reverse order
+
+    `00000120` -> `2001_0000`
+
+    `7f000000` -> `0000007f`
+
+* Each address is an element of the vector table.
+
+  Elements set to 0x00 are reserved - we explicitly set them to 0 in the Rust
+  vector table
+
+  Elements set to `0x7f` point to the Default Exception Handler that we are
+  using.
+
+    --> `0x7e` executed in thumb mode
+
+== Logging / Encoding ==
+
+Encode the logging messages *into the symbols of the ELF* executable; You can
+encode any characters (including spaces, except from a null byte) in the symbol
+name.
+
+In this example we'll need some way to do I/O so we'll use the
+`cortex-m-semihosting` crate for that. `Semihosting` is a technique for having a
+target device borrow the host I/O capabilities; the host here usually refers to
+the machine that's debugging the target device. In our case, QEMU supports
+semihosting out of the box so there's no need for a debugger. On a real device
+you'll have other ways to do I/O like a serial port; we use semihosting in this
+case because it's the easiest way to do I/O on QEMU.
+
+== Misc ==
+
+To prevent compiler command reorderings we can use a `compiler_fence`
+
+  {{{rust
+  atomic::compiler_fence(Ordering::Release);
+  atomic::compiler_fence(Ordering::Acquire);
+  }}}

@@ -1,0 +1,19 @@
+= Pass Path or PathBuf by reference =
+
+:rust:
+:programming:
+:snippet:
+
+In public interfaces, you usually don't want to use `Path` or `PathBuf`
+directly, but rather a generic `P: AsRef<Path>` or `P: Into<PathBuf>`. That way
+the caller can pass in `Path`, `PathBuf`, `&str` or `String`.
+
+Link: https://www.reddit.com/r/rust/comments/7mu7q1/is_working_with_paths_always_this_painful/
+
+{{{rust
+pub fn some_public_func<P: AsRef<Path>>(path: P) -> ... {
+    some_public_func_imp(path.as_ref())
+}
+
+fn _some_public_func(path: &Path) -> ... { ... }
+}}}
