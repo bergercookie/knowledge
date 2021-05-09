@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="../../style.css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<title>default-vs-new-method</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Default vs New Method of a struct"><h1 id="Default vs New Method of a struct" class="header"><a href="#Default vs New Method of a struct">Default vs New Method of a struct</a></h1></div>
+
+<p>
+<span id="Default vs New Method of a struct-rust"></span><span class="tag" id="rust">rust</span>
+<span id="Default vs New Method of a struct-programming"></span><span class="tag" id="programming">programming</span>
+</p>
+
+<p>
+While Rust provides a <code>Default</code> trait for specifying the moral equivalent of a
+default constructor, <span id="Default vs New Method of a struct-it's incredibly rare for this trait to be used"></span><strong id="it's incredibly rare for this trait to be used">it's incredibly rare for this trait to be used</strong>. This is
+because variables aren't implicitly initialized. Default is basically only
+useful for generic programming.
+</p>
+
+<p>
+In concrete contexts, `a type will provide a static new method for any kind of
+"default" constructor`. This has no relation to new in other languages and has
+no special meaning. It's just a naming convention.
+</p>
+
+</body>
+</html>

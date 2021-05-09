@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="../../style.css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<title>dispatch-and-fat-pointers</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="dispatch and fat pointers"><h1 id="dispatch and fat pointers" class="header"><a href="#dispatch and fat pointers">dispatch and fat pointers</a></h1></div>
+
+<p>
+<span id="dispatch and fat pointers-snippet"></span><span class="tag" id="snippet">snippet</span>
+<span id="dispatch and fat pointers-rust"></span><span class="tag" id="rust">rust</span>
+<span id="dispatch and fat pointers-programming"></span><span class="tag" id="programming">programming</span>
+</p>
+
+<p>
+Notes I took while going through this excellent video:  <a href="https://youtu.be/xcygqF5LVmM">https://youtu.be/xcygqF5LVmM</a>
+</p>
+
+<div id="dispatch and fat pointers-Trait objects"><h2 id="Trait objects" class="header"><a href="#dispatch and fat pointers-Trait objects">Trait objects</a></h2></div>
+
+<p>
+<span id="dispatch and fat pointers-Trait objects-An obect whose only property is that it represents a Trait"></span><strong id="An obect whose only property is that it represents a Trait">An obect whose only property is that it represents a Trait</strong>
+</p>
+
+<ul>
+<li>
+Basically, something behind a <code>&amp;</code> or <code>Box</code> or <code>Arc</code> etc.
+
+<li>
+You generally can't go from <code>Box</code> to the actual object it represents
+
+<li>
+This is basically type-erasure. I don't care about the particular type of
+  all these objects, but rather that they implement a certain trait
+
+<li>
+When you're using an object behind <code>Box</code>, you <span id="dispatch and fat pointers-Trait objects-only"></span><strong id="only">only</strong> retain the methods of
+  that <code>Trait</code> (not all of the methods of the original object that implements
+  this trait).
+
+<ul>
+<li>
+<a href="https://youtu.be/xcygqF5LVmM?t=2848">https://youtu.be/xcygqF5LVmM?t=2848</a>
+
+<li>
+You erase all other knowledge about that other type, except of the
+      Boxed trait
+
+</ul>
+<li>
+I don't care whether they have the same type. I care about them implementing
+  e.g., a specific trait.
+
+</ul>
+<div id="dispatch and fat pointers-Trait objects-Trait: `std::marker::Sized`"><h3 id="Trait: `std::marker::Sized`" class="header"><a href="#dispatch and fat pointers-Trait objects-Trait: `std::marker::Sized`">Trait: <code>std::marker::Sized</code></a></h3></div>
+
+<ul>
+<li>
+*All type parameters (<code>Foo&lt;T&gt;</code>) have an implicit bound to <code>Sized</code>*.
+  The provided <code>T</code> must be Sized
+
+<li>
+<code>Sized</code> is auto-implemented for any type that it <span id="dispatch and fat pointers-Trait objects-Trait: <code>std::marker::Sized</code>-can"></span><strong id="can">can</strong> be implemented for.
+
+</ul>
+<p>
+My struct is Size-able if all its fields are <code>Size</code>-able.
+You <span id="dispatch and fat pointers-Trait objects-Trait: <code>std::marker::Sized</code>-don't"></span><strong id="don't">don't</strong> implement yourself manually
+</p>
+
+<p>
+A bare <code>Trait</code> is not <code>Sized</code>
+</p>
+
+<ul>
+<li>
+<code>str</code> is not <code>Sized</code>, it's an arbitrarily long string, can't decide if <code>Sized</code>
+  <code>&amp;str</code> is <code>Sized</code>, because it's a reference, the address of an arbitrary
+  string
+
+<li>
+<code>[u8]</code> is not <code>Sized</code>.
+  <code>&amp;[u8]</code> <span id="dispatch and fat pointers-Trait objects-Trait: <code>std::marker::Sized</code>-is"></span><strong id="is">is</strong>.
+
+<li>
+<code>dyn TraitName</code> is not Sized, but <code>Box&lt;...&gt;</code>, <code>&amp;...</code>, <code>Arc&lt;...&gt;</code> is always <code>Sized</code> since
+  it's the size of a pointer/address.
+
+<li>
+Box is a bit of magic; it's defined roughly like: <code>struct Box&lt;T: ?Sized&gt;</code>
+
+<ul>
+<li>
+It opts out of the <code>Sized</code> trait, i.e., its <code>T</code> doesn't have to be <code>Sized</code>.
+
+</ul>
+</ul>
+<div id="dispatch and fat pointers-Trait objects-Box vs `&amp;`"><h3 id="Box vs `&amp;`" class="header"><a href="#dispatch and fat pointers-Trait objects-Box vs `&amp;`">Box vs <code>&amp;</code></a></h3></div>
+
+<p>
+There's no major pros or cons but:
+</p>
+
+<ul>
+<li>
+<code>Box</code> can be used even after the stack frame of the caller goes away
+
+<li>
+<code>&amp;</code> cannot
+
+</ul>
+<div id="dispatch and fat pointers-Trait objects-Dynamic Dispatch"><h3 id="Dynamic Dispatch" class="header"><a href="#dispatch and fat pointers-Trait objects-Dynamic Dispatch">Dynamic Dispatch</a></h3></div>
+
+<ul>
+<li>
+I have to use: <code>dyn TraitName</code>
+
+</ul>
+<p>
+I have something like:
+</p>
+
+<pre rust>
+fn myfunction(arg: Box&lt;dyn SayHello&gt;) {
+  arg.hello();
+}
+</pre>
+
+<p>
+For more, see <a href="https://doc.rust-lang.org/book/ch19-04-advanced-types.html">https://doc.rust-lang.org/book/ch19-04-advanced-types.html</a>
+</p>
+
+<div id="dispatch and fat pointers-Trait objects-Dynamic Dispatch-Virtual Table - `vtable`"><h4 id="Virtual Table - `vtable`" class="header"><a href="#dispatch and fat pointers-Trait objects-Dynamic Dispatch-Virtual Table - `vtable`">Virtual Table - <code>vtable</code></a></h4></div>
+
+<p>
+Answers the question:
+</p>
+<pre><code>How does myfunction know where to find the <code>hello</code> method for all these
+types that implement <code>SayHello</code>?
+</code></pre>
+
+
+<ul>
+<li>
+Pointers to <code>Trait objects</code> also store a pointer to a <span id="dispatch and fat pointers-Trait objects-Dynamic Dispatch-Virtual Table - <code>vtable</code>-vtable"></span><strong id="vtable">vtable</strong>.
+
+<ul>
+<li>
+--&gt; And this is a <span id="dispatch and fat pointers-Trait objects-Dynamic Dispatch-Virtual Table - <code>vtable</code>-Fat/Wide Pointer"></span><strong id="Fat/Wide Pointer">Fat/Wide Pointer</strong>
+
+</ul>
+<li>
+A different vtable gets constructed for each concrete object turned into a
+  trait object.
+
+<li>
+<span id="dispatch and fat pointers-Trait objects-Dynamic Dispatch-Virtual Table - <code>vtable</code>-vtables"></span><strong id="vtables">vtables</strong> are built at compile time.
+
+</ul>
+<p>
+<code>&amp;str -&gt; &amp;dyn Hei</code>
+</p>
+
+<p>
+The trait object stores:
+</p>
+<ol>
+<li>
+Pointer to the <code>str</code>
+
+<li>
+A reference to the <code>vtable</code>
+<pre rust>
+   &amp;HeiVtable {
+        hei: &amp;&lt;str as Hei&gt;::hei
+    }
+</pre>
+
+</ol>
+<p>
+So, what if I want to have a trait object to a type that implements both <code>Hello</code>
+and <code>AsRef</code>?
+</p>
+
+<ul>
+<li>
+That trait object would need to be a fat pointer of 3 elements (data and 2
+  vtables)
+
+<li>
+You could get around this by implementing a trait that implements the other
+  two traits:
+<pre rust>
+  pub trait HelloAsRef: Hello + AsRef&lt;str&gt; {}
+</pre>
+  This sort of signature won't work, you'd have to use the previous supertrait
+  above:
+<pre rust>
+  pub fn baz(s: &amp;(dyn Hello + AsRef&lt;str&gt;)) { ... }
+</pre>
+  However, aggregating traits that <span id="dispatch and fat pointers-Trait objects-Dynamic Dispatch-Virtual Table - <code>vtable</code>-dont need a vtable"></span><strong id="dont need a vtable">dont need a vtable</strong>, <code>marker traits</code>, such
+  as <code>Send</code> <span id="dispatch and fat pointers-Trait objects-Dynamic Dispatch-Virtual Table - <code>vtable</code>-is"></span><strong id="is">is</strong> possible.
+  This works:
+<pre rust>
+  pub fn baz(s: &amp;(dyn Hello + Send)) { ... }
+</pre>
+
+</ul>
+<div id="dispatch and fat pointers-`&amp;dyn Fn` vs `fn()` vs `impl Fn`"><h2 id="`&amp;dyn Fn` vs `fn()` vs `impl Fn`" class="header"><a href="#dispatch and fat pointers-`&amp;dyn Fn` vs `fn()` vs `impl Fn`"><code>&amp;dyn Fn</code> vs <code>fn()</code> vs <code>impl Fn</code></a></h2></div>
+
+
+<ul>
+<li>
+<code>fn()</code> is a function pointer, can't handle more than that, e.g., a clojure
+
+<li>
+<code>impl Fn</code> is syntactic sugar for a generic function over the provided <code>Fn</code>.
+
+<ul>
+<li>
+Does accept closures as arguments, but will create a new function for every
+    new closure being passed, which is not optimal.
+
+<li>
+Also, if this is a method its generic nature gets propagated, so people that
+    want to inherit will have to be aware of this and handle the generic
+    arguments
+
+</ul>
+<li>
+<code>&amp;dyn Fn</code> is a Dynamic Trait Function. Close to <code>impl Fn</code> but puts the given
+  arbitrary function behind a fat pointer and redirects to it using the <code>vtable</code>
+  at runtime accordingly.
+  Contains an extra redirection via the <code>vtable</code> but may be a good tactic to
+  simplify the interface of your structrs if they use function members.
+  Also, using <code>&amp;dyn Fn</code> I can make the structurs taht contain them Trait
+  Objects, while <code>impl Fn</code> being a generic type parameter, disallows it.
+
+<li>
+You can't create a trait object (<code>dyn Extend&lt;..&gt;</code>) for <code>Extend</code>; The <code>vtable</code>
+  would have to include all the implementations of the Extend trait
+
+<li>
+for a trait to be object-safe: all methods need to have a receiver (i.e., take
+  <code>self</code> (and not consume it))
+  Can't have a method/function that returns Self
+  Not have generic methods
+
+<li>
+See "6.11 Traits Object Safety" regarding the rules of what Traits can be Trait
+  Objects
+
+<li>
+Any vtable for any trait object includes implicitly drop()
+
+<ul>
+<li>
+same goes for methods size, len
+
+</ul>
+<li>
+<code>RawWaker</code> has a dynamically constructed <code>vtable</code> inside it
+
+</ul>
+<div id="dispatch and fat pointers-Misc"><h2 id="Misc" class="header"><a href="#dispatch and fat pointers-Misc">Misc</a></h2></div>
+
+<ul>
+<li>
+<code>AsRef&lt;...&gt;</code>: Cheap reference-to-reference conversion
+  <a href="https://doc.rust-lang.org/std/convert/trait.AsRef.html">https://doc.rust-lang.org/std/convert/trait.AsRef.html</a>
+
+<li>
+<code>AsMut&lt;...&gt;</code>: Cheap mutable-to-mutable reference conversion
+  <a href="https://doc.rust-lang.org/std/convert/trait.AsMut.html">https://doc.rust-lang.org/std/convert/trait.AsMut.html</a>
+
+</ul>
+
+</body>
+</html>

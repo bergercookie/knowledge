@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="../../style.css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<title>wasm</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Rust and Web Assembly"><h1 id="Rust and Web Assembly" class="header"><a href="#Rust and Web Assembly">Rust and Web Assembly</a></h1></div>
+
+<p>
+<span id="Rust and Web Assembly-rust"></span><span class="tag" id="rust">rust</span>
+<span id="Rust and Web Assembly-programming"></span><span class="tag" id="programming">programming</span>
+</p>
+
+<p>
+Resources regarding web-assembly
+</p>
+
+<div id="Rust and Web Assembly-Resources"><h2 id="Resources" class="header"><a href="#Rust and Web Assembly-Resources">Resources</a></h2></div>
+
+<ul>
+<li>
+MDN - Compiling from Rust to WebAssembly: <a href="https://developer.mozilla.org/en-US/docs/WebAssembly/Rust_to_wasm">https://developer.mozilla.org/en-US/docs/WebAssembly/Rust_to_wasm</a>
+
+<li>
+Rust Wasm - Frontend Frameworks: <a href="https://www.webassemblyman.com/rustwasm/frontendframeworksrustwebassembly.html">https://www.webassemblyman.com/rustwasm/frontendframeworksrustwebassembly.html</a>
+
+<li>
+wasm-bindgen <a href="https://github.com/rustwasm/wasm-bindgen">https://github.com/rustwasm/wasm-bindgen</a>
+
+<ul>
+<li>
+WebAssembly to Javascript symbol binding
+
+<li>
+<code>#[wasm_bindgen]</code>
+
+</ul>
+<li>
+wasm-bindgen-futures: <a href="https://crates.io/crates/wasm-bindgen-futures">https://crates.io/crates/wasm-bindgen-futures</a>
+
+<ul>
+<li>
+Javascript promises &lt;-&gt; Rust futures
+
+</ul>
+<li>
+web-sys: <a href="https://crates.io/crates/web-sys">https://crates.io/crates/web-sys</a>
+
+<ul>
+<li>
+WASM bindgen for Web APIs
+
+</ul>
+<li>
+js-sys: <a href="https://crates.io/crates/js-sys">https://crates.io/crates/js-sys</a>
+
+<ul>
+<li>
+wasm-bindgen structs for ECMAScripts
+
+</ul>
+<li>
+wasm-build: Toolset for building and testing (cargo + wasm): <a href="https://rustwasm.github.io/docs/wasm-pack/commands/build.html">https://rustwasm.github.io/docs/wasm-pack/commands/build.html</a>
+
+<li>
+cargo generate: templates for wasm - <a href="https://github.com/ashleygwilliams/cargo-generate">https://github.com/ashleygwilliams/cargo-generate</a>
+
+</ul>
+<div id="Rust and Web Assembly-Compiling for Wasm"><h2 id="Compiling for Wasm" class="header"><a href="#Rust and Web Assembly-Compiling for Wasm">Compiling for Wasm</a></h2></div>
+
+<pre rust>
+# compile the code -&gt; pkg/
+wasm-pack build
+#        template to be used
+#        vvvvvvvv
+npm init wasm-app www
+</pre>
+
+</body>
+</html>

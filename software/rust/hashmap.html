@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="../../style.css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<title>hashmap</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Examples of std::collections::HashMap"><h1 id="Examples of std::collections::HashMap" class="header"><a href="#Examples of std::collections::HashMap">Examples of std::collections::HashMap</a></h1></div>
+
+<p>
+<span id="Examples of std::collections::HashMap-rust"></span><span class="tag" id="rust">rust</span>
+<span id="Examples of std::collections::HashMap-programming"></span><span class="tag" id="programming">programming</span>
+<span id="Examples of std::collections::HashMap-snippet"></span><span class="tag" id="snippet">snippet</span>
+</p>
+
+<div id="Examples of std::collections::HashMap-Standard initialisation of a HashMap"><h2 id="Standard initialisation of a HashMap" class="header"><a href="#Examples of std::collections::HashMap-Standard initialisation of a HashMap">Standard initialisation of a HashMap</a></h2></div>
+
+<pre rust>
+    let mut hm = HashMap::new();
+
+    hm.insert(String::from("kalimera"), 1);
+    hm.insert(String::from("kalinuxta"), 2);
+    hm.insert(String::from("Kalispera"), 3);
+
+    println!("hm: {:#?}", hm);
+</pre>
+
+<div id="Examples of std::collections::HashMap-Use `collect` to create it from two independent vectors"><h2 id="Use `collect` to create it from two independent vectors" class="header"><a href="#Examples of std::collections::HashMap-Use `collect` to create it from two independent vectors">Use <code>collect</code> to create it from two independent vectors</a></h2></div>
+
+<pre rust>
+/// I need to call Use first, not included in the Prelude
+use std::collections::HashMap;
+
+let teams  = vec![String::from("Blue"), String::from("Yellow")];
+let initial_scores = vec![10, 50];
+
+let scores: HashMap&lt;_, _&gt; = teams.iter().zip(initial_scores.iter()).collect();
+</pre>
+
+</body>
+</html>

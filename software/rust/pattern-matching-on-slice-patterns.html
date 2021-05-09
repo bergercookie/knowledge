@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="../../style.css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<title>pattern-matching-on-slice-patterns</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="pattern matching on slice patterns.rs"><h1 id="pattern matching on slice patterns.rs" class="header"><a href="#pattern matching on slice patterns.rs">pattern matching on slice patterns.rs</a></h1></div>
+
+<p>
+<span id="pattern matching on slice patterns.rs-programming"></span><span class="tag" id="programming">programming</span>
+<span id="pattern matching on slice patterns.rs-snippet"></span><span class="tag" id="snippet">snippet</span>
+<span id="pattern matching on slice patterns.rs-rust"></span><span class="tag" id="rust">rust</span>
+</p>
+
+<p>
+You can pattern match on slice patterns: <a href="https://doc.rust-lang.org/edition-guide/rust-2018/slice-patterns.html">https://doc.rust-lang.org/edition-guide/rust-2018/slice-patterns.html</a>
+</p>
+
+<p>
+Use syntax like the following:
+</p>
+
+<pre rust>
+fn greet(people: &amp;[&amp;str]) {
+    match people {
+        [] =&gt; println!("Bummer, there's no one here :("),
+        [only_one] =&gt; println!("Hey, there {}! You seem to be alone.", only_one),
+        [first, second] =&gt; println!(
+            "Hello, {} and {}. Nice to see you are exactly 2!",
+            first, second
+        ),
+        _ =&gt; println!("Hey everyone, we seem to be {} here today.", people.len()),
+    }
+}
+</pre>
+
+<p>
+OR
+</p>
+
+<pre rust>
+assert_eq!("ends with 3", match arr {
+    [_, _, 3] =&gt; "ends with 3",
+    [a, b, c] =&gt; "ends with something else",
+});
+</pre>
+
+</body>
+</html>

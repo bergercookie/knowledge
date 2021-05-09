@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="../../style.css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<title>embedonomicon</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Embedonomicon"><h1 id="Embedonomicon" class="header"><a href="#Embedonomicon">Embedonomicon</a></h1></div>
+
+<p>
+<span id="Embedonomicon-snippet"></span><span class="tag" id="snippet">snippet</span>
+<span id="Embedonomicon-rust"></span><span class="tag" id="rust">rust</span>
+<span id="Embedonomicon-programming"></span><span class="tag" id="programming">programming</span>
+</p>
+
+<p>
+Link: <a href="https://docs.rust-embedded.org/embedonomicon/">https://docs.rust-embedded.org/embedonomicon/</a>
+</p>
+
+<p>
+Install <code>cargo-binutils</code> and <code>carg-edit</code>
+</p>
+
+<p>
+eh_personality -&gt; Exception Handling Personality (Strategy)
+</p>
+
+<div id="Embedonomicon-What to learn"><h2 id="What to learn" class="header"><a href="#Embedonomicon-What to learn">What to learn</a></h2></div>
+
+<ul>
+<li>
+Memory layout of a Cortex-M program
+
+<li>
+Running Cortex-M architectures inside QEMU
+
+<li>
+Tools for cross-compiling ARM code
+
+<li>
+Using <code>gdb-multiarch</code> and remote debugging
+
+<li>
+Using QEMU semihosting to test logging capabilities
+
+</ul>
+<div id="Embedonomicon-Exception Handling"><h2 id="Exception Handling" class="header"><a href="#Embedonomicon-Exception Handling">Exception Handling</a></h2></div>
+
+<ul>
+<li>
+Includes a <code>search</code> phase and a <code>cleanup</code> phase.
+<pre><code>In both phases the unwinder walks stack frames from top to bottom using
+information from the stack frame unwind sections of the current process's
+modules ("module" here refers to an OS module, i.e. an executable or a
+dynamic library).
+</code></pre>
+For each stack frame, it invokes the associated "personality routine", whose
+address is also stored in the unwind info section.
+</code></pre>
+</code></pre>
+
+<li>
+Currently Rust uses unwind runtime provided by <code>libgcc</code>.
+
+<li>
+In a nutshell, <code>exceptions</code> are a mechanism the Cortex-M and other architectures
+  provide to `let applications respond to asynchronous, usually external,
+  events`.  The most prominent type of exception, that most people will know, is
+  the classical <code>(hardware) interrupt</code>.
+
+<ul>
+<li>
+The processor <code>uses the vector table to decide what handler to execute</code>. Each
+    entry in the table contains a pointer to a handler, and each entry
+    corresponds to a different exception type. For example, the second entry is
+    the reset handler, the third entry is the NMI (Non Maskable Interrupt)
+    handler, and so on.
+
+</ul>
+<li>
+The vector table resides in <code>read-only memory</code> (or rather in not easily
+  modified memory).
+
+</ul>
+<div id="Embedonomicon-TODO To correct"><h2 id="TODO To correct" class="header"><a href="#Embedonomicon-TODO To correct"><span class="todo">TODO</span> To correct</a></h2></div>
+
+<p>
+cargo nm --target thumbv7m-none-eabi -- $PWD/target/thumbv7m-none-eabi/debug/deps/app-<span id="Embedonomicon-<span class="todo">TODO</span> To correct-.o | grep '[0-9]"></span><strong id=".o | grep '[0-9]">.o | grep '[0-9]</strong> [^N] '
+</p>
+
+<p>
+On <code>Ubuntu 18</code>, there's no arm-none-eabi-gdb -&gt; Use <code>gdb-multiarch</code> instead.
+</p>
+
+<p>
+Also, had to use the long  versions of the flags, otherwise llvm-objdump would complain
+</p>
+
+<pre bash>
+cargo objdump --bin app -- -d --no-show-raw-insn
+cargo objdump --bin app -- -s --section .vector_table
+</pre>
+
+<p>
+Needed to install <code>gcc-arm-none-eabi</code> before using the <code>CC</code> package to
+cross-compile for ARM
+</p>
+
+<p>
+<a href="https://docs.rust-embedded.org/embedonomicon/exceptions.html">https://docs.rust-embedded.org/embedonomicon/exceptions.html</a>
+The second entry points to address 0x0000_0045, the Reset handler.
+</p>
+<pre><code>The address of the Reset handler can be seen in the disassembly above, being 0x44.
+</code></pre>
+<pre><code>Dissasembly doesn't mention any hexadecimal addresses
+</code></pre>
+
+
+<p>
+<a href="https://docs.rust-embedded.org/embedonomicon/asm.html#assembly-on-stable">https://docs.rust-embedded.org/embedonomicon/asm.html#assembly-on-stable</a>
+</p>
+
+
+<p>
+Now look at the vector table. The 4th entry should be the address of HardFaultTrampoline plus one.
+</p>
+
+<p>
+In the code snippets provided, we can't see the address of the corresponding
+symbols/functions. Running the same command though (with double dashes + direct
+<code>objdump</code>) I do get the addresses (see picture)
+</p>
+
+<p>
+See <a href="https://docs.rust-embedded.org/embedonomicon/singleton.html">https://docs.rust-embedded.org/embedonomicon/singleton.html</a>
+Add link to Singletons in Embedded rust book: <a href="https://rust-embedded.github.io/book/peripherals/singletons.html">https://rust-embedded.github.io/book/peripherals/singletons.html</a>
+</p>
+
+<div id="Embedonomicon-Resources"><h2 id="Resources" class="header"><a href="#Embedonomicon-Resources">Resources</a></h2></div>
+
+<ul>
+<li>
+More about exception handling: <a href="https://doc.rust-lang.org/1.2.0/std/rt/unwind/index.html">https://doc.rust-lang.org/1.2.0/std/rt/unwind/index.html</a>
+
+<li>
+Cortex-M Quickstart and FAQ: <a href="https://rust-embedded.github.io/cortex-m-quickstart/cortex_m_quickstart/">https://rust-embedded.github.io/cortex-m-quickstart/cortex_m_quickstart/</a>
+
+</ul>
+<div id="Embedonomicon-Symbol attributes"><h2 id="Symbol attributes" class="header"><a href="#Embedonomicon-Symbol attributes">Symbol attributes</a></h2></div>
+
+<ul>
+<li>
+<code>#[export_name = "foo"]</code>   Sets the symbol name to foo.
+
+<li>
+<code>#[no_mangle]</code>             Use the function or variable name (not its full path) as its symbol name. <code>#[no_mangle] fn bar()</code> will produce a symbol named bar.
+
+<li>
+<code>#[link_section = ".bar"]</code> places the symbol in a section named .bar.
+
+</ul>
+<div id="Embedonomicon-Vector Table Dissasembly"><h2 id="Vector Table Dissasembly" class="header"><a href="#Embedonomicon-Vector Table Dissasembly">Vector Table Dissasembly</a></h2></div>
+
+<p>
+<a href="https://docs.rust-embedded.org/embedonomicon/exceptions.html">https://docs.rust-embedded.org/embedonomicon/exceptions.html</a>
+</p>
+
+<p>
+<code>cargo objdump --bin app --release -- -s -j .vector_table</code>
+</p>
+
+<p>
+app:	file format ELF32-arm-little
+</p>
+
+<p>
+Contents of section .vector_table:
+ 0000 <code>00000120</code> 45000000 7f000000 7f000000  ... E...........
+ 0010 7f000000 7f000000 7f000000 00000000  ................
+ 0020 00000000 00000000 00000000 7f000000  ................
+ 0030 00000000 00000000 7f000000 7f000000  ................
+</p>
+
+<ul>
+<li>
+Little endian: Read in pairs of digits, reverse order
+<pre><code><code>00000120</code> -&gt; <code>2001_0000</code>
+</code></pre>
+<code>7f000000</code> -&gt; <code>0000007f</code>
+</code></pre>
+</code></pre>
+
+<li>
+Each address is an element of the vector table.
+  Elements set to 0x00 are reserved - we explicitly set them to 0 in the Rust
+  vector table
+  Elements set to <code>0x7f</code> point to the Default Exception Handler that we are
+  using.
+    --&gt; <code>0x7e</code> executed in thumb mode
+
+</ul>
+<div id="Embedonomicon-Logging / Encoding"><h2 id="Logging / Encoding" class="header"><a href="#Embedonomicon-Logging / Encoding">Logging / Encoding</a></h2></div>
+
+<p>
+Encode the logging messages <span id="Embedonomicon-Logging / Encoding-into the symbols of the ELF"></span><strong id="into the symbols of the ELF">into the symbols of the ELF</strong> executable; You can
+encode any characters (including spaces, except from a null byte) in the symbol
+name.
+</p>
+
+<p>
+In this example we'll need some way to do I/O so we'll use the
+<code>cortex-m-semihosting</code> crate for that. <code>Semihosting</code> is a technique for having a
+target device borrow the host I/O capabilities; the host here usually refers to
+the machine that's debugging the target device. In our case, QEMU supports
+semihosting out of the box so there's no need for a debugger. On a real device
+you'll have other ways to do I/O like a serial port; we use semihosting in this
+case because it's the easiest way to do I/O on QEMU.
+</p>
+
+<div id="Embedonomicon-Misc"><h2 id="Misc" class="header"><a href="#Embedonomicon-Misc">Misc</a></h2></div>
+
+<p>
+To prevent compiler command reorderings we can use a <code>compiler_fence</code>
+</p>
+
+<pre rust>
+  atomic::compiler_fence(Ordering::Release);
+  atomic::compiler_fence(Ordering::Acquire);
+</pre>
+
+</body>
+</html>

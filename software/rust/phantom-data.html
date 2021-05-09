@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="../../style.css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<title>phantom-data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="On the use of std::marker::PhantomData"><h1 id="On the use of std::marker::PhantomData" class="header"><a href="#On the use of std::marker::PhantomData">On the use of std::marker::PhantomData</a></h1></div>
+<p>
+<span id="On the use of std::marker::PhantomData-rust"></span><span class="tag" id="rust">rust</span>
+<span id="On the use of std::marker::PhantomData-programming"></span><span class="tag" id="programming">programming</span>
+</p>
+
+<p>
+Link: <a href="https://doc.rust-lang.org/beta/nomicon/phantom-data.html">https://doc.rust-lang.org/beta/nomicon/phantom-data.html</a>
+</p>
+
+<pre rust>
+struct Iter&lt;'a, T: 'a&gt; { // &lt;-- Error, I have to associate the lifetime with something...
+    ptr: *const T,
+    end: *const T,
+}
+
+// iter is valid as long as the underlying elements it's iterating are valid and
+// this relationship is not captured
+
+// And that's why I'm using a dummy PhantomData type, so that I can use the
+// lifetime
+
+use std::marker;
+struct Iter&lt;'a, T: 'a&gt; {
+    ptr: *const T,
+    end: *const T,
+    _marker: marker::PhantomData&lt;&amp;'a T&gt;,
+}
+
+</pre>
+
+<ul>
+<li>
+They can enable the use of lifetimes, when you don't have fields to bind them
+  to.
+
+<li>
+They 're just special markers, they don't consume space but just <sup><small>simulate</small></sup> a
+  field of the given type for the purpose of static analysis
+
+</ul>
+<div id="On the use of std::marker::PhantomData-Usage in Vector"><h2 id="Usage in Vector" class="header"><a href="#On the use of std::marker::PhantomData-Usage in Vector">Usage in Vector</a></h2></div>
+
+<p>
+The drop checker will generously determine that Vec&lt;T&gt; does not own any values
+of type T. This will in turn make it conclude that it doesn't need to worry
+about Vec dropping any T's in its destructor for determining drop check
+soundness. This will in turn allow people to create unsoundness using Vec's
+destructor.
+</p>
+
+<p>
+In order to tell dropck that we do own values of type T, and therefore may drop
+some T's when we drop, we must add an extra PhantomData saying exactly that:
+</p>
+
+</body>
+</html>
