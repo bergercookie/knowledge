@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="../style.css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<title>change-username-account-linux</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Change the Username of an account in Linux"><h1 id="Change the Username of an account in Linux" class="header"><a href="#Change the Username of an account in Linux">Change the Username of an account in Linux</a></h1></div>
+
+<pre sh>
+# Login as root - kill all your user sessions
+# You could also ssh-in as root
+
+usermod -l [newname] [oldname]
+groupmod -n [newname] [oldname]
+usermod -d /home/[newname] -m [newname]
+
+# Optional
+# usermod -c "[full name (new)]" [newname]
+
+# Verify
+id [newname]
+
+# Add a symbolic link to your old user for programs that use absolute paths to
+# still work
+ln -s /home/[newname] /home/[oldname]
+</pre>
+
+</body>
+</html>

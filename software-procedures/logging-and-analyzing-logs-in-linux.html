@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="../style.css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<title>logging-and-analyzing-logs-in-linux</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Logging and Analyzing Logs in Linux"><h1 id="Logging and Analyzing Logs in Linux" class="header"><a href="#Logging and Analyzing Logs in Linux">Logging and Analyzing Logs in Linux</a></h1></div>
+
+<div id="Logging and Analyzing Logs in Linux-Options"><h2 id="Options" class="header"><a href="#Logging and Analyzing Logs in Linux-Options">Options</a></h2></div>
+
+<ul>
+<li>
+Standard <code>syslog</code>
+
+<li>
+<code>journald</code>
+
+<li>
+<code>multitail</code> (for viewing multiple different files on your system)
+
+</ul>
+<div id="Logging and Analyzing Logs in Linux-syslog"><h2 id="syslog" class="header"><a href="#Logging and Analyzing Logs in Linux-syslog">syslog</a></h2></div>
+
+<ul>
+<li>
+If you want to send logs from CLI to <code>syslog</code> you do it via <code>logger</code>
+
+</ul>
+<div id="Logging and Analyzing Logs in Linux-`journald` / `journalctl`"><h2 id="`journald` / `journalctl`" class="header"><a href="#Logging and Analyzing Logs in Linux-`journald` / `journalctl`"><code>journald</code> / <code>journalctl</code></a></h2></div>
+
+<ul>
+<li>
+If you want to send logs from CLI to <code>journald</code> you do it via <code>systemd-cat</code>
+
+<ul>
+<li>
+It's the equivalent of <code>logger</code> on <code>syslog</code>
+
+<li>
+Whatever goes to <code>syslog</code> is also getting logged to <code>journald</code>
+
+</ul>
+<li>
+<a href="https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs">https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs</a>
+
+<ul>
+<li>
+Very good crash course
+
+</ul>
+</ul>
+<div id="Logging and Analyzing Logs in Linux-`systemd-cat` vs `logger`"><h2 id="`systemd-cat` vs `logger`" class="header"><a href="#Logging and Analyzing Logs in Linux-`systemd-cat` vs `logger`"><code>systemd-cat</code> vs <code>logger</code></a></h2></div>
+
+<p>
+I would stick with logger: it works with any standards-compliant logging system,
+including systemd’s journal as you’ve discovered. Using systemd-cat directly
+would only make your scripts systemd-specific, without adding anything; in fact,
+modern logger is much more flexible, and provides better support for
+systemd-specific features than systemd-cat itself.
+</p>
+
+<p>
+Link: <a href="https://unix.stackexchange.com/a/393102/84061">https://unix.stackexchange.com/a/393102/84061</a>
+</p>
+
+</body>
+</html>
