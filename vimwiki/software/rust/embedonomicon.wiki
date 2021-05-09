@@ -8,8 +8,6 @@ Link: https://docs.rust-embedded.org/embedonomicon/
 
 Install `cargo-binutils` and `carg-edit`
 
-eh_personality -> Exception Handling Personality (Strategy)
-
 == What to learn ==
 
 * Memory layout of a Cortex-M program
@@ -22,13 +20,13 @@ eh_personality -> Exception Handling Personality (Strategy)
 
 * Includes a `search` phase and a `cleanup` phase.
 
-    In both phases the unwinder walks stack frames from top to bottom using
-    information from the stack frame unwind sections of the current process's
-    modules ("module" here refers to an OS module, i.e. an executable or a
-    dynamic library).
+  In both phases the unwinder walks stack frames from top to bottom using
+  information from the stack frame unwind sections of the current process's
+  modules ("module" here refers to an OS module, i.e. an executable or a
+  dynamic library).
 
-    For each stack frame, it invokes the associated "personality routine", whose
-    address is also stored in the unwind info section.
+  For each stack frame, it invokes the associated "personality routine", whose
+  address is also stored in the unwind info section.
 
 * Currently Rust uses unwind runtime provided by `libgcc`.
 
@@ -47,7 +45,9 @@ eh_personality -> Exception Handling Personality (Strategy)
 
 == TODO To correct ==
 
+{{{bash
 cargo nm --target thumbv7m-none-eabi -- $PWD/target/thumbv7m-none-eabi/debug/deps/app-*.o | grep '[0-9]* [^N] '
+}}}
 
 On `Ubuntu 18`, there's no arm-none-eabi-gdb -> Use `gdb-multiarch` instead.
 
@@ -65,27 +65,26 @@ https://docs.rust-embedded.org/embedonomicon/exceptions.html
 The second entry points to address 0x0000_0045, the Reset handler.
 
     The address of the Reset handler can be seen in the disassembly above, being 0x44.
-
-
     Dissasembly doesn't mention any hexadecimal addresses
-
 
 https://docs.rust-embedded.org/embedonomicon/asm.html#assembly-on-stable
 
 
-Now look at the vector table. The 4th entry should be the address of HardFaultTrampoline plus one.
+Now look at the vector table. The 4th entry should be the address of
+HardFaultTrampoline plus one.
 
 In the code snippets provided, we can't see the address of the corresponding
 symbols/functions. Running the same command though (with double dashes + direct
-`objdump`) I do get the addresses (see picture)
+`objdump`) I do get the addresses
 
-See https://docs.rust-embedded.org/embedonomicon/singleton.html
-Add link to Singletons in Embedded rust book: https://rust-embedded.github.io/book/peripherals/singletons.html
+* See https://docs.rust-embedded.org/embedonomicon/singleton.html
+
 
 == Resources ==
 
 * More about exception handling: https://doc.rust-lang.org/1.2.0/std/rt/unwind/index.html
 * Cortex-M Quickstart and FAQ: https://rust-embedded.github.io/cortex-m-quickstart/cortex_m_quickstart/
+* Also interesting: https://rust-embedded.github.io/book/peripherals/singletons.html
 
 == Symbol attributes ==
 
@@ -139,9 +138,12 @@ case because it's the easiest way to do I/O on QEMU.
 
 == Misc ==
 
-To prevent compiler command reorderings we can use a `compiler_fence`
+* To prevent compiler command reorderings we can use a `compiler_fence`
 
   {{{rust
   atomic::compiler_fence(Ordering::Release);
   atomic::compiler_fence(Ordering::Acquire);
   }}}
+
+
+* eh_personality -> Exception Handling Personality (Strategy)

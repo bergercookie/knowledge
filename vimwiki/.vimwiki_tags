@@ -10,17 +10,20 @@ productivity	software-procedures/documenting-a-project-w-vimwiki.wiki	9;"	vimwik
 programming	software-procedures/documenting-a-project-w-vimwiki.wiki	10;"	vimwiki:software-procedures/documenting-a-project-w-vimwiki\tsoftware-procedures/documenting-a-project-w-vimwiki#programming
 programming	software/rust/HashMap.wiki	4;"	vimwiki:software/rust/HashMap\tsoftware/rust/HashMap#programming
 programming	software/rust/default-vs-new-method.wiki	4;"	vimwiki:software/rust/default-vs-new-method\tsoftware/rust/default-vs-new-method#programming
+programming	software/rust/embedonomicon.wiki	5;"	vimwiki:software/rust/embedonomicon\tsoftware/rust/embedonomicon#programming
 programming	software/rust/hashmap.wiki	4;"	vimwiki:software/rust/hashmap\tsoftware/rust/hashmap#programming
 programming	software/rust/pass-path-as-ref.wiki	4;"	vimwiki:software/rust/pass-path-as-ref\tsoftware/rust/pass-path-as-ref#programming
 programming	software/rust/pattern-matching-on-slice-patterns.wiki	3;"	vimwiki:software/rust/pattern-matching-on-slice-patterns\tsoftware/rust/pattern-matching-on-slice-patterns#pattern matching on slice patterns.rs
 programming	software/rust/phantom-data.wiki	3;"	vimwiki:software/rust/phantom-data\tsoftware/rust/phantom-data#On the use of std::marker::PhantomData
 rust	software/rust/HashMap.wiki	3;"	vimwiki:software/rust/HashMap\tsoftware/rust/HashMap#Rust - Examples of std::collections::HashMap
 rust	software/rust/default-vs-new-method.wiki	3;"	vimwiki:software/rust/default-vs-new-method\tsoftware/rust/default-vs-new-method#Default vs New Method of a struct
+rust	software/rust/embedonomicon.wiki	4;"	vimwiki:software/rust/embedonomicon\tsoftware/rust/embedonomicon#rust
 rust	software/rust/hashmap.wiki	3;"	vimwiki:software/rust/hashmap\tsoftware/rust/hashmap#Examples of std::collections::HashMap
 rust	software/rust/pass-path-as-ref.wiki	3;"	vimwiki:software/rust/pass-path-as-ref\tsoftware/rust/pass-path-as-ref#Pass Path or PathBuf by reference
 rust	software/rust/pattern-matching-on-slice-patterns.wiki	5;"	vimwiki:software/rust/pattern-matching-on-slice-patterns\tsoftware/rust/pattern-matching-on-slice-patterns#rust
 rust	software/rust/phantom-data.wiki	2;"	vimwiki:software/rust/phantom-data\tsoftware/rust/phantom-data#On the use of std::marker::PhantomData
 snippet	software/rust/HashMap.wiki	5;"	vimwiki:software/rust/HashMap\tsoftware/rust/HashMap#snippet
+snippet	software/rust/embedonomicon.wiki	3;"	vimwiki:software/rust/embedonomicon\tsoftware/rust/embedonomicon#Embedonomicon
 snippet	software/rust/hashmap.wiki	5;"	vimwiki:software/rust/hashmap\tsoftware/rust/hashmap#snippet
 snippet	software/rust/pass-path-as-ref.wiki	5;"	vimwiki:software/rust/pass-path-as-ref\tsoftware/rust/pass-path-as-ref#snippet
 snippet	software/rust/pattern-matching-on-slice-patterns.wiki	4;"	vimwiki:software/rust/pattern-matching-on-slice-patterns\tsoftware/rust/pattern-matching-on-slice-patterns#snippet
