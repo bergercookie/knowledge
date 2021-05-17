@@ -7,3 +7,4 @@ with making available to the wider public 😉.
 
 * [[software/rust/index.wiki|The Rust Programming Language]]
 * [[software-procedures/index.wiki|Software Procedures]]
+* [[military-service/index.wiki|Greek Military Service]]

@@ -72,10 +72,6 @@ Link: <a href="https://docs.rust-embedded.org/embedonomicon/">https://docs.rust-
 Install <code>cargo-binutils</code> and <code>carg-edit</code>
 </p>
 
-<p>
-eh_personality -&gt; Exception Handling Personality (Strategy)
-</p>
-
 <div id="Embedonomicon-What to learn"><h2 id="What to learn" class="header"><a href="#Embedonomicon-What to learn">What to learn</a></h2></div>
 
 <ul>
@@ -100,15 +96,12 @@ Using QEMU semihosting to test logging capabilities
 <ul>
 <li>
 Includes a <code>search</code> phase and a <code>cleanup</code> phase.
-<pre><code>In both phases the unwinder walks stack frames from top to bottom using
-information from the stack frame unwind sections of the current process's
-modules ("module" here refers to an OS module, i.e. an executable or a
-dynamic library).
-</code></pre>
-For each stack frame, it invokes the associated "personality routine", whose
-address is also stored in the unwind info section.
-</code></pre>
-</code></pre>
+  In both phases the unwinder walks stack frames from top to bottom using
+  information from the stack frame unwind sections of the current process's
+  modules ("module" here refers to an OS module, i.e. an executable or a
+  dynamic library).
+  For each stack frame, it invokes the associated "personality routine", whose
+  address is also stored in the unwind info section.
 
 <li>
 Currently Rust uses unwind runtime provided by <code>libgcc</code>.
@@ -135,9 +128,9 @@ The vector table resides in <code>read-only memory</code> (or rather in not easi
 </ul>
 <div id="Embedonomicon-TODO To correct"><h2 id="TODO To correct" class="header"><a href="#Embedonomicon-TODO To correct"><span class="todo">TODO</span> To correct</a></h2></div>
 
-<p>
-cargo nm --target thumbv7m-none-eabi -- $PWD/target/thumbv7m-none-eabi/debug/deps/app-<span id="Embedonomicon-<span class="todo">TODO</span> To correct-.o | grep '[0-9]"></span><strong id=".o | grep '[0-9]">.o | grep '[0-9]</strong> [^N] '
-</p>
+<pre bash>
+cargo nm --target thumbv7m-none-eabi -- $PWD/target/thumbv7m-none-eabi/debug/deps/app-*.o | grep '[0-9]* [^N] '
+</pre>
 
 <p>
 On <code>Ubuntu 18</code>, there's no arm-none-eabi-gdb -&gt; Use <code>gdb-multiarch</code> instead.
@@ -162,10 +155,8 @@ cross-compile for ARM
 The second entry points to address 0x0000_0045, the Reset handler.
 </p>
 <pre><code>The address of the Reset handler can be seen in the disassembly above, being 0x44.
+Dissasembly doesn't mention any hexadecimal addresses
 </code></pre>
-<pre><code>Dissasembly doesn't mention any hexadecimal addresses
-</code></pre>
-
 
 <p>
 <a href="https://docs.rust-embedded.org/embedonomicon/asm.html#assembly-on-stable">https://docs.rust-embedded.org/embedonomicon/asm.html#assembly-on-stable</a>
@@ -173,20 +164,21 @@ The second entry points to address 0x0000_0045, the Reset handler.
 
 
 <p>
-Now look at the vector table. The 4th entry should be the address of HardFaultTrampoline plus one.
+Now look at the vector table. The 4th entry should be the address of
+HardFaultTrampoline plus one.
 </p>
 
 <p>
 In the code snippets provided, we can't see the address of the corresponding
 symbols/functions. Running the same command though (with double dashes + direct
-<code>objdump</code>) I do get the addresses (see picture)
+<code>objdump</code>) I do get the addresses
 </p>
 
-<p>
+<ul>
+<li>
 See <a href="https://docs.rust-embedded.org/embedonomicon/singleton.html">https://docs.rust-embedded.org/embedonomicon/singleton.html</a>
-Add link to Singletons in Embedded rust book: <a href="https://rust-embedded.github.io/book/peripherals/singletons.html">https://rust-embedded.github.io/book/peripherals/singletons.html</a>
-</p>
 
+</ul>
 <div id="Embedonomicon-Resources"><h2 id="Resources" class="header"><a href="#Embedonomicon-Resources">Resources</a></h2></div>
 
 <ul>
@@ -195,6 +187,9 @@ More about exception handling: <a href="https://doc.rust-lang.org/1.2.0/std/rt/u
 
 <li>
 Cortex-M Quickstart and FAQ: <a href="https://rust-embedded.github.io/cortex-m-quickstart/cortex_m_quickstart/">https://rust-embedded.github.io/cortex-m-quickstart/cortex_m_quickstart/</a>
+
+<li>
+Also interesting: <a href="https://rust-embedded.github.io/book/peripherals/singletons.html">https://rust-embedded.github.io/book/peripherals/singletons.html</a>
 
 </ul>
 <div id="Embedonomicon-Symbol attributes"><h2 id="Symbol attributes" class="header"><a href="#Embedonomicon-Symbol attributes">Symbol attributes</a></h2></div>
@@ -270,14 +265,18 @@ case because it's the easiest way to do I/O on QEMU.
 
 <div id="Embedonomicon-Misc"><h2 id="Misc" class="header"><a href="#Embedonomicon-Misc">Misc</a></h2></div>
 
-<p>
+<ul>
+<li>
 To prevent compiler command reorderings we can use a <code>compiler_fence</code>
-</p>
-
 <pre rust>
   atomic::compiler_fence(Ordering::Release);
   atomic::compiler_fence(Ordering::Acquire);
 </pre>
+
+<li>
+eh_personality -&gt; Exception Handling Personality (Strategy)
+
+</ul>
 
       </div>
     <div class="wrapper-footer">

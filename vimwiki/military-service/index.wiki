@@ -1,0 +1,187 @@
+= Ultimate TODO List for Mandatory Greek Army Service =
+
+== Background ==
+
+* I started my military army service in January 2021, at [[https://en.wikipedia.org/wiki/Litochoro|Litochoro]] - quite cold there.
+* I wanted to join KEPYES (the computer science batallion of the army and thus),
+  had to gather some relevant certification for it.
+
+== To prepare ==
+
+* Send to KEPYES your application (postmaster@army.gr)
+* Make bootable persistent encrypted USB drive
+    * GPG key
+    * dotfiles
+    * Pass
+* Update your passwords list - SD card
+* Measure your PowerBank capacity - How many times could it charge your phone --> _6_
+* Revive your NAS storage so that you have access to it while away
+* Restrict card withdrawals from your banks - in case cards get stolen
+* Strip unnecessary cards from your wallet
+    * Leave them at home
+
+== FAQ ==
+
+* Is it legal to continue working while doing my military service?
+    * YES. See the army documents
+    * https://translate.google.com/translate?sl=auto&tl=en&u=https%3A%2F%2Fwww.foroepilisis.gr%2Fen%2Fstratefsi-misthoton%2F
+
+== Items to collect/buy ==
+
+* Πάτοι Φαρμακίου ή σιλικόνης - Συνήθως οι δεύτεροι είναι λίγο πιο ψηλοί, οπότε
+  πάρε ένα νούμερο μεγαλύτερες αρβύλες για να χωράει το πόδι σου μαζί με τους
+  πάτους)
+* Γυαλιστικό για Αρβύλες
+* Βελόνα και κλωστή
+* Ωτοασπίδες
+* Κρεμάστρες για ρούχα
+* Sleeping bag
+* Ξυραφάκια
+  * NOTE: The [[https://www.skroutz.gr/c/1746/xyrafakia.html?keyphrase=safety+razor|safety razor]] has worked well for me
+* 2 Powerbanks
+* Κλειδιά σπιτιού
+* Pin for sim cards
+* Sleeping mask
+  * NOTE: Nah, don't needed / they'll laugh at you
+* Disposable phone
+* Slippers
+  * NOTE: Plastic, with thick sole to use it in the shower. The ones they gave
+    me got destroyed after week one.
+* USB Cables and Chargers
+
+* Βαλίτσα - Not too big, should fit under the bunk bed
+* Μωρομάντιλα
+* Χαρτομάντηλα
+* Χαρτί Υγείας - 2 or 3 rolls
+* Νυχοκόπτης
+* XXX Μικρός φακός
+  * NOTE: Nah, didn't really needed, and also the phone flashlight also does
+    the job
+* Μαξιλάρι
+  * NOTE: Nah, not fussed about it, slept without one
+* Μαξιλαροθήκη
+* Σεντόνι
+  * NOTE: Some people used one so that the sleeping bag doesn't come in
+    contact with the bed; Nah, not worth it.
+* Μεμβράνες για κάλλους
+  * NOTE: So much needed. Take [[https://www.skroutz.gr/c/2444/Epithemata-Podion/m/7426/Compeed.html|compeed]]; they are worth it.
+* Αντισηπτικό
+* Hansaplast
+* Άδειες σακούλες - for dirty laundry etc.
+* XXX Πολύμπριζο
+* Keychain
+* Pneumocast pills
+
+  * NOTE: Probably you don't need this.
+
+* Paracetamol
+* Αλοιφή για τα χέρια
+* Λαιμουδιέρα: Κάλυμμα για το λαιμό
+
+=== Consumables ===
+
+* Νεσεσέρ
+* Σαμπουάν
+  * Put it in small bottles; worked very well.
+* Σαπούνι
+  * The army provides a holder cup for this.
+* Σφουγγάρι
+* Αποσμητικό
+* Οδοντόκρεμα
+* Οδοντόβουρτσα
+* Αποσμητικό
+* Αφρός Ξυρίσματος
+* After-Shave
+* Απορρυπαντικό για πλύσιμο στο χέρι
+
+* Μπλοκάκι + Στυλό
+* Καραμέλες λαιμού για το βήχα
+* Ταλκ
+* Λουκέτα (Μικρά, Μεσαία, 2 Μεγάλα, 1 με μακρύ λαιμό)
+
+=== Clothes ===
+
+* Εσώρουχα
+  * NOTE: The more the better. You don't know when your next laundry will
+    be.
+* Πράσινες Κάλτσες (μάλλινες)
+* Φανέλες (Πράσινες Στρατού)
+* Ισοθερμικά
+  * UPDATE: Maybe take one, just for the cold nights, otherwise, didn't really
+    use it.
+* 2 Πετσέτες μπάνιου
+* Κάλτσες
+  * NOTE: The more the better
+* 1 Παντελόνι στρατιωτικό
+  Was actually worth it since I tore 1/2 that they gave me.
+
+== Certificates for KEPYES ==
+
+* University Certificate(s)
+* Language Certificates
+* Recommendation Letters
+* Proof of employment
+* CV
+
+For more: https://katataxi.army.gr/el/content/enimerosi-opliton-ep
+
+== Documents to Gather ==
+
+* Σημείωμα Κατάταξης
+* XXX Αντίγραφο Ποινικού Μητρώου τύπου Α (αν το
+  "χαρτί" σου έχει ένδειξη ΥΕΑ)
+  * NOTE: You don't need this nowadays
+* Ακτινογραφία Θώρακα - από δημόσιο νοσοκομείο
+* Letter stating you have an allergy (in case they start ranting about the
+  sleeping bag)
+  * NOTE: Wasn't really needed. Everyone had, and they expected you to have a
+    sleeping bag
+* Σημείωμα Κατάταξης
+* Αστυνομική Ταυτότητα
+* Ατομικό Βιβλιάριο Νοσηλείας (το μικρό, λεπτό, που γράφει τα εμβόλια)
+* Πιστοποιητικό Οικογενειακής Κατάστασης.
+
+== one day before ==
+
+* Charge all your devices
+  * Kindle
+  * NOKIA
+  * Main phone
+* Make sure NOKIA works with your nano sim cards
+* Fill phone storage with podcasts and books
+* Take a picture of the things you leave behind
+
+== Right before entering ==
+
+* Put your SIM card at the disposable phone - in case they get strict about
+  using a phone that has a camera
+
+
+== Telephone Numbers ==
+
+* ΓΕΣ: 2106555911
+
+  * Μπορείς να ζητήσεις την Διεύθυνση Οπλιτών Θητείας
+  * θα σε συνδέσουν - έχουν 3 εσωτερικά τηλέφωνα αλλά κανένα δε δούλεψε για μένα
+  * NOTE: Quite helpful the chaps working there.
+
+* Γενική Γραμματεία Προστασίας του Πολίτη: 2131510-139,104,174
+* Τηλέφωνα στρατολογίας: https://www.stratologia.gr/el/epikoinwnia
+
+== Related ==
+
+* Android app that should come in handy: [[https://play.google.com/store/apps/details?id=com.YRH.PackPoint&hl=en|Packpoint]]
+* Greek Military Ranks in English: https://en.wikipedia.org/wiki/Greek_military_ranks
+* Greek military formations in English: [[greek-military-formations]]
+
+Also worth checking but some of the items may not be relevant anymore:
+
+* http://www.netmode.ntua.gr/%7Egkoutep/myarmy/
+* https://katataxi.army.gr/el/content/ayta-poy-prepei-na-ehei-o-neosyllektos-0
+
+=== Military service forums ===
+
+A bit outdated but here you go...
+
+* https://forum.thiteia.org/index.php
+* http://www.ellinikos-stratos.com/forum

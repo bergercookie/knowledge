@@ -1,0 +1,6 @@
+= presentation tools =
+
+:present:
+:organise:
+
+* [[https://www.diagrams.net/integrations|draw.io]]: Create pretty graphs easily - connects with Google Slides
