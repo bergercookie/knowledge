@@ -15,7 +15,7 @@ Organisation of the Military:
 * Ομάδα Στρατιών -> Army Group (400.000)
 * Θέατρο         -> Theater    (1.000.000)
 
-Links:
+== Links ==
 
-* https://el.wikipedia.org/wiki/%CE%A3%CF%84%CF%81%CE%B1%CF%84%CE%B9%CF%89%CF%84%CE%B9%CE%BA%CE%AE_%CE%BF%CF%81%CE%B3%CE%AC%CE%BD%CF%89%CF%83%CE%B7
-* https://en.wikipedia.org/wiki/Military_organization#Commands,_formations,_and_units
+* [[https://el.wikipedia.org/wiki/%CE%A3%CF%84%CF%81%CE%B1%CF%84%CE%B9%CF%89%CF%84%CE%B9%CE%BA%CE%AE_%CE%BF%CF%81%CE%B3%CE%AC%CE%BD%CF%89%CF%83%CE%B7|Wikipedia - Στρατιωτική Οργάνωση]]
+* [[https://en.wikipedia.org/wiki/Military_organization#Commands,_formations,_and_units|Wikipedia - Military Organization]]

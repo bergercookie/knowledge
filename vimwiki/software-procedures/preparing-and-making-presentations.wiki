@@ -8,14 +8,15 @@
 * Include handles for github, SO, LinkedIn
 * Company Name
 
-== slides ==
+== Questions to answer ==
 
-What should I include? What should be the format?
+What should I include?
+What should be the format?
 
 == TODO ==
 
 * Buy a proper microphone
-* Start using beamer?
+* Start using beamer/latex?
     * Be fast with it
     * auto-refresh -> [[https://github.com/pwmt/zathura|zathura]]
     * Animations?
@@ -34,6 +35,21 @@ What should I include? What should be the format?
   before your presentation *what points they remember*, or *what slides were
   interesting!* If they don't remember or say something vague, then you've
   failed!
+
+
+== Presentation Software ==
+
+* [[https://www.overleaf.com/learn/latex/Beamer|beamer/latex]]
+* [[https://www.google.com/slides/about/|Google Slides]]
+* [[https://github.com/gitpitch/gitpitch|GitPitch]]
+
+== FAQ ==
+
+* How do I make diagrams and embed them to my presentation
+
+  * [[https://coggle.it/|Coggle - Mind Maps]]
+  * [[https://www.diagrams.net/|diagrams.net]] - Offers Integration with Google
+    Slides
 
 == Phrases ==
 

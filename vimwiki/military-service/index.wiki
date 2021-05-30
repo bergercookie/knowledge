@@ -171,7 +171,7 @@ For more: https://katataxi.army.gr/el/content/enimerosi-opliton-ep
 == Related ==
 
 * Android app that should come in handy: [[https://play.google.com/store/apps/details?id=com.YRH.PackPoint&hl=en|Packpoint]]
-* Greek Military Ranks in English: https://en.wikipedia.org/wiki/Greek_military_ranks
+* Greek military ranks in English: [[greek-military-ranks]]
 * Greek military formations in English: [[greek-military-formations]]
 
 Also worth checking but some of the items may not be relevant anymore:

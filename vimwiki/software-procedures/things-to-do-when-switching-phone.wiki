@@ -1,0 +1,30 @@
+= Things to do when switching phones =
+
+== Hardware ==
+
+=== Steps ===
+
+* TODO Buy a protective cover - if required
+* TODO Buy a protective glass - if required
+
+
+== Software ==
+
+For whatever needs to be moved between your new and old phone or your new phone
+and the laptop, use `syncthing`
+
+=== Prerequisites ===
+
+* TODO Make sure your account backups via Drive are recent
+
+=== Steps ===
+
+* TODO Move your apps
+* TODO Move your `GPG` key
+* TODO Move all your files via `syncthing`
+* TODO Move Wireguard configuration
+* TODO Make sure your 2FA works
+* TODO Make sure decrypting your passwords works
+* TODO Sign in to your accounts (Google, Facebook, etc.)
+    * Or maybe just do it on demand when necessary...
+* TODO Export and then import your podcasts to the new device
