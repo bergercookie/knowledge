@@ -1,0 +1,18 @@
+= Pytest Testing Suite =
+
+* Skip a unittest
+    * `@pytest.mark.skip(reason="Not Implemented")`
+* Run a test by keyword expression: `pytest -k "MyClass and not method"`
+
+    * This  will  run  tests  which  contain  names  that  match the given
+      string expression, which can include Python operators that use filenames,
+      class names and function names as variables.  The example above will run
+      `TestMyClass.test_something`  but not `TestMyClass.test_method_simple`
+
+* See all printing statements - force pytest to dump all output: `pytest -s`
+
+
+== Links ==
+
+* `man pytest`
+* http://zetcode.com/python/pytest/

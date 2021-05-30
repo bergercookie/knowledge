@@ -1,0 +1,3 @@
+= Using Pip =
+
+* Install a specific version of a package: `pip3 install jedi==0.14`

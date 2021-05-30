@@ -5,7 +5,7 @@
 
 Whenever using `pip3 install --user <>` I got the following error:
 
-{{{
+{{{console
 Traceback (most recent call last):
   File "/home/berger/.local/lib/python3.6/site-packages/keyring/backend.py", line 203, in _load_plugins
     init_func = ep.load()

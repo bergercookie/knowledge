@@ -1,0 +1,45 @@
+= Connecting Machines in ROS =
+
+== Use multimaster_fkie ==
+
+Link: http://wiki.ros.org/multimaster_fkie
+
+=== Install ===
+
+{{{sh
+apt install ros-melodic-master-discovery-fkie  ros-melodic-master-sync-fkie
+}}}
+
+=== Use ===
+
+On each machine, run:
+
+{{{sh
+rosrun master_discovery_fkie master_discovery& rosrun master_sync_fkie master_sync
+}}}
+
+
+== Use ROS_MASTER_URI ==
+
+Each one of the ROS hosts involved should know each other ROS host by name. This
+can be accomplished either by a dedicated DNS server in the network, e.g.,
+[[https://en.wikipedia.org/wiki/Dnsmasq|dnsmasq]] or by adding the appropriate
+DNS entries in each machine's `/etc/hosts` file. If we're working with two
+computers, named `AAA` and `BBB`, then:
+
+* Add an entry with the IP of `AAA` in `/etc/hosts` of `BBB`
+* Add an entry with the IP of `BBB` in `/etc/hosts` of `AAA`
+
+To verify that the above works, you should be able to ping each machine from
+each other machine by their hostname.
+
+* In the computer that will serve as the master, launch a `roscore`
+* In the other computer(s) you have to export the following variable, pointing
+  to the DNS name of the computer serving as master. In our case, the master is
+  `AAA`, so we're adding a line like the following in the `.bashrc` of `BBB`.
+  * `export ROS_MASTER_URI=http://AAA:1131`
+
+
+After that's in place, you can verify that you can see all the topics and nodes
+active in `AAA` by running `rostopic list` or `rosnode list` from a shell in
+`BBB`.

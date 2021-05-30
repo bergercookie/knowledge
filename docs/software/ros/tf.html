@@ -1,13 +1,13 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>index</title>
+    <title>tf</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
     <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
     <meta name="author" content="Bergercookie's thoughtstream" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
   </head>
 
   <body>
@@ -56,50 +56,28 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="Knowledge Base"><h1 id="Knowledge Base" class="header"><a href="#Knowledge Base">Knowledge Base</a></h1></div>
+<div id="Transforms Tree"><h1 id="Transforms Tree" class="header"><a href="#Transforms Tree">Transforms Tree</a></h1></div>
+
+<div id="Transforms Tree-Implementation of TF suitable in Micro-ROS"><h2 id="Implementation of TF suitable in Micro-ROS" class="header"><a href="#Transforms Tree-Implementation of TF suitable in Micro-ROS">Implementation of TF suitable in Micro-ROS</a></h2></div>
 
 <p>
-Hi there, this is my knowledge base, at least the portion of it I'm feeling OK
-with making available to the wider public 😉.
+One persistent issue with transform graphs has been their resource use. `ROS TF
+works through replicated copies of the entire transform tree at every node that
+uses it, and is implemented through unicast TCP connections between nodes`. In
+systems with many dynamic parts, this has sometimes been called the `TF
+firehose`, because of the large stream of incoming messages. micro-ROS will go
+beyond this state of the art by running the dynamic transform tree in an
+embedded device, while keeping resource use to a minimum based on an analysis
+of the spatial and temporal details actually necessary. Further, enabling
+real-time queries even in the face of concurrent updates through integration
+will be realized through integration with the micro-ROS real-time executor. It
+is also planned to integrate the embedded TF will with the node lifecycle to
+achieve further power-savings
 </p>
-
-<div id="Knowledge Base-Robotics"><h2 id="Robotics" class="header"><a href="#Knowledge Base-Robotics">Robotics</a></h2></div>
-
-<ul>
-<li>
-<a href="software/ros/index.html">ROS - Robot Operating System</a>
-
-</ul>
-<div id="Knowledge Base-Software"><h2 id="Software" class="header"><a href="#Knowledge Base-Software">Software</a></h2></div>
 
 <p>
-Software-related articles, cheatsheets and guides
+Link: <a href="https://micro-ros.github.io//docs/concepts/client_library/embedded_tf/">https://micro-ros.github.io//docs/concepts/client_library/embedded_tf/</a>
 </p>
-
-<ul>
-<li>
-<a href="software/rust/index.html">The Rust Programming Language</a>
-
-<li>
-<a href="software/python/index.html">The Python Programming Language</a>
-
-<li>
-<a href="software/c-programming/index.html">The C Programming Language</a>
-
-<li>
-<a href="software-procedures/index.html">Software Procedures</a>
-
-</ul>
-<div id="Knowledge Base-General"><h2 id="General" class="header"><a href="#Knowledge Base-General">General</a></h2></div>
-
-<ul>
-<li>
-<a href="top10/index.html">Top-10 Lists (Music, Movies, Art)</a>
-
-<li>
-<a href="military-service/index.html">Greek Military Service</a>
-
-</ul>
 
       </div>
     <div class="wrapper-footer">

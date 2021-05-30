@@ -1,0 +1,57 @@
+= Open a /dev device and grab data with v4l =
+
+:c-programming:
+:programming:
+:snippet:
+
+{{{c
+#include <linux/videodev2.h>
+#include <libv4l2.h>
+#include <glib.h>
+#include <fcntl.h>
+#include <sys/ioctl.h>
+
+
+enumerate = udev_enumerate_new(udev);
+udev_enumerate_add_match_subsystem(enumerate, "video4linux");
+udev_enumerate_scan_devices(enumerate);
+devices = udev_enumerate_get_list_entry(enumerate);
+/* For each item enumerated, print out its information.
+   udev_list_entry_foreach is a macro which expands to
+   a loop. The loop will be executed for each member in
+   devices, setting dev_list_entry to a list entry
+   which contains the device's path in /sys. */
+udev_list_entry_foreach(dev_list_entry, devices)
+{
+   const char *path;
+
+   /* Get the filename of the /sys entry for the device
+and create a udev_device object (dev) representing it */
+   path = udev_list_entry_get_name(dev_list_entry);
+   dev = udev_device_new_from_syspath(udev, path);
+   std::cout << "DEV: " << dev << std::endl;
+   std::cout << "PATH: " << *path << std::endl;
+
+   /* usb_device_get_devnode() returns the path to the device node
+itself in /dev. */
+   const gchar *v4l2_device = udev_device_get_devnode(dev);
+
+   /* open the device and query the capabilities */
+   if ((fd = v4l2_open(v4l2_device, O_RDWR | O_NONBLOCK, 0)) < 0)
+   {
+      g_printerr("ERROR opening V4L2 interface for %s\n", v4l2_device);
+      v4l2_close(fd);
+      continue; /*next dir entry*/
+   }
+
+   if (xioctl(fd, VIDIOC_QUERYCAP, &v4l2_cap) < 0)
+   {
+      perror("VIDIOC_QUERYCAP error");
+      g_printerr("   couldn't query device %s\n", v4l2_device);
+      v4l2_close(fd);
+      continue; /*next dir entry*/
+   }
+   v4l2_close(fd);
+
+   }
+}}}

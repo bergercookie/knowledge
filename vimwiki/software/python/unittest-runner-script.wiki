@@ -1,0 +1,22 @@
+= unittest runner script =
+
+:python:
+:programming:
+:snippet:
+
+{{{python
+# Put this in under tests/test_doctests.py
+import unittest
+import doctest
+import module-name.whatever as whatever
+
+
+def load_tests(loader, tests, ignore):
+    for m in [whatever1, whatever2, ...]:
+        tests.addTests(doctest.DocTestSuite(m))
+    return tests
+
+
+if __name__ == "__main__":
+    unittest.main()
+}}}

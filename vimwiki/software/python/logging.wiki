@@ -1,0 +1,10 @@
+= Logging =
+=== Logging Basics - Initialize a logger ===
+
+{{{python
+import logging
+fmt_str = '[%(asctime)s] %(levelname)s @ line %(lineno)d: %(message)s'
+logging.basicConfig(level=logging.DEBUG, format=fmt_str)
+logger = logging.getLogger(__name__)
+logger.debug('hello logged world')
+}}}

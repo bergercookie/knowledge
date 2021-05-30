@@ -7,7 +7,9 @@
 `Asyncio` is specifically designed for `managing states of IO-bound programs` (you
 can think of it as a successor to `Twisted`).
 
-== GIL and AsyncIO: https://www.reddit.com/r/Python/comments/8kzxm5/gil_and_asyncio/ ==
+== GIL and AsyncIO: ==
+
+Link: https://www.reddit.com/r/Python/comments/8kzxm5/gil_and_asyncio/ 
 
 The problem `asyncio` solves is that it allows you to use non-blocking IO
 primitives with an (arguably) nicer programming interface which abstracts away

@@ -1,0 +1,18 @@
+== Handling Integer Objects ==
+
+Link: https://www.laurentluce.com/posts/python-integer-objects-implementation/
+
+{{{python
+import gc
+id(1) == id(1)
+a = 1
+gc.collect()
+b = 1
+# still, they point to the same object - preallocated by python to speed it up
+id(a) == id(b)
+
+a = 1e9
+gc.collect()
+b = 1e9
+id(a) != id(b)  # python does not preallocate 1e9
+}}}

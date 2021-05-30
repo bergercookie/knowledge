@@ -216,25 +216,6 @@ Based on a cookiecutter template
 
 </ul>
 </ul>
-<div id="Python Programming-Unittest runner python script"><h2 id="Unittest runner python script" class="header"><a href="#Python Programming-Unittest runner python script">Unittest runner python script</a></h2></div>
-
-<pre python>
-# Put this in under tests/test_doctests.py
-import unittest
-import doctest
-import module-name.whatever as whatever
-
-
-def load_tests(loader, tests, ignore):
-    for m in [whatever1, whatever2, ...]:
-        tests.addTests(doctest.DocTestSuite(m))
-    return tests
-
-
-if __name__ == "__main__":
-    unittest.main()
-</pre>
-
 <div id="Python Programming-Doctest - Ignore Exception Details"><h2 id="Doctest - Ignore Exception Details" class="header"><a href="#Python Programming-Doctest - Ignore Exception Details">Doctest - Ignore Exception Details</a></h2></div>
 
 <pre python>
@@ -245,63 +226,7 @@ python_utils.custom_exceptions.InvalidCLITimestampError: Invalid timestamp provi
 
 <ul>
 <li>
-Run a single test method (or a single test class or ...): <code>python3 -m unittest package.path.to.class.or.method</code>[:wa
-
-</ul>
-<div id="Python Programming-Python - Managing integer objects"><h2 id="Python - Managing integer objects" class="header"><a href="#Python Programming-Python - Managing integer objects">Python - Managing integer objects</a></h2></div>
-
-<p>
-Link: <a href="https://www.laurentluce.com/posts/python-integer-objects-implementation/">https://www.laurentluce.com/posts/python-integer-objects-implementation/</a>
-</p>
-
-<pre python>
-import gc
-id(1) == id(1)
-a = 1
-gc.collect()
-b = 1
-# still, they point to the same object - preallocated by python to speed it up
-id(a) == id(b)
-
-a = 1e9
-gc.collect()
-b = 1e9
-id(a) != id(b)  # python does not preallocate 1e9
-</pre>
-
-<div id="Python Programming-pytest"><h2 id="pytest" class="header"><a href="#Python Programming-pytest">pytest</a></h2></div>
-
-<ul>
-<li>
-Skip a unittest:
-<pre><code><code>@pytest.mark.skip(reason="Not Implemented")</code>
-</code></pre>
-
-<li>
-Run a test by keyword expression: <code>pytest -k "MyClass and not method"</code>
-
-<ul>
-<li>
-This  will  run  tests  which  contain  names  that  match the given string
-    expression, which can include Python operators that use filenames, class
-    names and function names as variables.  The example above will run
-    <code>TestMyClass.test_something</code>  but not <code>TestMyClass.test_method_simple</code>
-
-</ul>
-<li>
-See all printing statements - force pytest to dump all output: <code>pytest -s</code>
-
-</ul>
-<p>
-Also see:
-</p>
-
-<ul>
-<li>
-<code>man pytest</code>
-
-<li>
-<a href="http://zetcode.com/python/pytest/">http://zetcode.com/python/pytest/</a>
+Run a single test method (or a single test class or ...): <code>python3 -m unittest package.path.to.class.or.method</code>
 
 </ul>
 <div id="Python Programming-FAQ"><h2 id="FAQ" class="header"><a href="#Python Programming-FAQ">FAQ</a></h2></div>
@@ -541,33 +466,6 @@ spec.loader.exec_module(foo)
 cl = foo.MyClass()
 </pre>
 
-<div id="Python Programming-Recipes-Logging basics"><h3 id="Logging basics" class="header"><a href="#Python Programming-Recipes-Logging basics">Logging basics</a></h3></div>
-
-<pre python>
-import logging
-fmt_str = '[%(asctime)s] %(levelname)s @ line %(lineno)d: %(message)s'
-# "basicConfig" is a convenience function, explained later
-logging.basicConfig(level=logging.DEBUG, format=fmt_str)
-logger = logging.getLogger(__name__)
-logger.debug('hello logged world')
-</pre>
-
-<div id="Python Programming-Recipes-Logging basics-keyring.util.escape not found"><h4 id="keyring.util.escape not found" class="header"><a href="#Python Programming-Recipes-Logging basics-keyring.util.escape not found">keyring.util.escape not found</a></h4></div>
-
-<p>
-ModuleNotFoundError: No module named 'keyring.util.escape'
-</p>
-
-<p>
-<code>pip3 install --user keyring.alt</code>
-</p>
-
-<div id="Python Programming-Recipes-Logging basics-pip install specific version of package"><h4 id="pip install specific version of package" class="header"><a href="#Python Programming-Recipes-Logging basics-pip install specific version of package">pip install specific version of package</a></h4></div>
-
-<p>
-<code>pip3 install jedi==0.14</code>
-</p>
-
 <div id="Python Programming-Recipes-Pandas"><h3 id="Pandas" class="header"><a href="#Python Programming-Recipes-Pandas">Pandas</a></h3></div>
 
 <ul>
@@ -605,23 +503,6 @@ all the modules as dictionaries that contain their variables, and functions)
 Except int - doesn't have <code>__dict__</code>
 
 </ul>
-<div id="Python Programming-Mocking subprocess.Popen calls"><h2 id="Mocking subprocess.Popen calls" class="header"><a href="#Python Programming-Mocking subprocess.Popen calls">Mocking subprocess.Popen calls</a></h2></div>
-
-<p>
-Use <code>testfixtures</code> and <code>mock</code>: <a href="https://testfixtures.readthedocs.io/en/latest/popen.html">https://testfixtures.readthedocs.io/en/latest/popen.html</a>
-</p>
-
-<pre python>
-# Mock setup
-self.Popen = MockPopen()
-self.Popen.set_default(stdout=b'o', stderr=b'e')
-self.r = Replacer()
-self.r.replace("package.path.to.imported.class.process.Popen",
-                self.Popen)
-self.addCleanup(self.r.restore)
-</pre>
-
-
 <div id="Python Programming-Get superclass(es) of class"><h2 id="Get superclass(es) of class" class="header"><a href="#Python Programming-Get superclass(es) of class">Get superclass(es) of class</a></h2></div>
 
 <p>
@@ -637,6 +518,9 @@ Link: <a href="https://stackoverflow.com/a/10092179/2843583">https://stackoverfl
 
 <ul>
 <li>
+<a href="pip.html">Using Pip</a>
+
+<li>
 <a href="keyring-issue.html">Debugging: Keyring Issue</a>
 
 <li>
@@ -644,6 +528,9 @@ Link: <a href="https://stackoverflow.com/a/10092179/2843583">https://stackoverfl
 
 <li>
 <a href="poetry package manager.html">Poetry Package Manager</a>
+
+<li>
+<a href="handling-of-integer-objects.html">Handling Integer Objects</a>
 
 <li>
 <a href="debugging.html">Debugging Tools</a>
@@ -676,7 +563,13 @@ Link: <a href="https://stackoverflow.com/a/10092179/2843583">https://stackoverfl
 <a href="avoid-if-initialisation-cases.html">Avoid if-initialisation cases</a>
 
 <li>
+<a href="unittest-runner-script.html">unittest runner script</a>
+
+<li>
 <a href="find-system-installed-version-that-matches.html">Find System Installed Version That Matches</a>
+
+<li>
+<a href="logging.html">Logging</a>
 
 <li>
 <a href="code-coverage.html">Code Coverage</a>
@@ -694,7 +587,16 @@ Link: <a href="https://stackoverflow.com/a/10092179/2843583">https://stackoverfl
 <a href="ipdb.html">pdb / ipdb</a>
 
 <li>
+<a href="pypi_upload.html">Upload to PyPI</a>
+
+<li>
+<a href="mocking.html">Mocking in Python</a>
+
+<li>
 <a href="find-nth-occurrance.html">Find N-th Occurrence</a>
+
+<li>
+<a href="pytest.html">Pytest Testing Suite</a>
 
 <li>
 <a href="regexp-match-urls.html">Regexp: Match URLs</a>

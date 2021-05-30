@@ -1,13 +1,13 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>index</title>
+    <title>mocking</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
     <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
     <meta name="author" content="Bergercookie's thoughtstream" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
   </head>
 
   <body>
@@ -56,50 +56,22 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="Knowledge Base"><h1 id="Knowledge Base" class="header"><a href="#Knowledge Base">Knowledge Base</a></h1></div>
+<div id="Mocking in Python"><h1 id="Mocking in Python" class="header"><a href="#Mocking in Python">Mocking in Python</a></h1></div>
+<div id="Mocking in Python-Mocking subprocess.Popen calls"><h2 id="Mocking subprocess.Popen calls" class="header"><a href="#Mocking in Python-Mocking subprocess.Popen calls">Mocking subprocess.Popen calls</a></h2></div>
 
 <p>
-Hi there, this is my knowledge base, at least the portion of it I'm feeling OK
-with making available to the wider public 😉.
+Use <code>testfixtures</code> and <code>mock</code>: <a href="https://testfixtures.readthedocs.io/en/latest/popen.html">https://testfixtures.readthedocs.io/en/latest/popen.html</a>
 </p>
 
-<div id="Knowledge Base-Robotics"><h2 id="Robotics" class="header"><a href="#Knowledge Base-Robotics">Robotics</a></h2></div>
-
-<ul>
-<li>
-<a href="software/ros/index.html">ROS - Robot Operating System</a>
-
-</ul>
-<div id="Knowledge Base-Software"><h2 id="Software" class="header"><a href="#Knowledge Base-Software">Software</a></h2></div>
-
-<p>
-Software-related articles, cheatsheets and guides
-</p>
-
-<ul>
-<li>
-<a href="software/rust/index.html">The Rust Programming Language</a>
-
-<li>
-<a href="software/python/index.html">The Python Programming Language</a>
-
-<li>
-<a href="software/c-programming/index.html">The C Programming Language</a>
-
-<li>
-<a href="software-procedures/index.html">Software Procedures</a>
-
-</ul>
-<div id="Knowledge Base-General"><h2 id="General" class="header"><a href="#Knowledge Base-General">General</a></h2></div>
-
-<ul>
-<li>
-<a href="top10/index.html">Top-10 Lists (Music, Movies, Art)</a>
-
-<li>
-<a href="military-service/index.html">Greek Military Service</a>
-
-</ul>
+<pre python>
+# Mock setup
+self.Popen = MockPopen()
+self.Popen.set_default(stdout=b'o', stderr=b'e')
+self.r = Replacer()
+self.r.replace("package.path.to.imported.class.process.Popen",
+                self.Popen)
+self.addCleanup(self.r.restore)
+</pre>
 
       </div>
     <div class="wrapper-footer">

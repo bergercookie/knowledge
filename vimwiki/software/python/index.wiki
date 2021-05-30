@@ -57,25 +57,6 @@
     * Commit hooks for running autoformatting
     * Based on a cookiecutter template
 
-== Unittest runner python script ==
-
-{{{python
-# Put this in under tests/test_doctests.py
-import unittest
-import doctest
-import module-name.whatever as whatever
-
-
-def load_tests(loader, tests, ignore):
-    for m in [whatever1, whatever2, ...]:
-        tests.addTests(doctest.DocTestSuite(m))
-    return tests
-
-
-if __name__ == "__main__":
-    unittest.main()
-}}}
-
 == Doctest - Ignore Exception Details ==
 
 {{{python
@@ -84,43 +65,7 @@ Traceback (most recent call last):
 python_utils.custom_exceptions.InvalidCLITimestampError: Invalid timestamp provided: 123
 }}}
 
-* Run a single test method (or a single test class or ...): `python3 -m unittest package.path.to.class.or.method`[:wa
-
-== Python - Managing integer objects ==
-
-Link: https://www.laurentluce.com/posts/python-integer-objects-implementation/
-
-{{{python
-import gc
-id(1) == id(1)
-a = 1
-gc.collect()
-b = 1
-# still, they point to the same object - preallocated by python to speed it up
-id(a) == id(b)
-
-a = 1e9
-gc.collect()
-b = 1e9
-id(a) != id(b)  # python does not preallocate 1e9
-}}}
-
-== pytest ==
-
-* Skip a unittest:
-    `@pytest.mark.skip(reason="Not Implemented")`
-* Run a test by keyword expression: `pytest -k "MyClass and not method"`
-
-  * This  will  run  tests  which  contain  names  that  match the given string
-    expression, which can include Python operators that use filenames, class
-    names and function names as variables.  The example above will run
-    `TestMyClass.test_something`  but not `TestMyClass.test_method_simple`
-* See all printing statements - force pytest to dump all output: `pytest -s`
-
-Also see:
-
-* `man pytest`
-* http://zetcode.com/python/pytest/
+* Run a single test method (or a single test class or ...): `python3 -m unittest package.path.to.class.or.method`
 
 == FAQ ==
 
@@ -289,27 +234,6 @@ spec.loader.exec_module(foo)
 cl = foo.MyClass()
 }}}
 
-=== Logging basics ===
-
-{{{python
-import logging
-fmt_str = '[%(asctime)s] %(levelname)s @ line %(lineno)d: %(message)s'
-# "basicConfig" is a convenience function, explained later
-logging.basicConfig(level=logging.DEBUG, format=fmt_str)
-logger = logging.getLogger(__name__)
-logger.debug('hello logged world')
-}}}
-
-==== keyring.util.escape not found ====
-
-ModuleNotFoundError: No module named 'keyring.util.escape'
-
-`pip3 install --user keyring.alt`
-
-==== pip install specific version of package ====
-
-`pip3 install jedi==0.14`
-
 === Pandas ===
 
 * Rename just a single column in pandas: df.rename(columns = {'old_name':'new_name'}, inplace = True)
@@ -328,21 +252,6 @@ all the modules as dictionaries that contain their variables, and functions)
 
 * Except int - doesn't have `__dict__`
 
-== Mocking subprocess.Popen calls ==
-
-Use `testfixtures` and `mock`: https://testfixtures.readthedocs.io/en/latest/popen.html
-
-{{{python
-# Mock setup
-self.Popen = MockPopen()
-self.Popen.set_default(stdout=b'o', stderr=b'e')
-self.r = Replacer()
-self.r.replace("package.path.to.imported.class.process.Popen",
-                self.Popen)
-self.addCleanup(self.r.restore)
-}}}
-
-
 == Get superclass(es) of class ==
 
 Use `self.__class__.__bases__`
@@ -352,9 +261,11 @@ Link: https://stackoverflow.com/a/10092179/2843583
 
 == Contents ==
 
+* [[pip.wiki|Using Pip]]
 * [[keyring-issue.wiki|Debugging: Keyring Issue]]
 * [[unpackb-msgpack-error.wiki|Debugging: unpackb-msgpack Error]]
 * [[poetry package manager.wiki|Poetry Package Manager]]
+* [[handling-of-integer-objects.wiki|Handling Integer Objects]]
 * [[debugging.wiki|Debugging Tools]]
 * [[vlc-api.wiki|VLC Python API - Read metadata from network stream]]
 * [[concerns-when-packaging-c-extensions-in-python-packages.wiki|Concerns Packaging C Extensions in Python Packages]]
@@ -365,13 +276,18 @@ Link: https://stackoverflow.com/a/10092179/2843583
 * [[psrecord.wiki|psrecord]]
 * [[call-live-output.wiki|Call subprocess and print its output as it comes / live]]
 * [[avoid-if-initialisation-cases.wiki|Avoid if-initialisation cases]]
+* [[unittest-runner-script.wiki|unittest runner script]]
 * [[find-system-installed-version-that-matches.wiki|Find System Installed Version That Matches]]
+* [[logging.wiki|Logging]]
 * [[code-coverage.wiki|Code Coverage]]
 * [[ipython.wiki|ipython Interpeter]]
 * [[imports.wiki|Importing in Python]]
 * [[readline-enable-tab-completion.wiki|Readline: Enable TAB Completion]]
 * [[ipdb.wiki|pdb / ipdb]]
+* [[pypi_upload.wiki|Upload to PyPI]]
+* [[mocking.wiki|Mocking in Python]]
 * [[find-nth-occurrance.wiki|Find N-th Occurrence]]
+* [[pytest.wiki|Pytest Testing Suite]]
 * [[regexp-match-urls.wiki|Regexp: Match URLs]]
 * [[packaging-options.wiki|Packaging Options]]
 * [[numba.wiki|numba]]

@@ -1,0 +1,139 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>multimaster</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="Connecting Machines in ROS"><h1 id="Connecting Machines in ROS" class="header"><a href="#Connecting Machines in ROS">Connecting Machines in ROS</a></h1></div>
+
+<div id="Connecting Machines in ROS-Use multimaster_fkie"><h2 id="Use multimaster_fkie" class="header"><a href="#Connecting Machines in ROS-Use multimaster_fkie">Use multimaster_fkie</a></h2></div>
+
+<p>
+Link: <a href="http://wiki.ros.org/multimaster_fkie">http://wiki.ros.org/multimaster_fkie</a>
+</p>
+
+<div id="Connecting Machines in ROS-Use multimaster_fkie-Install"><h3 id="Install" class="header"><a href="#Connecting Machines in ROS-Use multimaster_fkie-Install">Install</a></h3></div>
+
+<pre sh>
+apt install ros-melodic-master-discovery-fkie  ros-melodic-master-sync-fkie
+</pre>
+
+<div id="Connecting Machines in ROS-Use multimaster_fkie-Use"><h3 id="Use" class="header"><a href="#Connecting Machines in ROS-Use multimaster_fkie-Use">Use</a></h3></div>
+
+<p>
+On each machine, run:
+</p>
+
+<pre sh>
+rosrun master_discovery_fkie master_discovery&amp; rosrun master_sync_fkie master_sync
+</pre>
+
+
+<div id="Connecting Machines in ROS-Use ROS_MASTER_URI"><h2 id="Use ROS_MASTER_URI" class="header"><a href="#Connecting Machines in ROS-Use ROS_MASTER_URI">Use ROS_MASTER_URI</a></h2></div>
+
+<p>
+Each one of the ROS hosts involved should know each other ROS host by name. This
+can be accomplished either by a dedicated DNS server in the network, e.g.,
+<a href="https://en.wikipedia.org/wiki/Dnsmasq">dnsmasq</a> or by adding the appropriate
+DNS entries in each machine's <code>/etc/hosts</code> file. If we're working with two
+computers, named <code>AAA</code> and <code>BBB</code>, then:
+</p>
+
+<ul>
+<li>
+Add an entry with the IP of <code>AAA</code> in <code>/etc/hosts</code> of <code>BBB</code>
+
+<li>
+Add an entry with the IP of <code>BBB</code> in <code>/etc/hosts</code> of <code>AAA</code>
+
+</ul>
+<p>
+To verify that the above works, you should be able to ping each machine from
+each other machine by their hostname.
+</p>
+
+<ul>
+<li>
+In the computer that will serve as the master, launch a <code>roscore</code>
+
+<li>
+In the other computer(s) you have to export the following variable, pointing
+  to the DNS name of the computer serving as master. In our case, the master is
+  <code>AAA</code>, so we're adding a line like the following in the <code>.bashrc</code> of <code>BBB</code>.
+
+<ul>
+<li>
+<code>export ROS_MASTER_URI=http://AAA:1131</code>
+
+</ul>
+</ul>
+<p>
+After that's in place, you can verify that you can see all the topics and nodes
+active in <code>AAA</code> by running <code>rostopic list</code> or <code>rosnode list</code> from a shell in
+<code>BBB</code>.
+</p>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

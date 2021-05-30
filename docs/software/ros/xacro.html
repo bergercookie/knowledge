@@ -1,0 +1,251 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>xacro</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="Xacro"><h1 id="Xacro" class="header"><a href="#Xacro">Xacro</a></h1></div>
+
+<div id="Xacro-Links"><h2 id="Links" class="header"><a href="#Xacro-Links">Links</a></h2></div>
+
+<ul>
+<li>
+<a href="http://wiki.ros.org/xacro">http://wiki.ros.org/xacro</a>
+
+<li>
+<a href="http://wiki.ros.org/urdf/Tutorials/Using%20Xacro%20to%20Clean%20Up%20a%20URDF%20File">http://wiki.ros.org/urdf/Tutorials/Using%20Xacro%20to%20Clean%20Up%20a%20URDF%20File</a>
+
+</ul>
+<div id="Xacro-XML constructs"><h2 id="XML constructs" class="header"><a href="#Xacro-XML constructs">XML constructs</a></h2></div>
+
+<div id="Xacro-XML constructs-Properties"><h3 id="Properties" class="header"><a href="#Xacro-XML constructs-Properties">Properties</a></h3></div>
+
+<ul>
+<li>
+Properties act like constants, they are global in your xacro file (they're
+  also (most likely, haven't tested) seen by the xacro files that you include in
+  this <code>xacro</code> file
+
+<li>
+They can be defined before or after the point they're used.
+
+<li>
+Properties are local if defined inside of a xacro:macro
+
+</ul>
+<p>
+<code>&lt;xacro:property name="width" value="0.2" /&gt;</code>
+</p>
+
+<div id="Xacro-XML constructs-xacro link, visual, geometry example"><h3 id="xacro link, visual, geometry example" class="header"><a href="#Xacro-XML constructs-xacro link, visual, geometry example">xacro link, visual, geometry example</a></h3></div>
+
+<pre xml>
+&lt;xacro:property name="width" value="0.2" /&gt;
+&lt;xacro:property name="bodylen" value="0.6" /&gt;
+&lt;link name="base_link"&gt;
+    &lt;visual&gt;
+        &lt;geometry&gt;
+            &lt;cylinder radius="${width}" length="${bodylen}"/&gt;
+        &lt;/geometry&gt;
+        &lt;material name="blue"/&gt;
+    &lt;/visual&gt;
+    &lt;collision&gt;
+        &lt;geometry&gt;
+            &lt;cylinder radius="${width}" length="${bodylen}"/&gt;
+        &lt;/geometry&gt;
+    &lt;/collision&gt;
+&lt;/link&gt;
+</pre>
+
+<div id="Xacro-XML constructs-xacro macro"><h3 id="xacro macro" class="header"><a href="#Xacro-XML constructs-xacro macro">xacro macro</a></h3></div>
+
+<p>
+We first define a macro, then call it
+</p>
+
+<pre xml>
+&lt;xacro:macro name="default_origin"&gt;
+    &lt;origin xyz="0 0 0" rpy="0 0 0"/&gt;
+&lt;/xacro:macro&gt;
+&lt;xacro:default_origin /&gt;
+</pre>
+
+<p>
+This will generate: <code>&lt;origin rpy="0 0 0" xyz="0 0 0"/&gt;</code>
+</p>
+
+<p>
+If the xacro with a specified name is not found, it will not be expanded and
+<code>will NOT generate an error</code>.
+</p>
+<pre><code>wtf?
+</code></pre>
+
+
+<div id="Xacro-XML constructs-xacro macro-Parametrized Macro"><h4 id="Parametrized Macro" class="header"><a href="#Xacro-XML constructs-xacro macro-Parametrized Macro">Parametrized Macro</a></h4></div>
+
+<pre xml>
+&lt;xacro:macro name="default_inertial" params="mass"&gt;
+    &lt;inertial&gt;
+            &lt;mass value="${mass}" /&gt;
+            &lt;inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                    iyy="1.0" iyz="0.0"
+                    izz="1.0" /&gt;
+    &lt;/inertial&gt;
+&lt;/xacro:macro&gt;
+</pre>
+
+
+<p>
+Then call it like this:
+</p>
+
+<p>
+<code>&lt;xacro:default_inertial mass="10"/&gt;</code>
+</p>
+
+<div id="Xacro-XML constructs-xacro macro-Block parameters"><h4 id="Block parameters" class="header"><a href="#Xacro-XML constructs-xacro macro-Block parameters">Block parameters</a></h4></div>
+
+<p>
+For block parameters of a xacro macro, prefix with an asterisk, <code>*</code>.
+</p>
+
+<pre xml>
+&lt;xacro:macro name="blue_shape" params="name *shape"&gt;
+    &lt;link name="${name}"&gt;
+        &lt;visual&gt;
+            &lt;geometry&gt;
+                &lt;xacro:insert_block name="shape" /&gt;
+            &lt;/geometry&gt;
+            &lt;material name="blue"/&gt;
+        &lt;/visual&gt;
+        &lt;collision&gt;
+            &lt;geometry&gt;
+                &lt;xacro:insert_block name="shape" /&gt;
+            &lt;/geometry&gt;
+        &lt;/collision&gt;
+    &lt;/link&gt;
+&lt;/xacro:macro&gt;
+</pre>
+
+<p>
+Then call it like:
+</p>
+
+<pre xml>
+&lt;xacro:blue_shape name="base_link"&gt;
+    &lt;cylinder radius=".42" length=".01" /&gt;
+&lt;/xacro:blue_shape&gt;
+</pre>
+
+
+<div id="Xacro-XML constructs-xacro macro-Arbitrary number of elements in parameter - `**`"><h4 id="Arbitrary number of elements in parameter - `**`" class="header"><a href="#Xacro-XML constructs-xacro macro-Arbitrary number of elements in parameter - `**`">Arbitrary number of elements in parameter - <code>**</code></a></h4></div>
+<pre xml>
+&lt;xacro:macro name="pr2_caster" params="suffix *origin **content **anothercontent"&gt;
+  &lt;joint name="caster_${suffix}_joint"&gt;
+    &lt;axis xyz="0 0 1" /&gt;
+  &lt;/joint&gt;
+  &lt;link name="caster_${suffix}"&gt;
+    &lt;xacro:insert_block name="origin" /&gt;
+    &lt;xacro:insert_block name="content" /&gt;
+    &lt;xacro:insert_block name="anothercontent" /&gt;
+  &lt;/link&gt;
+&lt;/xacro:macro&gt;
+
+&lt;xacro:pr2_caster suffix="front_left"&gt;
+  &lt;pose xyz="0 1 0" rpy="0 0 0" /&gt;
+  &lt;container&gt;
+    &lt;color name="yellow"/&gt;
+    &lt;mass&gt;0.1&lt;/mass&gt;
+  &lt;/container&gt;
+  &lt;another&gt;
+    &lt;inertial&gt;
+      &lt;origin xyz="0 0 0.5" rpy="0 0 0"/&gt;
+      &lt;mass value="1"/&gt;
+      &lt;inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" /&gt;
+    &lt;/inertial&gt;
+  &lt;/another&gt;
+&lt;/xacro:pr2_caster&gt;
+</pre>
+
+<ul>
+<li>
+Multiple blocks will be processed in the specified order
+
+</ul>
+<div id="Xacro-XML constructs-xacro macro-More examples"><h4 id="More examples" class="header"><a href="#Xacro-XML constructs-xacro macro-More examples">More examples</a></h4></div>
+
+<pre xml>
+&lt;xacro:macro name="pr2_arm" params="suffix parent reflect"&gt;
+  &lt;pr2_upperarm suffix="${suffix}" reflect="${reflect}" parent="${parent}" /&gt;
+  &lt;pr2_forearm suffix="${suffix}" reflect="${reflect}" parent="elbow_flex_${suffix}" /&gt;
+&lt;/xacro:macro&gt;
+
+&lt;xacro:pr2_arm suffix="left" reflect="1" parent="torso" /&gt;
+&lt;xacro:pr2_arm suffix="right" reflect="-1" parent="torso" /&gt;
+</pre>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

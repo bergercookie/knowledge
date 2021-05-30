@@ -1,0 +1,130 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>open-dev-and-grab-data-v4l</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="Open a /dev device and grab data with v4l"><h1 id="Open a /dev device and grab data with v4l" class="header"><a href="#Open a /dev device and grab data with v4l">Open a /dev device and grab data with v4l</a></h1></div>
+
+<p>
+<span id="Open a /dev device and grab data with v4l-c-programming"></span><span class="tag" id="c-programming">c-programming</span>
+<span id="Open a /dev device and grab data with v4l-programming"></span><span class="tag" id="programming">programming</span>
+<span id="Open a /dev device and grab data with v4l-snippet"></span><span class="tag" id="snippet">snippet</span>
+</p>
+
+<pre c>
+#include &lt;linux/videodev2.h&gt;
+#include &lt;libv4l2.h&gt;
+#include &lt;glib.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;sys/ioctl.h&gt;
+
+
+enumerate = udev_enumerate_new(udev);
+udev_enumerate_add_match_subsystem(enumerate, "video4linux");
+udev_enumerate_scan_devices(enumerate);
+devices = udev_enumerate_get_list_entry(enumerate);
+/* For each item enumerated, print out its information.
+   udev_list_entry_foreach is a macro which expands to
+   a loop. The loop will be executed for each member in
+   devices, setting dev_list_entry to a list entry
+   which contains the device's path in /sys. */
+udev_list_entry_foreach(dev_list_entry, devices)
+{
+   const char *path;
+
+   /* Get the filename of the /sys entry for the device
+and create a udev_device object (dev) representing it */
+   path = udev_list_entry_get_name(dev_list_entry);
+   dev = udev_device_new_from_syspath(udev, path);
+   std::cout &lt;&lt; "DEV: " &lt;&lt; dev &lt;&lt; std::endl;
+   std::cout &lt;&lt; "PATH: " &lt;&lt; *path &lt;&lt; std::endl;
+
+   /* usb_device_get_devnode() returns the path to the device node
+itself in /dev. */
+   const gchar *v4l2_device = udev_device_get_devnode(dev);
+
+   /* open the device and query the capabilities */
+   if ((fd = v4l2_open(v4l2_device, O_RDWR | O_NONBLOCK, 0)) &lt; 0)
+   {
+      g_printerr("ERROR opening V4L2 interface for %s\n", v4l2_device);
+      v4l2_close(fd);
+      continue; /*next dir entry*/
+   }
+
+   if (xioctl(fd, VIDIOC_QUERYCAP, &amp;v4l2_cap) &lt; 0)
+   {
+      perror("VIDIOC_QUERYCAP error");
+      g_printerr("   couldn't query device %s\n", v4l2_device);
+      v4l2_close(fd);
+      continue; /*next dir entry*/
+   }
+   v4l2_close(fd);
+
+   }
+</pre>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

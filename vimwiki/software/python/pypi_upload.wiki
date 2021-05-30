@@ -1,0 +1,31 @@
+= Upload to PyPI =
+
+_Update_: Now pypi uses API tokens to push packages to it!
+
+----
+
+Example: https://packaging.python.org/tutorials/packaging-projects/
+Deploy to Pypi from travis: https://docs.travis-ci.com/user/deployment/pypi/
+
+{{{sh
+# From the root of repository
+# Generate package
+pip install --user --upgrade setuptools wheel twine
+python3 setup.py sdist bdist_wheel
+}}}
+
+To upload (and then verify) to *test.pypi*:
+{{{sh
+# Push & pull back down again
+twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+pip3 install --index-url https://test.pypi.org/simple/ --no-deps <pkg-name>
+}}}
+
+To upload to *production* pypi
+{{{sh
+# Push & pull back down again
+twine upload dist/*
+pip3 install --no-deps <pkg-name>
+}}}
+
+*WARNING:* You have to bump the version before deploying!

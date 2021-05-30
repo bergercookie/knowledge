@@ -1,0 +1,14 @@
+= Mocking in Python =
+== Mocking subprocess.Popen calls ==
+
+Use `testfixtures` and `mock`: https://testfixtures.readthedocs.io/en/latest/popen.html
+
+{{{python
+# Mock setup
+self.Popen = MockPopen()
+self.Popen.set_default(stdout=b'o', stderr=b'e')
+self.r = Replacer()
+self.r.replace("package.path.to.imported.class.process.Popen",
+                self.Popen)
+self.addCleanup(self.r.restore)
+}}}

@@ -3,10 +3,17 @@
 Hi there, this is my knowledge base, at least the portion of it I'm feeling OK
 with making available to the wider public 😉.
 
+== Robotics ==
+
+* [[software/ros/index.wiki|ROS - Robot Operating System]]
+
 == Software ==
+
+Software-related articles, cheatsheets and guides
 
 * [[software/rust/index.wiki|The Rust Programming Language]]
 * [[software/python/index.wiki|The Python Programming Language]]
+* [[software/c-programming/index.wiki|The C Programming Language]]
 * [[software-procedures/index.wiki|Software Procedures]]
 
 == General ==
