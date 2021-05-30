@@ -1,0 +1,43 @@
+= Avoid if-initialisation cases =
+
+:python:
+:programming:
+:snippet:
+
+Instead of this:
+
+{{{python
+class Test:
+  def check(self,a,b,c):
+    if a == 0:
+      self.str = b*100
+    else:
+      self.str = c*100
+
+a = Test()
+def example():
+  for i in xrange(0,100000):
+    a.check(i,"b","c")
+
+import profile
+profile.run("example()")
+}}}
+
+Write it like this:
+
+{{{python
+class Test2:
+  def check(self,a,b,c):
+    self.str = b*100
+    self.check = self.check_post # <--
+  def check_post(self,a,b,c):
+    self.str = c*100
+
+a = Test2()
+def example2():
+  for i in xrange(0,100000):
+    a.check(i,"b","c")
+
+import profile
+profile.run("example2()")
+}}}

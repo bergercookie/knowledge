@@ -1,0 +1,13 @@
+= Bumping the version of your Python Project =
+
+:python:
+:programming:
+
+Do the change in the following files:
+
+* `setup.py` OR `pyproject.toml`
+* add a `git` tag
+* Remember that for the Travis CI to pick it up you have to `git tag` and also
+  `git push --tags` before sending the commit to github, otherwise travis will
+  see an untagged commit.
+

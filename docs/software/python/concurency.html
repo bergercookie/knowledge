@@ -1,0 +1,128 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>concurency</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="Concurrency and AsyncIO"><h1 id="Concurrency and AsyncIO" class="header"><a href="#Concurrency and AsyncIO">Concurrency and AsyncIO</a></h1></div>
+
+<p>
+<span id="Concurrency and AsyncIO-python"></span><span class="tag" id="python">python</span>
+<span id="Concurrency and AsyncIO-programming"></span><span class="tag" id="programming">programming</span>
+</p>
+
+
+<p>
+<code>Asyncio</code> is specifically designed for <code>managing states of IO-bound programs</code> (you
+can think of it as a successor to <code>Twisted</code>).
+</p>
+
+<div id="Concurrency and AsyncIO-GIL and AsyncIO: https://www.reddit.com/r/Python/comments/8kzxm5/gil_and_asyncio/"><h2 id="GIL and AsyncIO: https://www.reddit.com/r/Python/comments/8kzxm5/gil_and_asyncio/" class="header"><a href="#Concurrency and AsyncIO-GIL and AsyncIO: https://www.reddit.com/r/Python/comments/8kzxm5/gil_and_asyncio/">GIL and AsyncIO: <a href="https://www.reddit.com/r/Python/comments/8kzxm5/gil_and_asyncio/">https://www.reddit.com/r/Python/comments/8kzxm5/gil_and_asyncio/</a></a></h2></div>
+
+<p>
+The problem <code>asyncio</code> solves is that it allows you to use non-blocking IO
+primitives with an (arguably) nicer programming interface which abstracts away
+the need to loop through non-blocking sockets with <code>select()</code> and instead builds
+it into an <code>event based system that the program can construct itself around</code>,
+where these <code>select()</code> polls ultimately result in events being fired and
+<em>different "async" tasks in the Python program waking up</em>. However, as you've
+noted with <code>asyncio,</code> the event queue runs in only a single thread.
+</p>
+
+<div id="Concurrency and AsyncIO-AsyncIO vs Multiprocessing vs Multithreading"><h2 id="AsyncIO vs Multiprocessing vs Multithreading" class="header"><a href="#Concurrency and AsyncIO-AsyncIO vs Multiprocessing vs Multithreading">AsyncIO vs Multiprocessing vs Multithreading</a></h2></div>
+
+<p>
+<code>Asyncio</code> doesn't block on socket, so it is only useful if your workload is
+dominated by network access time. Ex: servers, clients making a lot of request,
+etc.
+</p>
+
+<p>
+Multiprocessing will make use of several cores, but process communication is
+expensive. You use it when your workload is mainly CPU intensive with a work
+you can easily split with little communication between the workers.
+</p>
+
+<p>
+Threads never block, but share one CPU, and are useful when:
+</p>
+
+<ul>
+<li>
+file access dominated workload
+
+<li>
+lot of local socket access (db access)
+
+<li>
+avoiding blocking a GUI
+
+<li>
+like asyncio, but you use some blocking libs
+
+</ul>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

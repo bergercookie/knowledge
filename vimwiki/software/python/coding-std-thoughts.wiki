@@ -1,0 +1,12 @@
+= Thought on Python coding standards =
+
+:python:
+:programming:
+
+* https://docs.ckan.org/en/2.8/contributing/python.html
+* https://github.com/psf/black#the-black-code-style
+
+Concerns with `yapf`:
+
+* https://github.com/google/yapf/issues/451
+* https://github.com/google/yapf/issues/500

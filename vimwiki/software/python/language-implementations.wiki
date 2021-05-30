@@ -1,0 +1,6 @@
+= Implementations of the Python Specification =
+
+:python:
+:programming:
+
+`PyPy` vs `CPython`: https://realpython.com/pypy-faster-python/

@@ -1,0 +1,5 @@
+= pyproject.toml =
+
+== Example pyproject.toml files ==
+
+* [[https://github.com/timothycrosley/isort/blob/develop/pyproject.toml|isort]]

@@ -1,0 +1,16 @@
+= Check if PID exists =
+
+:python:
+:programming:
+:snippet:
+
+{{{python
+def check_pid(pid: int) -> bool:
+    """Check for the existence of a unix pid."""
+    try:
+        os.kill(pid, 0)
+    except OSError:
+        return False
+    else:
+        return True
+}}}

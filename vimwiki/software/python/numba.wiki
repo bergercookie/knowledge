@@ -1,0 +1,49 @@
+= numba =
+
+* You have to *run* your scripts with numba -> `/usr/bin/env numba` instead of
+  python itself
+
+== Why is numba faster than numpy ==
+
+TL;DR: `Numba` produces compiled code, while `numpy` calls _precompiled_ code
+for certain operations (e.g., addition) but all in an interpreter context
+
+----
+
+`Numba` vs `numpy`: https://stackoverflow.com/a/25952400/2843583
+
+
+I think this question highlights (somewhat) the limitations of calling out to
+precompiled functions from a higher level language. Suppose in C++ you write
+something like:
+
+{{{python
+for (int i = 0; i != N; ++i) a[i] = b[i] + c[i] + 2 * d[i];
+}}}
+
+The compiler sees all this at compile time, the whole expression. It can do a
+lot of really intelligent things here, including optimizing out temporaries (and
+loop unrolling).
+
+In python however, consider what's happening: when you use `numpy` each ''+'' uses
+operator overloading on the np array types (which are just thin wrappers around
+contiguous blocks of memory, i.e. arrays in the low level sense), and calls out
+to a fortran (or C++) function which does the addition super fast. But it just
+does one addition, and spits out a temporary.
+
+We can see that in some way, while `numpy` is awesome and convenient and pretty
+fast, it is slowing things down because while it seems like it is calling into a
+fast compiled language for the hard work, the compiler doesn't get to see the
+whole program, it's just fed isolated little bits. And this is hugely
+detrimental to a compiler, especially modern compilers which are very
+intelligent and can retire multiple instructions per cycle when the code is well
+written.
+
+`Numba` on the other hand, used a JIT. So, at runtime it can figure out that the
+temporaries are not needed, and optimize them away. Basically, `Numba` has a
+chance to have the program compiled as a whole, `numpy` can only call small atomic
+blocks which themselves have been pre-compiled.
+
+== Links ==
+
+* Pure numerical code in Python and `Numba` VS `Fortran`: https://jakevdp.github.io/blog/2015/02/24/optimizing-python-with-numpy-and-numba/

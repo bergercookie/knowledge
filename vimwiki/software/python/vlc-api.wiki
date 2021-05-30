@@ -1,0 +1,41 @@
+= VLC Python API - Read metadata from network stream =
+
+:python:
+:programming:
+:snippet:
+
+{{{python
+from time import sleep
+from vlc import EventType, Media, MediaPlayer, MediaParseFlag, Meta
+
+def _media_cb(event, *unused):
+    # XXX callback ... never called
+    print(event)
+
+p = MediaPlayer()
+# cmd1 = "sout=file/ts:%s" % outfile
+media = Media("http://playerservices.streamtheworld.com/api/livestream-redirect/JBFMAAC1.aac")  # , cmd1)
+# media.get_mrl()
+p.set_media(media)
+p.play()
+
+e = p.event_manager()
+e.event_attach(EventType.MediaMetaChanged, _media_cb, media)
+e.event_attach(EventType.MediaParsedChanged, _media_cb, media)
+
+# define the meta data to show
+meta = {Meta.Album: None,
+        Meta.Genre: None,
+        Meta.NowPlaying: None}
+
+while True:  # loop forever
+    # XXX using MediaParseFlag.local is not any different
+    media.parse_with_options(MediaParseFlag.network, 2)  # 2 sec timeout
+    # XXX media.get_parsed_status() always returns .skipped
+    for k in meta.keys():
+        v = media.get_meta(k)
+        if v != meta[k]:
+            print("{} - {}".format(k, v))
+            meta[k] = v
+    sleep(2)
+}}}

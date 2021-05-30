@@ -1,13 +1,13 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>index</title>
+    <title>avoid-if-initialisation-cases</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
     <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
     <meta name="author" content="Bergercookie's thoughtstream" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
   </head>
 
   <body>
@@ -56,36 +56,55 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="Knowledge Base"><h1 id="Knowledge Base" class="header"><a href="#Knowledge Base">Knowledge Base</a></h1></div>
+<div id="Avoid if-initialisation cases"><h1 id="Avoid if-initialisation cases" class="header"><a href="#Avoid if-initialisation cases">Avoid if-initialisation cases</a></h1></div>
 
 <p>
-Hi there, this is my knowledge base, at least the portion of it I'm feeling OK
-with making available to the wider public 😉.
+<span id="Avoid if-initialisation cases-python"></span><span class="tag" id="python">python</span>
+<span id="Avoid if-initialisation cases-programming"></span><span class="tag" id="programming">programming</span>
+<span id="Avoid if-initialisation cases-snippet"></span><span class="tag" id="snippet">snippet</span>
 </p>
 
-<div id="Knowledge Base-Software"><h2 id="Software" class="header"><a href="#Knowledge Base-Software">Software</a></h2></div>
+<p>
+Instead of this:
+</p>
 
-<ul>
-<li>
-<a href="software/rust/index.html">The Rust Programming Language</a>
+<pre python>
+class Test:
+  def check(self,a,b,c):
+    if a == 0:
+      self.str = b*100
+    else:
+      self.str = c*100
 
-<li>
-<a href="software/python/index.html">The Python Programming Language</a>
+a = Test()
+def example():
+  for i in xrange(0,100000):
+    a.check(i,"b","c")
 
-<li>
-<a href="software-procedures/index.html">Software Procedures</a>
+import profile
+profile.run("example()")
+</pre>
 
-</ul>
-<div id="Knowledge Base-General"><h2 id="General" class="header"><a href="#Knowledge Base-General">General</a></h2></div>
+<p>
+Write it like this:
+</p>
 
-<ul>
-<li>
-<a href="top10/index.html">Top-10 Lists (Music, Movies, Art)</a>
+<pre python>
+class Test2:
+  def check(self,a,b,c):
+    self.str = b*100
+    self.check = self.check_post # &lt;--
+  def check_post(self,a,b,c):
+    self.str = c*100
 
-<li>
-<a href="military-service/index.html">Greek Military Service</a>
+a = Test2()
+def example2():
+  for i in xrange(0,100000):
+    a.check(i,"b","c")
 
-</ul>
+import profile
+profile.run("example2()")
+</pre>
 
       </div>
     <div class="wrapper-footer">

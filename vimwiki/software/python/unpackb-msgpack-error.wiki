@@ -1,0 +1,10 @@
+= Debugging: unpackb-msgpack Error =
+:python:
+:programming:
+
+You have to downgrade `msgpack`:
+
+Link: https://github.com/firebase/firebase-admin-python/issues/377#issuecomment-568262553
+
+* Installing the latest version of msgpack from github also works:
+  `pip3 install --user --upgrade git+https://github.com/msgpack/msgpack-python`

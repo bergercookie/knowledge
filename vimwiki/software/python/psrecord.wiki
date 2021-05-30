@@ -1,0 +1,14 @@
+= psrecord =
+
+== Running headless on ARM ==
+
+* You have to explicitly install matplotlib
+    * Doing this from source on ARM is a massive PITA
+    * Use the apt packages instead
+* You have to setup `$DISPLAY` before executing
+
+== Common issues ==
+
+* Unrealistically high CPU usage numbers
+    * I'm not sure exactly how this was caused, but including the forked
+      children solved it for me. A command line like the following works fine: `psrecord --interval 0.1 --include-children PID --log logfile.log --plot plot.png`

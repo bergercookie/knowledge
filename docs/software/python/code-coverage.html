@@ -1,13 +1,13 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>index</title>
+    <title>code-coverage</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
     <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
     <meta name="author" content="Bergercookie's thoughtstream" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
   </head>
 
   <body>
@@ -56,34 +56,66 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="Knowledge Base"><h1 id="Knowledge Base" class="header"><a href="#Knowledge Base">Knowledge Base</a></h1></div>
+<div id="Code Coverage"><h1 id="Code Coverage" class="header"><a href="#Code Coverage">Code Coverage</a></h1></div>
 
 <p>
-Hi there, this is my knowledge base, at least the portion of it I'm feeling OK
-with making available to the wider public 😉.
+Two options:
 </p>
 
-<div id="Knowledge Base-Software"><h2 id="Software" class="header"><a href="#Knowledge Base-Software">Software</a></h2></div>
-
 <ul>
 <li>
-<a href="software/rust/index.html">The Rust Programming Language</a>
+codacy
 
 <li>
-<a href="software/python/index.html">The Python Programming Language</a>
-
-<li>
-<a href="software-procedures/index.html">Software Procedures</a>
+codecov
 
 </ul>
-<div id="Knowledge Base-General"><h2 id="General" class="header"><a href="#Knowledge Base-General">General</a></h2></div>
+<div id="Code Coverage-Python"><h2 id="Python" class="header"><a href="#Code Coverage-Python">Python</a></h2></div>
 
 <ul>
 <li>
-<a href="top10/index.html">Top-10 Lists (Music, Movies, Art)</a>
+use coverage.py + codacy to upload for github badge
+<pre><code><code>pip3 install --user coverage codacy-coverage</code>
+run using your code: <code>coverage.py run &lt;your program&gt; &lt;arg1&gt; &lt;arg2&gt; ...</code>
+</code></pre>
+</code></pre>
+</code></pre>
 
 <li>
-<a href="military-service/index.html">Greek Military Service</a>
+To run it on your unittests and have the report include only your own sources:
+
+<ul>
+<li>
+<code>coverage run -m unittest</code>
+      you DONT need a unittest runner script
+
+<li>
+<code>coverage run --source &lt;top-level-module&gt; -m unittest</code>
+
+</ul>
+</ul>
+<p>
+It doesn't work?
+</p>
+<ul>
+<li>
+Make sure you 've installed coverage for <span id="Code Coverage-Python-Python3!"></span><strong id="Python3!">Python3!</strong>
+
+</ul>
+<hr />
+
+<ul>
+<li>
+python-codacy-coverage tutorial: <a href="https://github.com/codacy/python-codacy-coverage">https://github.com/codacy/python-codacy-coverage</a>
+
+<ul>
+<li>
+If you're on travis use secret environment variable - see travis settinngs
+      of project
+
+</ul>
+<li>
+If you can't find the executable search for <code>python3-coverage</code>
 
 </ul>
 

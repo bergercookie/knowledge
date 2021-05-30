@@ -1,13 +1,13 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>index</title>
+    <title>find-nth-occurrance</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
     <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
     <meta name="author" content="Bergercookie's thoughtstream" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
   </head>
 
   <body>
@@ -56,36 +56,22 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="Knowledge Base"><h1 id="Knowledge Base" class="header"><a href="#Knowledge Base">Knowledge Base</a></h1></div>
+<div id="Find N-th Occurrence"><h1 id="Find N-th Occurrence" class="header"><a href="#Find N-th Occurrence">Find N-th Occurrence</a></h1></div>
 
 <p>
-Hi there, this is my knowledge base, at least the portion of it I'm feeling OK
-with making available to the wider public 😉.
+<span id="Find N-th Occurrence-python"></span><span class="tag" id="python">python</span>
+<span id="Find N-th Occurrence-programming"></span><span class="tag" id="programming">programming</span>
+<span id="Find N-th Occurrence-snippet"></span><span class="tag" id="snippet">snippet</span>
 </p>
 
-<div id="Knowledge Base-Software"><h2 id="Software" class="header"><a href="#Knowledge Base-Software">Software</a></h2></div>
-
-<ul>
-<li>
-<a href="software/rust/index.html">The Rust Programming Language</a>
-
-<li>
-<a href="software/python/index.html">The Python Programming Language</a>
-
-<li>
-<a href="software-procedures/index.html">Software Procedures</a>
-
-</ul>
-<div id="Knowledge Base-General"><h2 id="General" class="header"><a href="#Knowledge Base-General">General</a></h2></div>
-
-<ul>
-<li>
-<a href="top10/index.html">Top-10 Lists (Music, Movies, Art)</a>
-
-<li>
-<a href="military-service/index.html">Greek Military Service</a>
-
-</ul>
+<pre python>
+def _find_nth_occurrance(s, sub_s, n, i=0):
+    i = s.find(sub_s, i)
+    if n == 1 or i == -1:
+        return i
+    else:
+        return _find_nth_occurrance(s, sub_s, n - 1, i + len(sub_s))
+</pre>
 
       </div>
     <div class="wrapper-footer">

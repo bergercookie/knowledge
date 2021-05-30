@@ -1,0 +1,14 @@
+= Concerns Packaging C Extensions in Python Packages =
+
+:python:
+:programming:
+
+Link: https://charlesleifer.com/blog/misadventures-in-python-packaging-optional-c-extensions/
+
+Here are some assumptions you might want to check if you're packaging a library with optional C extensions:
+
+* Is the package being built on a different interpreter than `CPython` (`pypy`, for
+  instance)?
+* Is there a `C` compiler?
+* Are the Python headers present?
+* Are the shared libraries you're linking against installed?

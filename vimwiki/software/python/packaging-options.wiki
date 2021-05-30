@@ -1,0 +1,20 @@
+= Packaging Options =
+
+:python:
+:programming:
+
+* old way: setuptools, distutils, pip
+* Flit: https://github.com/takluyver/flit
+* Poetry: https://github.com/sdispater/poetry
+    * Cython support - more like a hack now
+    * Simple UI
+    * Dependencies locking
+    * Third party repos + support for SSH?
+    * Combination of pip + virtualenv
+* Pipenv - not tried
+    * Disadvanatages: https://github.com/sdispater/poetry#what-about-pipenv
+* Hatch - not tried
+* Comparison article:
+    * http://andrewsforge.com/article/python-new-package-landscape/
+    * Talk: https://www.youtube.com/watch?v=AQsZsgJ30AE
+

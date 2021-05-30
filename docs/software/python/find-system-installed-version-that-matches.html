@@ -1,13 +1,13 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>index</title>
+    <title>find-system-installed-version-that-matches</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
     <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
     <meta name="author" content="Bergercookie's thoughtstream" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
   </head>
 
   <body>
@@ -56,36 +56,35 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="Knowledge Base"><h1 id="Knowledge Base" class="header"><a href="#Knowledge Base">Knowledge Base</a></h1></div>
+<div id="Find System Installed Version That Matches"><h1 id="Find System Installed Version That Matches" class="header"><a href="#Find System Installed Version That Matches">Find System Installed Version That Matches</a></h1></div>
 
 <p>
-Hi there, this is my knowledge base, at least the portion of it I'm feeling OK
-with making available to the wider public 😉.
+<span id="Find System Installed Version That Matches-python"></span><span class="tag" id="python">python</span>
+<span id="Find System Installed Version That Matches-programming"></span><span class="tag" id="programming">programming</span>
+<span id="Find System Installed Version That Matches-snippet"></span><span class="tag" id="snippet">snippet</span>
 </p>
 
-<div id="Knowledge Base-Software"><h2 id="Software" class="header"><a href="#Knowledge Base-Software">Software</a></h2></div>
+<pre python>
+def _check_python_version(python_exe, version):
+    python_exe = shutil.which(python_exe)
+    if python_exe:
+        res = subprocess.Popen([python_exe, "--version"], stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE).communicate()
 
-<ul>
-<li>
-<a href="software/rust/index.html">The Rust Programming Language</a>
+        # python2 writes version to stderr, python&gt;=3.2 writes it to stdout?!
+        version_string = res[0] if res[0] else res[1]
+        found_version = version_string.decode('utf-8').split()[-1]
+        if found_version.startswith(version):
+            return python_exe
 
-<li>
-<a href="software/python/index.html">The Python Programming Language</a>
 
-<li>
-<a href="software-procedures/index.html">Software Procedures</a>
 
-</ul>
-<div id="Knowledge Base-General"><h2 id="General" class="header"><a href="#Knowledge Base-General">General</a></h2></div>
-
-<ul>
-<li>
-<a href="top10/index.html">Top-10 Lists (Music, Movies, Art)</a>
-
-<li>
-<a href="military-service/index.html">Greek Military Service</a>
-
-</ul>
+# try the system installed versions
+for exe in ["python", "python3"]:
+    python_exe = _check_python_version(exe, target_version)
+    if python_exe:
+        return python_exe
+</pre>
 
       </div>
     <div class="wrapper-footer">

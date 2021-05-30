@@ -1,0 +1,30 @@
+= Code Coverage =
+
+Two options:
+
+- codacy
+- codecov
+
+== Python ==
+
+* use coverage.py + codacy to upload for github badge
+
+    `pip3 install --user coverage codacy-coverage`
+    run using your code: `coverage.py run <your program> <arg1> <arg2> ...`
+
+
+* To run it on your unittests and have the report include only your own sources:
+    * `coverage run -m unittest`
+      you DONT need a unittest runner script
+    * `coverage run --source <top-level-module> -m unittest`
+
+It doesn't work?
+    * Make sure you 've installed coverage for *Python3!*
+
+-----
+
+* python-codacy-coverage tutorial: https://github.com/codacy/python-codacy-coverage
+    * If you're on travis use secret environment variable - see travis settinngs
+      of project
+
+* If you can't find the executable search for `python3-coverage`

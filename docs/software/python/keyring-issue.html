@@ -1,0 +1,133 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>keyring-issue</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="Debugging: Keyring Issue"><h1 id="Debugging: Keyring Issue" class="header"><a href="#Debugging: Keyring Issue">Debugging: Keyring Issue</a></h1></div>
+
+<p>
+<span id="Debugging: Keyring Issue-python"></span><span class="tag" id="python">python</span>
+<span id="Debugging: Keyring Issue-programming"></span><span class="tag" id="programming">programming</span>
+</p>
+
+<p>
+Whenever using <code>pip3 install --user &lt;&gt;</code> I got the following error:
+</p>
+
+<pre>
+Traceback (most recent call last):
+  File "/home/berger/.local/lib/python3.6/site-packages/keyring/backend.py", line 203, in _load_plugins
+    init_func = ep.load()
+  File "/home/berger/.local/lib/python3.6/site-packages/importlib_metadata/__init__.py", line 95, in load
+    module = import_module(match.group('module'))
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "&lt;frozen importlib._bootstrap&gt;", line 994, in _gcd_import
+  File "&lt;frozen importlib._bootstrap&gt;", line 971, in _find_and_load
+  File "&lt;frozen importlib._bootstrap&gt;", line 955, in _find_and_load_unlocked
+  File "&lt;frozen importlib._bootstrap&gt;", line 665, in _load_unlocked
+  File "&lt;frozen importlib._bootstrap_external&gt;", line 678, in exec_module
+  File "&lt;frozen importlib._bootstrap&gt;", line 219, in _call_with_frames_removed
+  File "/usr/lib/python3/dist-packages/keyrings/alt/pyfs.py", line 8, in &lt;module&gt;
+    from keyring.util.escape import escape as escape_for_ini
+ModuleNotFoundError: No module named 'keyring.util.escape
+</pre>
+
+<p>
+I was able to install packages using <code>sudo -H pip3 install ...</code> and using
+<code>apt-get</code>. I solved this issue by removing all the keyring packages from apt and
+the ones installed system-wide with pip so that in the end I ended up only with
+the ones that were installed with <code>pip3 install --user</code> locally under
+<code>~/.local</code>.
+</p>
+
+<p>
+After this I ended up with the keyring blocked, that was expected though because
+on that particular machine (my remote desktop machine that I was connecting
+to via either VNC or simple SSH) I couldn't connect / unlock the gnome keyring
+anyway.
+</p>
+
+<p>
+&lt;to-be-continued&gt;
+</p>
+
+
+<div id="Debugging: Keyring Issue-Miscellaneous"><h2 id="Miscellaneous" class="header"><a href="#Debugging: Keyring Issue-Miscellaneous">Miscellaneous</a></h2></div>
+
+<ul>
+<li>
+Another alternative that has worked for me in the past:
+
+<ul>
+<li>
+<code>pip3 install --upgrade keyrings.alt</code>
+
+</ul>
+</ul>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

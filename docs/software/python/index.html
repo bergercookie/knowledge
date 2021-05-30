@@ -1,0 +1,649 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="Python Programming"><h1 id="Python Programming" class="header"><a href="#Python Programming">Python Programming</a></h1></div>
+
+<div id="Python Programming-Articles/Tools"><h2 id="Articles/Tools" class="header"><a href="#Python Programming-Articles/Tools">Articles/Tools</a></h2></div>
+
+<ul>
+<li>
+Available License keywords: <a href="https://autopilot-docs.readthedocs.io/en/latest/license_list.html">https://autopilot-docs.readthedocs.io/en/latest/license_list.html</a>
+
+<li>
+<a href="https://docs.python.org/3/library/exceptions.html">List of python exceptions</a>
+
+<li>
+<a href="https://docs.beeware.org/en/latest/">Write Python - Run Everywhere - Beeware</a>
+
+<li>
+<a href="https://docs.python.org/3.10/reference/executionmodel.html">Python execution model</a>
+
+<ul>
+<li>
+code-blocks, scopes, execution frames and exceptions
+
+</ul>
+<li>
+<a href="https://fgimian.github.io/blog/2014/04/10/using-the-python-mock-library-to-fake-regular-functions-during-tests/">Mock standalone function when unittesting</a>
+
+<ul>
+<li>
+<a href="https://docs.python.org/3/library/unittest.mock.html#where-to-patch">https://docs.python.org/3/library/unittest.mock.html#where-to-patch</a>
+
+</ul>
+<li>
+Unittest alternatives: <a href="https://pypi.org/project/chai/">https://pypi.org/project/chai/</a>
+
+<li>
+<a href="https://www.techbeamers.com/python-copy-file/#shutil-copy">Copying files</a>
+
+<li>
+<a href="https://pymotw.com/3/doctest/">Doctest primer</a>
+
+<li>
+Logging module resources:
+
+<ul>
+<li>
+<a href="http://nathanielobrown.com/blog/posts/quick_and_dirty_python_logging_lesson.html">http://nathanielobrown.com/blog/posts/quick_and_dirty_python_logging_lesson.html</a>
+
+<li>
+<a href="https://docs.python-guide.org/writing/logging/">https://docs.python-guide.org/writing/logging/</a>
+
+</ul>
+<li>
+<a href="https://docs.python.org/3/distutils/configfile.html">setup.cfg</a>
+
+<ul>
+<li>
+<a href="https://github.com/crsmithdev/arrow/blob/master/setup.cfg">example</a>
+
+</ul>
+<li>
+<a href="https://github.com/crsmithdev/arrow">arrow - one class to manage dates</a>
+
+<li>
+<a href="https://packaging.python.org/discussions/install-requires-vs-requirements/#requirements-files">requirements.txt vs install_requires</a>
+
+<li>
+pyenv - Alternate between different python versions
+
+<li>
+Conflict resolution with argparse: <a href="https://docs.python.org/2.4/lib/optparse-conflicts-between-options.html">https://docs.python.org/2.4/lib/optparse-conflicts-between-options.html</a>
+<pre python>
+  parser = OptionParser(conflict_handler="resolve")
+  parser.add_option("-n", "--dry-run", ..., help="do no harm")
+  parser.add_option("-n", "--noisy", ..., help="be noisy")
+</pre>
+
+<li>
+<a href="https://wiki.python.org/moin/PythonSpeed/PerformanceTips">python performance hints</a>
+
+<li>
+<a href="concerns when packaging c extensions in python packages.html">concerns when packaging c extensions in python packages</a>
+
+<li>
+<a href="https://skerritt.blog/dynamic-programming/#what-is-memoisation-in-dynamic-programming">dynamic-programming-in-python</a>
+
+<li>
+<a href="https://github.com/mbello/memory-tempfile">memory-tempfile</a>
+
+<ul>
+<li>
+When to use <code>/tmp</code> and when to use <code>/dev/shm</code>: <a href="https://superuser.com/a/45509/369517">https://superuser.com/a/45509/369517</a>
+
+<li>
+More information: <a href="https://superuser.com/a/1030777/369517">https://superuser.com/a/1030777/369517</a>
+
+</ul>
+<li>
+Convert time since epoch to datetime:
+
+<ul>
+<li>
+<code>datetime.datetime.fromtimestamp(1284286794)</code>
+
+</ul>
+<li>
+Python staticmethod vs classmethod:
+
+<ul>
+<li>
+<a href="https://stackoverflow.com/a/1669524/2843583">https://stackoverflow.com/a/1669524/2843583</a>
+
+<li>
+staticmethods are basically freestanding functions grouped under the
+      <code>class</code> scope; classmethods are still methods of a class.
+
+</ul>
+<li>
+<a href="https://factoryboy.readthedocs.io/en/latest/index.html">FactoryBoy</a>: Better fixtures for your Django tests
+
+<li>
+Is <code>CPython</code> an interpreted or a compiled language?
+
+<ul>
+<li>
+Python is a <span id="Python Programming-Articles/Tools-language specification"></span><strong id="language specification">language specification</strong>. One of it's implementations CPython,
+      compiles the source code into bytecode, which then is run (interpreted)
+      inside the Python VM.
+
+<li>
+Link: <a href="https://stackoverflow.com/a/2998228/2843583">https://stackoverflow.com/a/2998228/2843583</a>
+
+</ul>
+</ul>
+<div id="Python Programming-Abreviations"><h2 id="Abreviations" class="header"><a href="#Python Programming-Abreviations">Abreviations</a></h2></div>
+
+<ul>
+<li>
+<code>bdist</code>: build distribution
+
+<li>
+<code>sdist</code>: source distribution -&gt; tar.gz
+
+<li>
+<code>pip</code>  : pip installs packages
+
+</ul>
+<div id="Python Programming-Excellent Packages / Modules"><h2 id="Excellent Packages / Modules" class="header"><a href="#Python Programming-Excellent Packages / Modules">Excellent Packages / Modules</a></h2></div>
+
+<ul>
+<li>
+<a href="https://github.com/thclark/rstcloth">https://github.com/thclark/rstcloth</a>
+
+<ul>
+<li>
+Commit hooks for running autoformatting
+
+<li>
+Based on a cookiecutter template
+
+</ul>
+</ul>
+<div id="Python Programming-Unittest runner python script"><h2 id="Unittest runner python script" class="header"><a href="#Python Programming-Unittest runner python script">Unittest runner python script</a></h2></div>
+
+<pre python>
+# Put this in under tests/test_doctests.py
+import unittest
+import doctest
+import module-name.whatever as whatever
+
+
+def load_tests(loader, tests, ignore):
+    for m in [whatever1, whatever2, ...]:
+        tests.addTests(doctest.DocTestSuite(m))
+    return tests
+
+
+if __name__ == "__main__":
+    unittest.main()
+</pre>
+
+<div id="Python Programming-Doctest - Ignore Exception Details"><h2 id="Doctest - Ignore Exception Details" class="header"><a href="#Python Programming-Doctest - Ignore Exception Details">Doctest - Ignore Exception Details</a></h2></div>
+
+<pre python>
+&gt;&gt;&gt; cli_timestamp_to_ns("123") # doctest: +IGNORE_EXCEPTION_DETAIL
+Traceback (most recent call last):
+python_utils.custom_exceptions.InvalidCLITimestampError: Invalid timestamp provided: 123
+</pre>
+
+<ul>
+<li>
+Run a single test method (or a single test class or ...): <code>python3 -m unittest package.path.to.class.or.method</code>[:wa
+
+</ul>
+<div id="Python Programming-Python - Managing integer objects"><h2 id="Python - Managing integer objects" class="header"><a href="#Python Programming-Python - Managing integer objects">Python - Managing integer objects</a></h2></div>
+
+<p>
+Link: <a href="https://www.laurentluce.com/posts/python-integer-objects-implementation/">https://www.laurentluce.com/posts/python-integer-objects-implementation/</a>
+</p>
+
+<pre python>
+import gc
+id(1) == id(1)
+a = 1
+gc.collect()
+b = 1
+# still, they point to the same object - preallocated by python to speed it up
+id(a) == id(b)
+
+a = 1e9
+gc.collect()
+b = 1e9
+id(a) != id(b)  # python does not preallocate 1e9
+</pre>
+
+<div id="Python Programming-pytest"><h2 id="pytest" class="header"><a href="#Python Programming-pytest">pytest</a></h2></div>
+
+<ul>
+<li>
+Skip a unittest:
+<pre><code><code>@pytest.mark.skip(reason="Not Implemented")</code>
+</code></pre>
+
+<li>
+Run a test by keyword expression: <code>pytest -k "MyClass and not method"</code>
+
+<ul>
+<li>
+This  will  run  tests  which  contain  names  that  match the given string
+    expression, which can include Python operators that use filenames, class
+    names and function names as variables.  The example above will run
+    <code>TestMyClass.test_something</code>  but not <code>TestMyClass.test_method_simple</code>
+
+</ul>
+<li>
+See all printing statements - force pytest to dump all output: <code>pytest -s</code>
+
+</ul>
+<p>
+Also see:
+</p>
+
+<ul>
+<li>
+<code>man pytest</code>
+
+<li>
+<a href="http://zetcode.com/python/pytest/">http://zetcode.com/python/pytest/</a>
+
+</ul>
+<div id="Python Programming-FAQ"><h2 id="FAQ" class="header"><a href="#Python Programming-FAQ">FAQ</a></h2></div>
+
+<ul>
+<li>
+See loaded modules in python: <code>set(sys.modules) &amp; set(globals())</code>
+
+<li>
+Pip downloads every single version of a package:
+
+<ul>
+<li>
+Use <code>--use-deprecated=legacy-resolver</code> instead - <a href="https://github.com/pypa/pip/issues/8713">https://github.com/pypa/pip/issues/8713</a>
+
+</ul>
+</ul>
+<div id="Python Programming-numpy"><h2 id="numpy" class="header"><a href="#Python Programming-numpy">numpy</a></h2></div>
+
+<p>
+Print numpy array without truncation:
+</p>
+<pre><code><code>np.set_printoptions(threshold=sys.maxsize)</code>
+</code></pre>
+
+<p>
+Quaternions:
+</p>
+<ul>
+<li>
+Form: w, x, y, z
+
+</ul>
+<div id="Python Programming-pickle"><h2 id="pickle" class="header"><a href="#Python Programming-pickle">pickle</a></h2></div>
+
+<ul>
+<li>
+Preferred extension: <code>pkl</code> / <code>pickle</code> - <a href="https://stackoverflow.com/questions/40433474/preferred-or-most-common-file-extension-for-pickle-files/40433504">https://stackoverflow.com/questions/40433474/preferred-or-most-common-file-extension-for-pickle-files/40433504</a>
+
+<li>
+Use the <code>dump</code>, <code>load</code> methods - open file inline for auto-close
+
+</ul>
+<div id="Python Programming-Path"><h2 id="Path" class="header"><a href="#Python Programming-Path">Path</a></h2></div>
+
+<ul>
+<li>
+Python3 pathlib library: <a href="https://realpython.com/python-pathlib/">https://realpython.com/python-pathlib/</a>
+
+</ul>
+<div id="Python Programming-Plotting"><h2 id="Plotting" class="header"><a href="#Python Programming-Plotting">Plotting</a></h2></div>
+
+<p>
+There's a gazzilion of 2D statistics/plotting libraries in python. Just select a
+single damn one and stick to it - None of it supports 3D visualisation
+</p>
+
+<ul>
+<li>
+bokeh: <a href="https://bokeh.pydata.org/en/latest/docs/user_guide/quickstart.html">https://bokeh.pydata.org/en/latest/docs/user_guide/quickstart.html</a>
+
+<li>
+gpgpy
+
+<li>
+plotly
+
+<li>
+seaborn
+
+<li>
+altair
+
+<li>
+pygal
+
+</ul>
+<div id="Python Programming-Plotting-3D Plotting"><h3 id="3D Plotting" class="header"><a href="#Python Programming-Plotting-3D Plotting">3D Plotting</a></h3></div>
+
+<p>
+Only thing that's available (~end 2019) is matplotlib. Just use it...
+</p>
+
+<ul>
+<li>
+<a href="https://medium.com/@sebastiannorena/3d-plotting-in-python-b0dc1c2e5e38">https://medium.com/@sebastiannorena/3d-plotting-in-python-b0dc1c2e5e38</a>
+
+<li>
+<a href="https://matplotlib.org/mpl_toolkits/mplot3d/tutorial.html">https://matplotlib.org/mpl_toolkits/mplot3d/tutorial.html</a>
+
+<li>
+<a href="https://plot.ly/python/3d-surface-plots/">https://plot.ly/python/3d-surface-plots/</a>
+
+<li>
+Matplotlib rcParams available parameters: <a href="https://matplotlib.org/3.1.0/tutorials/introductory/customizing.html">https://matplotlib.org/3.1.0/tutorials/introductory/customizing.html</a>
+
+</ul>
+<div id="Python Programming-Recipes"><h2 id="Recipes" class="header"><a href="#Python Programming-Recipes">Recipes</a></h2></div>
+
+
+<div id="Python Programming-Recipes-argparse - increase line length in help messages"><h3 id="argparse - increase line length in help messages" class="header"><a href="#Python Programming-Recipes-argparse - increase line length in help messages">argparse - increase line length in help messages</a></h3></div>
+
+<pre python>
+parser = argparse.ArgumentParser(description="Help line 1\n" +
+                                             "Help line 2",
+                                 formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
+</pre>
+
+<div id="Python Programming-Recipes-Show dissasembly / bytecode of an associated python function/snippet"><h3 id="Show dissasembly / bytecode of an associated python function/snippet" class="header"><a href="#Python Programming-Recipes-Show dissasembly / bytecode of an associated python function/snippet">Show dissasembly / bytecode of an associated python function/snippet</a></h3></div>
+
+<p>
+Example usage: <a href="https://www.data-structures-in-practice.com/hash-tables/">https://www.data-structures-in-practice.com/hash-tables/</a>
+</p>
+
+<p>
+Use the <code>dis</code> standard library module: <a href="https://docs.python.org/3/library/dis.html">https://docs.python.org/3/library/dis.html</a>
+Use it e.g., on a function:
+</p>
+
+<pre python>
+import dis
+f = lambda x: x + 2
+dis.dis(f)
+1           0 LOAD_FAST                0 (x)
+            2 LOAD_CONST               1 (2)
+            4 BINARY_ADD
+            6 RETURN_VALUE
+</pre>
+
+
+<div id="Python Programming-Recipes-Manually configure pyenv"><h3 id="Manually configure pyenv" class="header"><a href="#Python Programming-Recipes-Manually configure pyenv">Manually configure pyenv</a></h3></div>
+
+<p>
+Normally you'd do this as part of your bashrc/fish.config file. But if you
+haven't, here's the commands to do it in the current shell instance
+</p>
+
+<pre sh>
+fish )
+    set -x PATH \"${PYENV_ROOT}/bin\" \$PATH
+    status --is-interactive; and . (pyenv init -|psub)
+    status --is-interactive; and . (pyenv virtualenv-init -|psub)
+    ;;
+* )
+    PYENV_ROOT="$HOME/.pyenv"
+    export PATH="${PYENV_ROOT}/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+</pre>
+
+<ul>
+<li>
+Compile python versions from source:
+
+<ul>
+<li>
+You'll need to install OpenSSL first:
+<pre><code><code>apt-get install libssl-dev libffi-dev</code>
+</code></pre>
+</code></pre>
+
+</ul>
+<li>
+Format all <code>.py</code> files with <code>black</code> autoformatter:
+
+<ul>
+<li>
+<code>fd -e py | xargs -I{} black --line-length 95 -t py36 {}</code>
+
+</ul>
+<li>
+Render a html python string in the browser:
+<pre python>
+# I assume that the text was acquired using the requests library
+import webbrowser
+
+with open("a.html", "w") as f:
+    f.write(resp.text)
+
+webbrowser.open("a.html")
+</pre>
+
+</ul>
+<div id="Python Programming-Recipes-Sympy - Multiple lines in the same plot"><h3 id="Sympy - Multiple lines in the same plot" class="header"><a href="#Python Programming-Recipes-Sympy - Multiple lines in the same plot">Sympy - Multiple lines in the same plot</a></h3></div>
+
+<pre python>
+from sympy import var, cos, plot
+x = var('x')
+p = plot(cos(x), line_color='r')
+p = plot(cos(2*x), line_color='g')
+p = plot(cos(4*x), line_color='b')
+pl.extend(plot(cos(2*x), line_color='g'))
+pl.show()
+</pre>
+
+
+<div id="Python Programming-Recipes-Set the numpy printing width"><h3 id="Set the numpy printing width" class="header"><a href="#Python Programming-Recipes-Set the numpy printing width">Set the numpy printing width</a></h3></div>
+
+<pre python>
+numpy.set_printoptions(linewidth=160)
+</pre>
+
+<pre python>
+(Pdb++) p T
+array([[ 1.00000000e+00,  1.00284240e-18, -2.28654607e-18,
+         0.00000000e+00],
+       [ 1.13765545e-18,  1.00000000e+00,  1.29264105e-19,
+         0.00000000e+00],
+       [-1.39240192e-17,  1.34405256e-19,  1.00000000e+00,
+         3.46944695e-18],
+       [ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00,
+         1.00000000e+00]])
+(Pdb++) numpy.set_printoptions(linewidth=160)
+(Pdb++) p T
+array([[ 1.00000000e+00,  1.00284240e-18, -2.28654607e-18,  0.00000000e+00],
+       [ 1.13765545e-18,  1.00000000e+00,  1.29264105e-19,  0.00000000e+00],
+       [-1.39240192e-17,  1.34405256e-19,  1.00000000e+00,  3.46944695e-18],
+       [ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00,  1.00000000e+00]])
+(Pdb++)
+</pre>
+
+<div id="Python Programming-Recipes-Use dbus to send a notification in the system"><h3 id="Use dbus to send a notification in the system" class="header"><a href="#Python Programming-Recipes-Use dbus to send a notification in the system">Use dbus to send a notification in the system</a></h3></div>
+
+<p>
+<a href="https://github.com/albertlauncher/python/pull/96/files">https://github.com/albertlauncher/python/pull/96/files</a>
+</p>
+<pre python>
+bus = dbus.SessionBus()
+notify = dbus.Interface(bus.get_object(dbusItem, dbusPath), dbusInterface)
+notify.Notify(__prettyname__, 0, iconPath, title, text, '', '', 0)
+</pre>
+
+<div id="Python Programming-Recipes-Load a module by its absolute/relative path"><h3 id="Load a module by its absolute/relative path" class="header"><a href="#Python Programming-Recipes-Load a module by its absolute/relative path">Load a module by its absolute/relative path</a></h3></div>
+
+<pre python>
+spec = importlib.util.spec_from_file_location("bing", "plugins/image_search/bing.py")
+foo = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(foo)
+
+cl = foo.MyClass()
+</pre>
+
+<div id="Python Programming-Recipes-Logging basics"><h3 id="Logging basics" class="header"><a href="#Python Programming-Recipes-Logging basics">Logging basics</a></h3></div>
+
+<pre python>
+import logging
+fmt_str = '[%(asctime)s] %(levelname)s @ line %(lineno)d: %(message)s'
+# "basicConfig" is a convenience function, explained later
+logging.basicConfig(level=logging.DEBUG, format=fmt_str)
+logger = logging.getLogger(__name__)
+logger.debug('hello logged world')
+</pre>
+
+<div id="Python Programming-Recipes-Logging basics-keyring.util.escape not found"><h4 id="keyring.util.escape not found" class="header"><a href="#Python Programming-Recipes-Logging basics-keyring.util.escape not found">keyring.util.escape not found</a></h4></div>
+
+<p>
+ModuleNotFoundError: No module named 'keyring.util.escape'
+</p>
+
+<p>
+<code>pip3 install --user keyring.alt</code>
+</p>
+
+<div id="Python Programming-Recipes-Logging basics-pip install specific version of package"><h4 id="pip install specific version of package" class="header"><a href="#Python Programming-Recipes-Logging basics-pip install specific version of package">pip install specific version of package</a></h4></div>
+
+<p>
+<code>pip3 install jedi==0.14</code>
+</p>
+
+<div id="Python Programming-Recipes-Pandas"><h3 id="Pandas" class="header"><a href="#Python Programming-Recipes-Pandas">Pandas</a></h3></div>
+
+<ul>
+<li>
+Rename just a single column in pandas: df.rename(columns = {'old_name':'new_name'}, inplace = True)
+
+<li>
+Drop column by index i: df.drop(df.columns[i], axis=1)
+
+<li>
+Just plain nice: df['Change (%)'] = df['Change (%)'].str.strip('%').astype(float)
+
+</ul>
+<div id="Python Programming-Recipes-Spell Checking source code"><h3 id="Spell Checking source code" class="header"><a href="#Python Programming-Recipes-Spell Checking source code">Spell Checking source code</a></h3></div>
+
+<ul>
+<li>
+<a href="https://github.com/myint/scspell">https://github.com/myint/scspell</a>
+
+<ul>
+<li>
+See <code>colcon-zsh</code> (or any other colcon plugin) as an example
+
+</ul>
+</ul>
+<div id="Python Programming-Python __dict__"><h2 id="Python __dict__" class="header"><a href="#Python Programming-Python __dict__">Python _<em>dict</em>_</a></h2></div>
+
+<p>
+Every module and object in python has a <code>__dict__</code> attribute (you can think of
+all the modules as dictionaries that contain their variables, and functions)
+</p>
+
+<ul>
+<li>
+Except int - doesn't have <code>__dict__</code>
+
+</ul>
+<div id="Python Programming-Mocking subprocess.Popen calls"><h2 id="Mocking subprocess.Popen calls" class="header"><a href="#Python Programming-Mocking subprocess.Popen calls">Mocking subprocess.Popen calls</a></h2></div>
+
+<p>
+Use <code>testfixtures</code> and <code>mock</code>: <a href="https://testfixtures.readthedocs.io/en/latest/popen.html">https://testfixtures.readthedocs.io/en/latest/popen.html</a>
+</p>
+
+<pre python>
+# Mock setup
+self.Popen = MockPopen()
+self.Popen.set_default(stdout=b'o', stderr=b'e')
+self.r = Replacer()
+self.r.replace("package.path.to.imported.class.process.Popen",
+                self.Popen)
+self.addCleanup(self.r.restore)
+</pre>
+
+
+<div id="Python Programming-Get superclass(es) of class"><h2 id="Get superclass(es) of class" class="header"><a href="#Python Programming-Get superclass(es) of class">Get superclass(es) of class</a></h2></div>
+
+<p>
+Use <code>self.__class__.__bases__</code>
+</p>
+
+<p>
+Link: <a href="https://stackoverflow.com/a/10092179/2843583">https://stackoverflow.com/a/10092179/2843583</a>
+</p>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

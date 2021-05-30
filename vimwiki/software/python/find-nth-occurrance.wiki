@@ -1,0 +1,14 @@
+= Find N-th Occurrence =
+
+:python:
+:programming:
+:snippet:
+
+{{{python
+def _find_nth_occurrance(s, sub_s, n, i=0):
+    i = s.find(sub_s, i)
+    if n == 1 or i == -1:
+        return i
+    else:
+        return _find_nth_occurrance(s, sub_s, n - 1, i + len(sub_s))
+}}}

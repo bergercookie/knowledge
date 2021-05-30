@@ -1,0 +1,5 @@
+= ipython Interpeter =
+
+== HOWTO ==
+
+* Enable automatic reloading of imported modules: `%aimport`

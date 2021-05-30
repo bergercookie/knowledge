@@ -6,6 +6,7 @@ with making available to the wider public 😉.
 == Software ==
 
 * [[software/rust/index.wiki|The Rust Programming Language]]
+* [[software/python/index.wiki|The Python Programming Language]]
 * [[software-procedures/index.wiki|Software Procedures]]
 
 == General ==

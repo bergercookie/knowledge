@@ -1,0 +1,136 @@
+= Poetry Package Manager =
+
+:python:
+:programming:
+
+* System-wide configuration file: https://github.com/sdispater/poetry/blob/master/docs/docs/configuration.md
+    * Find it under `~/.config/pypoetry/config.toml`
+* Install it via pip:
+    * `pip3 install --user --upgrade poetry`
+* Install non-python extensions (e.g,. cython C extensions)
+    * It can be done, but it seems more like a hack right now
+    * https://github.com/sdispater/poetry/issues/11
+    * https://github.com/sdispater/poetry/issues/1351
+* Add a dependency from a custom repository: `poetry add python_utils --git ssh://git@bitbucket.org/org/repo`
+        * or in `toml`: `python_utils = {git = "ssh://git@bitbucket.org/org/repo.git"}`
+        * Make sure it's the full SSH form otherwise it crashes at `install_requires`
+* Poetry + Virtualenvs: https://poetry.eustace.io/docs/basic-usage/#poetry-and-virtualenvs
+    * Will use the default python version for the virtualenv
+    * You can override that by running pyenv first!
+* I'm developing a command-line application, how should I be configuring my
+  environment for running poetry
+    * `poetry install # Install your project`
+    * `poetry shell`
+        * Spawn a shell with the customised python environment - basically
+          inside the virtual environment! Now you can run any of the commands
+          you want and any of the executables
+* How do I get the generated `setup.py` that poetry builds?
+    * `poetry build` -> take a look at `sdist/*.tar.gz`
+* I want to have one of my dependencies in `develop` mode, i.e., not have to push to remote and then re-install it
+    * Modify `pyproject`.toml so that the dependency you're interested is
+      installed in develop mode:
+
+        * `python_utils = { "path" = "/home/berger/org/repo", develop = true }`
+        * Then just run `poetry install`
+    * https://github.com/sdispater/poetry/issues/34
+    * https://poetry.eustace.io/docs/versions/#path-dependencies
+* Good intro article: https://medium.com/octopus-wealth/python-scripts-26e3d0bd5277
+* Poetry - exceeding max redirects:
+    * https://github.com/python-poetry/poetry/issues/728
+    * https://github.com/python-poetry/poetry/issues/1033
+    * Clear the cache!
+        * `poetry cache:clear --all `# OR
+        * `rm -rf ~/.cache/pypoetry/cache`
+
+== Questions to Answer ==
+
+* How do you install python scripts as executables in your PATH?
+* How do I `pip3 install --user` my package?
+
+== Poetry Example Config ==
+
+{{{toml
+[tool.poetry]
+name = "my-package"
+version = "0.1.0"
+description = "The description of the package"
+
+license = "MIT"
+
+authors = [
+    "Sébastien Eustace <sebastien@eustace.io>"
+]
+
+readme = 'README.md'  # Markdown files are supported
+
+repository = "https://github.com/sdispater/poetry"
+homepage = "https://github.com/sdispater/poetry"
+
+keywords = ['packaging', 'poetry']
+
+[tool.poetry.dependencies]
+python = "~2.7 || ^3.2"  # Compatible python versions must be declared here
+toml = "^0.9"
+# Dependencies with extras
+requests = { version = "^2.13", extras = [ "security" ] }
+# Python specific dependencies with prereleases allowed
+pathlib2 = { version = "^2.2", python = "~2.7", allows-prereleases = true }
+# Git dependencies
+cleo = { git = "https://github.com/sdispater/cleo.git", branch = "master" }
+
+# Optional dependencies (extras)
+pendulum = { version = "^1.4", optional = true }
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+pytest-cov = "^2.4"
+
+[tool.poetry.scripts]
+my-script = 'my_package:main'
+}}}
+
+== Adding executables to your Package ==
+
+Instead put all your package executables under package_name/scripts/ (i.e.,
+inside the package, and no just inside the repo) and have a section like the
+following in `pyproject.toml`. These executables *should* have a `main()`
+function which will serve as the `entrypoint`:
+
+{{{toml
+[tool.poetry.scripts]
+name_of_tool = "package_name.scripts.name_of_tool:main"
+# more tools can be added here...
+}}}
+
+The following is *NOT* recommended.
+
+{{{python
+# Potential scripts.py contents - have `poetry` behave like `yarn`
+#
+# This is a temporary workaround till Poetry supports scripts, see
+# https://github.com/sdispater/poetry/issues/241.
+from subprocess import check_call
+
+
+def format() -> None:
+    check_call(
+        ["black", "--check", "--diff", "src/", "tests/"],
+    )
+
+
+def reformat() -> None:
+    check_call(["black", "src/", "tests/"])
+
+
+def lint() -> None:
+    check_call(["flake8", "src/", "tests/"])
+    check_call(["mypy", "src/backend/", "tests/"])
+
+
+def start() -> None:
+    check_call(["python", "src/backend/run.py"])
+
+
+def test() -> None:
+    check_call(["pytest", "tests/"])
+}}}

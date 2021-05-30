@@ -1,0 +1,13 @@
+= Importing in Python =
+
+:python:
+:programming:
+
+* [[https://stackoverflow.com/a/16985066/2843583|relative-import error in Python3 and solutions to it]]
+* Guido on relative vs absolute imports and placement of executables - https://mail.python.org/pipermail/python-3000/2007-April/006793.html
+
+    * I'm -1 on this and on any other proposed twiddlings of the `__main__`
+      machinery.  The only use case seems to be running scripts that happen to
+      be living inside a module's directory, which I've always seen as an
+      antipattern. To make me change my mind you'd have to convince me that it
+      isn't.

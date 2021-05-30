@@ -1,0 +1,142 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>debugging</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="Debugging Tools"><h1 id="Debugging Tools" class="header"><a href="#Debugging Tools">Debugging Tools</a></h1></div>
+<p>
+<span id="Debugging Tools-python"></span><span class="tag" id="python">python</span>
+<span id="Debugging Tools-programming"></span><span class="tag" id="programming">programming</span>
+<span id="Debugging Tools-snippet"></span><span class="tag" id="snippet">snippet</span>
+</p>
+
+<ul>
+<li>
+Debugging tools list - Python 3.7: <a href="https://docs.python.org/3/library/debug.html">https://docs.python.org/3/library/debug.html</a>
+
+<ul>
+<li>
+<a href="https://github.com/nvdv/vprof">vprof</a> - Profiler with nice in-browser visualisation
+
+<ul>
+<li>
+multi-word argument bug
+
+</ul>
+<li>
+<code>py-spy</code>
+
+<ul>
+<li>
+Implemented in rust - distributed over pypi (!)
+
+<li>
+Has <code>record</code>, <code>top</code>, <code>dump</code>
+
+<li>
+Can profile <span id="Debugging Tools-already running"></span><strong id="already running">already running</strong> python scripts
+
+<li>
+useful for the case where you just need a single call stack to figure
+          out where your python program is hung on.
+
+<li>
+py-spy works by directly reading the memory of the python program
+          using the process_vm_readv system call on Linux, the vm_read call on
+          OSX or the ReadProcessMemory call on Windows.
+
+<li>
+Can be configured to not block the python program! <code>--noblocking</code>
+
+</ul>
+</ul>
+<li>
+Print-f style debugging: <a href="https://github.com/cool-RR/PySnooper,">https://github.com/cool-RR/PySnooper,</a> <a href="https://github.com/bergercookie/vim-debugstring">https://github.com/bergercookie/vim-debugstring</a>
+
+<li>
+Remote debugging with <code>rpdb</code>: <a href="https://coderwall.com/p/ttbtgq/python-remote-debugging-with-pdb">https://coderwall.com/p/ttbtgq/python-remote-debugging-with-pdb</a>
+
+<li>
+Use <code>ipython</code>! - <a href="https://switowski.com/blog/ipython-debugging">https://switowski.com/blog/ipython-debugging</a>
+
+<ul>
+<li>
+<code>%run -d &lt;path/to/script&gt;</code> --&gt; # Launch a script from ipython
+
+<li>
+<code>%pdb</code> -&gt; Stop on any error launch the debugger there (when running a script)
+
+<li>
+<code>from IPython import embed; embed()</code>
+
+<li>
+<code>%debug</code> -&gt; Load a stack trace of the latest exception
+
+</ul>
+</ul>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

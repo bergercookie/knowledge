@@ -1,0 +1,35 @@
+= Concurrency and AsyncIO =
+
+:python:
+:programming:
+
+
+`Asyncio` is specifically designed for `managing states of IO-bound programs` (you
+can think of it as a successor to `Twisted`).
+
+== GIL and AsyncIO: https://www.reddit.com/r/Python/comments/8kzxm5/gil_and_asyncio/ ==
+
+The problem `asyncio` solves is that it allows you to use non-blocking IO
+primitives with an (arguably) nicer programming interface which abstracts away
+the need to loop through non-blocking sockets with `select()` and instead builds
+it into an `event based system that the program can construct itself around`,
+where these `select()` polls ultimately result in events being fired and
+_different "async" tasks in the Python program waking up_. However, as you've
+noted with `asyncio,` the event queue runs in only a single thread.
+
+== AsyncIO vs Multiprocessing vs Multithreading ==
+
+`Asyncio` doesn't block on socket, so it is only useful if your workload is
+dominated by network access time. Ex: servers, clients making a lot of request,
+etc.
+
+Multiprocessing will make use of several cores, but process communication is
+expensive. You use it when your workload is mainly CPU intensive with a work
+you can easily split with little communication between the workers.
+
+Threads never block, but share one CPU, and are useful when:
+
+* file access dominated workload
+* lot of local socket access (db access)
+* avoiding blocking a GUI
+* like asyncio, but you use some blocking libs

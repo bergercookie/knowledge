@@ -1,0 +1,27 @@
+= Find System Installed Version That Matches =
+
+:python:
+:programming:
+:snippet:
+
+{{{python
+def _check_python_version(python_exe, version):
+    python_exe = shutil.which(python_exe)
+    if python_exe:
+        res = subprocess.Popen([python_exe, "--version"], stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE).communicate()
+
+        # python2 writes version to stderr, python>=3.2 writes it to stdout?!
+        version_string = res[0] if res[0] else res[1]
+        found_version = version_string.decode('utf-8').split()[-1]
+        if found_version.startswith(version):
+            return python_exe
+
+
+
+# try the system installed versions
+for exe in ["python", "python3"]:
+    python_exe = _check_python_version(exe, target_version)
+    if python_exe:
+        return python_exe
+}}}

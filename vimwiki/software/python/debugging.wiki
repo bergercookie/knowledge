@@ -1,0 +1,27 @@
+= Debugging Tools =
+:python:
+:programming:
+:snippet:
+
+* Debugging tools list - Python 3.7: https://docs.python.org/3/library/debug.html
+    * [[https://github.com/nvdv/vprof|vprof]] - Profiler with nice in-browser visualisation
+        * multi-word argument bug
+    * `py-spy`
+        * Implemented in rust - distributed over pypi (!)
+        * Has `record`, `top`, `dump`
+        * Can profile *already running* python scripts
+        * useful for the case where you just need a single call stack to figure
+          out where your python program is hung on.
+        * py-spy works by directly reading the memory of the python program
+          using the process_vm_readv system call on Linux, the vm_read call on
+          OSX or the ReadProcessMemory call on Windows.
+        * Can be configured to not block the python program! `--noblocking`
+
+* Print-f style debugging: https://github.com/cool-RR/PySnooper, https://github.com/bergercookie/vim-debugstring
+* Remote debugging with `rpdb`: https://coderwall.com/p/ttbtgq/python-remote-debugging-with-pdb
+* Use `ipython`! - https://switowski.com/blog/ipython-debugging
+  * `%run -d <path/to/script>` --> # Launch a script from ipython
+  * `%pdb` -> Stop on any error launch the debugger there (when running a script)
+  * `from IPython import embed; embed()`
+  * `%debug` -> Load a stack trace of the latest exception
+

@@ -1,13 +1,13 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>index</title>
+    <title>vlc-api</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
     <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
     <meta name="author" content="Bergercookie's thoughtstream" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
   </head>
 
   <body>
@@ -56,36 +56,49 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="Knowledge Base"><h1 id="Knowledge Base" class="header"><a href="#Knowledge Base">Knowledge Base</a></h1></div>
+<div id="VLC Python API - Read metadata from network stream"><h1 id="VLC Python API - Read metadata from network stream" class="header"><a href="#VLC Python API - Read metadata from network stream">VLC Python API - Read metadata from network stream</a></h1></div>
 
 <p>
-Hi there, this is my knowledge base, at least the portion of it I'm feeling OK
-with making available to the wider public 😉.
+<span id="VLC Python API - Read metadata from network stream-python"></span><span class="tag" id="python">python</span>
+<span id="VLC Python API - Read metadata from network stream-programming"></span><span class="tag" id="programming">programming</span>
+<span id="VLC Python API - Read metadata from network stream-snippet"></span><span class="tag" id="snippet">snippet</span>
 </p>
 
-<div id="Knowledge Base-Software"><h2 id="Software" class="header"><a href="#Knowledge Base-Software">Software</a></h2></div>
+<pre python>
+from time import sleep
+from vlc import EventType, Media, MediaPlayer, MediaParseFlag, Meta
 
-<ul>
-<li>
-<a href="software/rust/index.html">The Rust Programming Language</a>
+def _media_cb(event, *unused):
+    # XXX callback ... never called
+    print(event)
 
-<li>
-<a href="software/python/index.html">The Python Programming Language</a>
+p = MediaPlayer()
+# cmd1 = "sout=file/ts:%s" % outfile
+media = Media("http://playerservices.streamtheworld.com/api/livestream-redirect/JBFMAAC1.aac")  # , cmd1)
+# media.get_mrl()
+p.set_media(media)
+p.play()
 
-<li>
-<a href="software-procedures/index.html">Software Procedures</a>
+e = p.event_manager()
+e.event_attach(EventType.MediaMetaChanged, _media_cb, media)
+e.event_attach(EventType.MediaParsedChanged, _media_cb, media)
 
-</ul>
-<div id="Knowledge Base-General"><h2 id="General" class="header"><a href="#Knowledge Base-General">General</a></h2></div>
+# define the meta data to show
+meta = {Meta.Album: None,
+        Meta.Genre: None,
+        Meta.NowPlaying: None}
 
-<ul>
-<li>
-<a href="top10/index.html">Top-10 Lists (Music, Movies, Art)</a>
-
-<li>
-<a href="military-service/index.html">Greek Military Service</a>
-
-</ul>
+while True:  # loop forever
+    # XXX using MediaParseFlag.local is not any different
+    media.parse_with_options(MediaParseFlag.network, 2)  # 2 sec timeout
+    # XXX media.get_parsed_status() always returns .skipped
+    for k in meta.keys():
+        v = media.get_meta(k)
+        if v != meta[k]:
+            print("{} - {}".format(k, v))
+            meta[k] = v
+    sleep(2)
+</pre>
 
       </div>
     <div class="wrapper-footer">

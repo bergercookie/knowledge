@@ -1,0 +1,15 @@
+= Python Object Unique Name =
+
+:python:
+:programming:
+:snippet:
+
+{{{python
+"""Helper methods used along the module."""
+
+def obj_uniq_name(obj):
+    """Get a unique string associated with the given object."""
+
+    return "{}_{}".format(type(obj).__name__, hex(id(obj)))
+}}}
+

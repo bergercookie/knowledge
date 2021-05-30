@@ -1,0 +1,3 @@
+= pdb / ipdb =
+
+* Run ipdb on python exception: `ipython --pdb -c "%run ./tw_gcal_sync -c \"TaskWarrior Reminders\" -t remindme"`

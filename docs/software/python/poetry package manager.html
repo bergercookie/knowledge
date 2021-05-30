@@ -1,0 +1,308 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>poetry package manager</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="Poetry Package Manager"><h1 id="Poetry Package Manager" class="header"><a href="#Poetry Package Manager">Poetry Package Manager</a></h1></div>
+
+<p>
+<span id="Poetry Package Manager-python"></span><span class="tag" id="python">python</span>
+<span id="Poetry Package Manager-programming"></span><span class="tag" id="programming">programming</span>
+</p>
+
+<ul>
+<li>
+System-wide configuration file: <a href="https://github.com/sdispater/poetry/blob/master/docs/docs/configuration.md">https://github.com/sdispater/poetry/blob/master/docs/docs/configuration.md</a>
+
+<ul>
+<li>
+Find it under <code>~/.config/pypoetry/config.toml</code>
+
+</ul>
+<li>
+Install it via pip:
+
+<ul>
+<li>
+<code>pip3 install --user --upgrade poetry</code>
+
+</ul>
+<li>
+Install non-python extensions (e.g,. cython C extensions)
+
+<ul>
+<li>
+It can be done, but it seems more like a hack right now
+
+<li>
+<a href="https://github.com/sdispater/poetry/issues/11">https://github.com/sdispater/poetry/issues/11</a>
+
+<li>
+<a href="https://github.com/sdispater/poetry/issues/1351">https://github.com/sdispater/poetry/issues/1351</a>
+
+</ul>
+<li>
+Add a dependency from a custom repository: <code>poetry add python_utils --git ssh://git@bitbucket.org/org/repo</code>
+
+<ul>
+<li>
+or in <code>toml</code>: <code>python_utils = {git = "ssh://git@bitbucket.org/org/repo.git"}</code>
+
+<li>
+Make sure it's the full SSH form otherwise it crashes at <code>install_requires</code>
+
+</ul>
+<li>
+Poetry + Virtualenvs: <a href="https://poetry.eustace.io/docs/basic-usage/#poetry-and-virtualenvs">https://poetry.eustace.io/docs/basic-usage/#poetry-and-virtualenvs</a>
+
+<ul>
+<li>
+Will use the default python version for the virtualenv
+
+<li>
+You can override that by running pyenv first!
+
+</ul>
+<li>
+I'm developing a command-line application, how should I be configuring my
+  environment for running poetry
+
+<ul>
+<li>
+<code>poetry install # Install your project</code>
+
+<li>
+<code>poetry shell</code>
+
+<ul>
+<li>
+Spawn a shell with the customised python environment - basically
+          inside the virtual environment! Now you can run any of the commands
+          you want and any of the executables
+
+</ul>
+</ul>
+<li>
+How do I get the generated <code>setup.py</code> that poetry builds?
+
+<ul>
+<li>
+<code>poetry build</code> -&gt; take a look at <code>sdist/*.tar.gz</code>
+
+</ul>
+<li>
+I want to have one of my dependencies in <code>develop</code> mode, i.e., not have to push to remote and then re-install it
+
+<ul>
+<li>
+Modify <code>pyproject</code>.toml so that the dependency you're interested is
+      installed in develop mode:
+
+<ul>
+<li>
+<code>python_utils = { "path" = "/home/berger/org/repo", develop = true }</code>
+
+<li>
+Then just run <code>poetry install</code>
+
+</ul>
+<li>
+<a href="https://github.com/sdispater/poetry/issues/34">https://github.com/sdispater/poetry/issues/34</a>
+
+<li>
+<a href="https://poetry.eustace.io/docs/versions/#path-dependencies">https://poetry.eustace.io/docs/versions/#path-dependencies</a>
+
+</ul>
+<li>
+Good intro article: <a href="https://medium.com/octopus-wealth/python-scripts-26e3d0bd5277">https://medium.com/octopus-wealth/python-scripts-26e3d0bd5277</a>
+
+<li>
+Poetry - exceeding max redirects:
+
+<ul>
+<li>
+<a href="https://github.com/python-poetry/poetry/issues/728">https://github.com/python-poetry/poetry/issues/728</a>
+
+<li>
+<a href="https://github.com/python-poetry/poetry/issues/1033">https://github.com/python-poetry/poetry/issues/1033</a>
+
+<li>
+Clear the cache!
+
+<ul>
+<li>
+<code>poetry cache:clear --all </code># OR
+
+<li>
+<code>rm -rf ~/.cache/pypoetry/cache</code>
+
+</ul>
+</ul>
+</ul>
+<div id="Poetry Package Manager-Questions to Answer"><h2 id="Questions to Answer" class="header"><a href="#Poetry Package Manager-Questions to Answer">Questions to Answer</a></h2></div>
+
+<ul>
+<li>
+How do you install python scripts as executables in your PATH?
+
+<li>
+How do I <code>pip3 install --user</code> my package?
+
+</ul>
+<div id="Poetry Package Manager-Poetry Example Config"><h2 id="Poetry Example Config" class="header"><a href="#Poetry Package Manager-Poetry Example Config">Poetry Example Config</a></h2></div>
+
+<pre toml>
+[tool.poetry]
+name = "my-package"
+version = "0.1.0"
+description = "The description of the package"
+
+license = "MIT"
+
+authors = [
+    "Sébastien Eustace &lt;sebastien@eustace.io&gt;"
+]
+
+readme = 'README.md'  # Markdown files are supported
+
+repository = "https://github.com/sdispater/poetry"
+homepage = "https://github.com/sdispater/poetry"
+
+keywords = ['packaging', 'poetry']
+
+[tool.poetry.dependencies]
+python = "~2.7 || ^3.2"  # Compatible python versions must be declared here
+toml = "^0.9"
+# Dependencies with extras
+requests = { version = "^2.13", extras = [ "security" ] }
+# Python specific dependencies with prereleases allowed
+pathlib2 = { version = "^2.2", python = "~2.7", allows-prereleases = true }
+# Git dependencies
+cleo = { git = "https://github.com/sdispater/cleo.git", branch = "master" }
+
+# Optional dependencies (extras)
+pendulum = { version = "^1.4", optional = true }
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+pytest-cov = "^2.4"
+
+[tool.poetry.scripts]
+my-script = 'my_package:main'
+</pre>
+
+<div id="Poetry Package Manager-Adding executables to your Package"><h2 id="Adding executables to your Package" class="header"><a href="#Poetry Package Manager-Adding executables to your Package">Adding executables to your Package</a></h2></div>
+
+<p>
+Instead put all your package executables under package_name/scripts/ (i.e.,
+inside the package, and no just inside the repo) and have a section like the
+following in <code>pyproject.toml</code>. These executables <span id="Poetry Package Manager-Adding executables to your Package-should"></span><strong id="should">should</strong> have a <code>main()</code>
+function which will serve as the <code>entrypoint</code>:
+</p>
+
+<pre toml>
+[tool.poetry.scripts]
+name_of_tool = "package_name.scripts.name_of_tool:main"
+# more tools can be added here...
+</pre>
+
+<p>
+The following is <span id="Poetry Package Manager-Adding executables to your Package-NOT"></span><strong id="NOT">NOT</strong> recommended.
+</p>
+
+<pre python>
+# Potential scripts.py contents - have `poetry` behave like `yarn`
+#
+# This is a temporary workaround till Poetry supports scripts, see
+# https://github.com/sdispater/poetry/issues/241.
+from subprocess import check_call
+
+
+def format() -&gt; None:
+    check_call(
+        ["black", "--check", "--diff", "src/", "tests/"],
+    )
+
+
+def reformat() -&gt; None:
+    check_call(["black", "src/", "tests/"])
+
+
+def lint() -&gt; None:
+    check_call(["flake8", "src/", "tests/"])
+    check_call(["mypy", "src/backend/", "tests/"])
+
+
+def start() -&gt; None:
+    check_call(["python", "src/backend/run.py"])
+
+
+def test() -&gt; None:
+    check_call(["pytest", "tests/"])
+</pre>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>
