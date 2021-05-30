@@ -6,6 +6,8 @@
 !_TAG_PROGRAM_URL	https://github.com/vimwiki/vimwiki
 !_TAG_PROGRAM_VERSION	2.5
 organise	software-procedures/documenting-a-project-w-vimwiki.wiki	8;"	vimwiki:software-procedures/documenting-a-project-w-vimwiki\tsoftware-procedures/documenting-a-project-w-vimwiki#organise
+organise	software-procedures/presentation-tools.wiki	4;"	vimwiki:software-procedures/presentation-tools\tsoftware-procedures/presentation-tools#organise
+present	software-procedures/presentation-tools.wiki	3;"	vimwiki:software-procedures/presentation-tools\tsoftware-procedures/presentation-tools#Presentation Tools
 productivity	software-procedures/documenting-a-project-w-vimwiki.wiki	9;"	vimwiki:software-procedures/documenting-a-project-w-vimwiki\tsoftware-procedures/documenting-a-project-w-vimwiki#productivity
 programming	software-procedures/documenting-a-project-w-vimwiki.wiki	10;"	vimwiki:software-procedures/documenting-a-project-w-vimwiki\tsoftware-procedures/documenting-a-project-w-vimwiki#programming
 programming	software/rust/HashMap.wiki	4;"	vimwiki:software/rust/HashMap\tsoftware/rust/HashMap#programming

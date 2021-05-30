@@ -1,4 +1,4 @@
-= presentation tools =
+= Presentation Tools =
 
 :present:
 :organise:

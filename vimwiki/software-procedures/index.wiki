@@ -10,6 +10,6 @@ Software-related procedures that I'm following.
 * [[preparing-and-making-presentations.wiki|Creating and Delivering Presentations]]
 * [[logging-and-analyzing-logs-in-linux.wiki|Logging and Analyzing Logs in Linux]]
 * [[change-background-from-dark-to-light.wiki|Change Background/Colorscheme from Dark to Light in your dev environment]]
-* [[presentation-tools.wiki|presentation tools]]
+* [[presentation-tools.wiki|Presentation Tools]]
 * [[things-to-do-when-switching-phone.wiki|Things to do when switching phones]]
 * [[sphinx.wiki|Documenting a codebases or creating technical articles with Sphinx]]
