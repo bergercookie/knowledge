@@ -39,8 +39,8 @@
     * staticmethods are basically freestanding functions grouped under the
       `class` scope; classmethods are still methods of a class.
 * [[https://factoryboy.readthedocs.io/en/latest/index.html|FactoryBoy]]: Better fixtures for your Django tests
-* Is `CPython` an interpreted or a compiled language?
-    * Python is a *language specification*. One of it's implementations CPython,
+* Is `Python` an interpreted or a compiled language?
+    * Python is a *language specification*. One of it's implementations `CPython`,
       compiles the source code into bytecode, which then is run (interpreted)
       inside the Python VM.
     * Link: https://stackoverflow.com/a/2998228/2843583
@@ -196,7 +196,7 @@ dis.dis(f)
 }}}
 
 
-=== Manually configure pyenv ===
+=== Configure pyenv manually ===
 
 Normally you'd do this as part of your bashrc/fish.config file. But if you
 haven't, here's the commands to do it in the current shell instance
@@ -215,8 +215,7 @@ fish )
 }}}
 
 * Compile python versions from source:
-    * You'll need to install OpenSSL first:
-        `apt-get install libssl-dev libffi-dev`
+    * You'll need to install OpenSSL first: `apt-get install libssl-dev libffi-dev`
 
 * Format all `.py` files with `black` autoformatter:
     * `fd -e py | xargs -I{} black --line-length 95 -t py36 {}`
@@ -349,3 +348,34 @@ self.addCleanup(self.r.restore)
 Use `self.__class__.__bases__`
 
 Link: https://stackoverflow.com/a/10092179/2843583
+
+
+== Contents ==
+
+* [[keyring-issue.wiki|Debugging: Keyring Issue]]
+* [[unpackb-msgpack-error.wiki|Debugging: unpackb-msgpack Error]]
+* [[poetry package manager.wiki|Poetry Package Manager]]
+* [[debugging.wiki|Debugging Tools]]
+* [[vlc-api.wiki|VLC Python API - Read metadata from network stream]]
+* [[concerns-when-packaging-c-extensions-in-python-packages.wiki|Concerns Packaging C Extensions in Python Packages]]
+* [[obj-unique-name.py.wiki|Python Object Unique Name]]
+* [[check-pid.py.wiki|Check if PID exists]]
+* [[coding-std-thoughts.wiki|Thought on Python coding standards]]
+* [[concurency.wiki|Concurrency and AsyncIO]]
+* [[psrecord.wiki|psrecord]]
+* [[call-live-output.wiki|Call subprocess and print its output as it comes / live]]
+* [[avoid-if-initialisation-cases.wiki|Avoid if-initialisation cases]]
+* [[find-system-installed-version-that-matches.wiki|Find System Installed Version That Matches]]
+* [[code-coverage.wiki|Code Coverage]]
+* [[ipython.wiki|ipython Interpeter]]
+* [[imports.wiki|Importing in Python]]
+* [[readline-enable-tab-completion.wiki|Readline: Enable TAB Completion]]
+* [[ipdb.wiki|pdb / ipdb]]
+* [[find-nth-occurrance.wiki|Find N-th Occurrence]]
+* [[regexp-match-urls.wiki|Regexp: Match URLs]]
+* [[packaging-options.wiki|Packaging Options]]
+* [[numba.wiki|numba]]
+* [[update-python-project-version.wiki|Bumping the version of your Python Project]]
+* [[language-implementations.wiki|Implementations of the Python Specification]]
+* [[pyproject-toml.wiki|pyproject.toml]]
+* [[pyc-files.wiki|pyc-files]]
