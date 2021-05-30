@@ -1,0 +1,53 @@
+= Secure Programming Cookbook =
+:book:
+
+Link: https://www.amazon.com/Secure-Programming-Cookbook-Cryptography-Authentication/dp/0596003943
+
+TL;DR: A bit of old-fashioned. Not worth reading further.
+
+== Chapter 1 ==
+
+=== 1.1 Sanitizing the Environment ===
+
+* Environment variables are inherited from the parent process
+* Generally, you should not specify a filename and then rely on these variables
+  (PATH, LD_LIBRARY_PATH) for determining the full path. Instead, you should
+  always use absolute paths to known locations.
+* Use `environ` (from `unistd.h`) global variable and `putenv`, `getenv` on
+  Linux (from `stdlib.h`)
+* Darwin does not use ELF (Executable and Linking Format) for its executable
+  format
+* The PATH environment variable is used by the shell and some of the `exec*()`
+  family of standard C functions to locate an executable if a path is not
+  explicitly specified. The search path should never include relative paths,
+  especially the current directory as denoted by a single period. To be safe,
+  you should always force the setting of the PATH environment variable to
+  `_PATH_STDPATH`, which is defined in `paths.h`. This value is what the shell
+  normally uses to initialize the variable, but an attacker or naïve user could
+  change it later
+
+=== 1.3 Dropping Privileges in setuid Programs ===
+
+On all Unix systems each process has
+
+- `Real`, `Effective`, `Saved` UID
+- `Real`, `Effective`, `Saved` GID
+
+Normally when a process is executed, the effective, real and saved user and
+group IDs are all set to the real user and group ID of the process's parent
+respectively. However when the `setuid` bit is set on the executable the
+effective and saved user IDs are set to the user ID that *owns the file*!
+
+In general the effective user or group ID for a process may be changed as long
+as the new ID is the same as either the real or the saved ID.
+
+Ancillary groups are inherited by a process from its parent process and *they
+can only be altered by a process with superuser privileges*.
+
+== Chapter 4 - Symmetric Cryptography Fundamentals ==
+
+There are two classes of symmetric primitives, both of utmost importance:
+
+* *SEA* - *Symmetric Encryption Algorithms* for data secrecy
+* *MAC* - *Message Authentication Codes* for ensuring that if someone tampers with data
+  while in transit, the tampering will be detected.

@@ -20,3 +20,5 @@ Software-related articles, cheatsheets and guides
 
 * [[top10/index.wiki|Top-10 Lists (Music, Movies, Art)]]
 * [[military-service/index.wiki|Greek Military Service]]
+* [[philosophy/index.wiki|Behavioral Psychology, Philosophy, Stoicism and Habits]]
+* [[books/index.wiki|Notes on Books]]

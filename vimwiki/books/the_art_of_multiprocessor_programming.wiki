@@ -1,0 +1,35 @@
+= The Art of Multiprocessor Programming =
+
+:book:
+* Link: https://www.amazon.com/Art-Multiprocessor-Programming-Revised-Reprint/dp/0123973376
+* TL;DR: Probably not worth reading further. The language of choice (Java) is
+  not a favorite of mine and the problems it's dealing with are also not that
+  interesting.
+
+
+== Multiprocessing Problems ==
+
+* Mutual Exclusion
+* Producer Consumer
+* Readers/Writers Problem
+    * Amdahl's law: How much can a task be parallelised -> `Speedup = 1 / (1 - p + p/n)`
+
+`1 / (0.4 + 0.6 / n) -> n / (0.4n + 0.6) -> {diff} -> 1 / 0.4 -> 2.5`
+
+
+== Multiprocessing Properties / Problems to think of ==
+
+* Mutual Exclusion
+* Deadlock Freedom:
+    * If one party cannot access the shared resource, is the other party still
+      able to? Or is continuous cooperation mandatory?
+        * Anyone must be able to enter the yard infinitely often on their own,
+          even if the other is not there.
+* Starvation-Freedom
+* Producer-Consumer - p.10
+
+Proofs:
+
+* By contradiction - let's say that it happened...
+* State machine - Shared resource has two states (0 or 1). Reason based on
+  that..

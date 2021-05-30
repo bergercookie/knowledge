@@ -1,0 +1,41 @@
+= Behavioral Psychology, Philosophy, Stoicism and Habits =
+
+Resources and thought with regards to a wide variety of subjects:
+
+* Psychology, especially Behavioral Psychology
+* Stoicicm
+* Habit Formation
+
+TODO At some point I should be breaking these items up into individual sections
+
+== Podcasts and books ==
+
+Podcasts with regards to behavioral psychology - hidden biases:
+
+* https://freakonomics.com/archive/
+* https://www.schwab.com/resource-center/insights/podcast
+* https://freakonomics.com/nsq/
+
+Corresponding books:
+
+* https://freakonomics.com/books/
+
+They are mainly based on research from Kahneman and Tversky. Most notable example
+is the book Thinking Fast and Slow. It contains many interesting examples on how
+the human brain works and what sort of biases and pitfalls we can fall to
+
+* https://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman/dp/0374533555
+
+== Habit Formation ==
+
+* https://www.amazon.com/Atomic-Habits-Proven-Build-Break/dp/0735211299
+
+
+== Contents ==
+
+* [[mental-models.wiki|mental-models]]
+* [[school-of-life.wiki|School of Life]]
+* [[inspection-bias.wiki|Inspection Paradox / Bias]]
+* [[stoicism.wiki|Stoisism]]
+* [[westworld.wiki|Philosophy of Westworld]]
+* [[waitbutwhy.wiki|Wait but Why]]

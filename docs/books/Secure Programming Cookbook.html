@@ -1,0 +1,162 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>Secure Programming Cookbook</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="Secure Programming Cookbook"><h1 id="Secure Programming Cookbook" class="header"><a href="#Secure Programming Cookbook">Secure Programming Cookbook</a></h1></div>
+<p>
+<span id="Secure Programming Cookbook-book"></span><span class="tag" id="book">book</span>
+</p>
+
+<p>
+Link: <a href="https://www.amazon.com/Secure-Programming-Cookbook-Cryptography-Authentication/dp/0596003943">https://www.amazon.com/Secure-Programming-Cookbook-Cryptography-Authentication/dp/0596003943</a>
+</p>
+
+<p>
+TL;DR: A bit of old-fashioned. Not worth reading further.
+</p>
+
+<div id="Secure Programming Cookbook-Chapter 1"><h2 id="Chapter 1" class="header"><a href="#Secure Programming Cookbook-Chapter 1">Chapter 1</a></h2></div>
+
+<div id="Secure Programming Cookbook-Chapter 1-1.1 Sanitizing the Environment"><h3 id="1.1 Sanitizing the Environment" class="header"><a href="#Secure Programming Cookbook-Chapter 1-1.1 Sanitizing the Environment">1.1 Sanitizing the Environment</a></h3></div>
+
+<ul>
+<li>
+Environment variables are inherited from the parent process
+
+<li>
+Generally, you should not specify a filename and then rely on these variables
+  (PATH, LD_LIBRARY_PATH) for determining the full path. Instead, you should
+  always use absolute paths to known locations.
+
+<li>
+Use <code>environ</code> (from <code>unistd.h</code>) global variable and <code>putenv</code>, <code>getenv</code> on
+  Linux (from <code>stdlib.h</code>)
+
+<li>
+Darwin does not use ELF (Executable and Linking Format) for its executable
+  format
+
+<li>
+The PATH environment variable is used by the shell and some of the <code>exec*()</code>
+  family of standard C functions to locate an executable if a path is not
+  explicitly specified. The search path should never include relative paths,
+  especially the current directory as denoted by a single period. To be safe,
+  you should always force the setting of the PATH environment variable to
+  <code>_PATH_STDPATH</code>, which is defined in <code>paths.h</code>. This value is what the shell
+  normally uses to initialize the variable, but an attacker or naïve user could
+  change it later
+
+</ul>
+<div id="Secure Programming Cookbook-Chapter 1-1.3 Dropping Privileges in setuid Programs"><h3 id="1.3 Dropping Privileges in setuid Programs" class="header"><a href="#Secure Programming Cookbook-Chapter 1-1.3 Dropping Privileges in setuid Programs">1.3 Dropping Privileges in setuid Programs</a></h3></div>
+
+<p>
+On all Unix systems each process has
+</p>
+
+<ul>
+<li>
+<code>Real</code>, <code>Effective</code>, <code>Saved</code> UID
+
+<li>
+<code>Real</code>, <code>Effective</code>, <code>Saved</code> GID
+
+</ul>
+<p>
+Normally when a process is executed, the effective, real and saved user and
+group IDs are all set to the real user and group ID of the process's parent
+respectively. However when the <code>setuid</code> bit is set on the executable the
+effective and saved user IDs are set to the user ID that <span id="Secure Programming Cookbook-Chapter 1-1.3 Dropping Privileges in setuid Programs-owns the file"></span><strong id="owns the file">owns the file</strong>!
+</p>
+
+<p>
+In general the effective user or group ID for a process may be changed as long
+as the new ID is the same as either the real or the saved ID.
+</p>
+
+<p>
+Ancillary groups are inherited by a process from its parent process and *they
+can only be altered by a process with superuser privileges*.
+</p>
+
+<div id="Secure Programming Cookbook-Chapter 4 - Symmetric Cryptography Fundamentals"><h2 id="Chapter 4 - Symmetric Cryptography Fundamentals" class="header"><a href="#Secure Programming Cookbook-Chapter 4 - Symmetric Cryptography Fundamentals">Chapter 4 - Symmetric Cryptography Fundamentals</a></h2></div>
+
+<p>
+There are two classes of symmetric primitives, both of utmost importance:
+</p>
+
+<ul>
+<li>
+<span id="Secure Programming Cookbook-Chapter 4 - Symmetric Cryptography Fundamentals-SEA"></span><strong id="SEA">SEA</strong> - <span id="Secure Programming Cookbook-Chapter 4 - Symmetric Cryptography Fundamentals-Symmetric Encryption Algorithms"></span><strong id="Symmetric Encryption Algorithms">Symmetric Encryption Algorithms</strong> for data secrecy
+
+<li>
+<span id="Secure Programming Cookbook-Chapter 4 - Symmetric Cryptography Fundamentals-MAC"></span><strong id="MAC">MAC</strong> - <span id="Secure Programming Cookbook-Chapter 4 - Symmetric Cryptography Fundamentals-Message Authentication Codes"></span><strong id="Message Authentication Codes">Message Authentication Codes</strong> for ensuring that if someone tampers with data
+  while in transit, the tampering will be detected.
+
+</ul>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,15 @@
+= Book Notes =
+
+Lists to consider books from:
+
+* Naval Ravikant Books List: https://www.navalmanack.com/navals-recommended-reading
+
+
+== Contents ==
+
+* [[talking-to-strangers.wiki|Talking to Strangers]]
+* [[the_art_of_multiprocessor_programming.wiki|The Art of Multiprocessor Programming]]
+* [[exactly-what-to-say-phil-m-jones.wiki|Exactly What to Say - Phil M. Jones]]
+* [[Programming Interviews Exposed.wiki|Programming Interviews Exposed]]
+* [[self-discipline-why-self-discipline-is-lacking-in-most-and-how-to-unleash-it-now.wiki|Self Discipline: Why Self Discipline is Lacking in Most and How to Unleash it Now]]
+* [[Secure Programming Cookbook.wiki|Secure Programming Cookbook]]

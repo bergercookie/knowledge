@@ -1,0 +1,28 @@
+= Programming Interviews Exposed =
+:book:
+
+Link: https://www.amazon.com/Programming-Interviews-Exposed-Secrets-Landing/dp/1118261364
+
+== Chapter 4 ==
+
+* What the interviewer wants is to see *your thought processes* as you work
+  through each stage of the programming problem -> *Speak your mind up* as you
+  code.
+* When you begin solving a problem, *don’t start writing code immediately*.
+  First, make sure you completely understand the problem. It may help to work
+  through a simple, concrete example and then try to generalize the process to
+  an algorithm.  When you’re convinced you have the right algorithm, explain it
+  clearly. Writing the code should be one of your final steps
+* Make sure you *understand the problem before you start solving it*, and then
+  *start with an example to solidify your understanding*.
+* Try an example, and check all error and special cases.
+
+== When you get stuck ==
+
+* Go back to an example
+* Try a different data structure
+* Consider the less commonly used or more advanced aspects of a language
+
+----
+
+* Timings are with regards to *Best*, *Average*, and *Worst* cases.
