@@ -1,4 +1,4 @@
-= movies =
+= Movies =
 
 1. The Fountain - Darren Aronofsky
 1. Ad Astra
