@@ -1,0 +1,115 @@
+= Documenting a codebases or creating technical articles with Sphinx =
+
+== Documenting your code ==
+
+If you want to generate documentation for your methods, functions, classes,
+objects in general, after running sphinx-quickstart you need to run
+`sphinx-autodoc`
+
+* Create doc/ directory, cd to it
+* Run sphinx-quickstart . && sphinx-apidoc -o . ..
+* Change conf.py and include the absolute paths as needed
+
+  {{{python
+  import os
+  import sys
+  sys.path.insert(0, os.path.abspath('.'))
+  sys.path.insert(0, os.path.abspath('..'))
+  }}}
+
+* Sample `conf.py` file + `.rst` files: https://github.com/bergercookie/pymendeley/tree/master/doc
+* In case you have a setup.py file:
+    * remove the generated setup.rst file as it will generate unnecessary warnings
+    * Remove the setup.py line from modules.rst
+* Update the `index.rst` file to include <your-python-module-name>
+
+== Resources ==
+
+* Sphinx Sandbox - Live experimentation: https://livesphinx.herokuapp.com/
+* Opinionated style checker for sphinx: https://pypi.org/project/doc8/
+* Tabbed-view: `sphinx-tabs`
+* Linting tools for documentation
+    * https://github.com/pycqa/doc8
+    * [[https://errata-ai.gitbook.io/vale/|vale]]
+    * [[https://github.com/btford/write-good|write-good]]
+    * [[https://github.com/amperser/proselint|proselint]]
+* Sphinx Primer:
+    * https://pythonhosted.org/an_example_pypi_project/sphinx.html
+    * http://www.sphinx-doc.org/en/stable/rest.html
+* Very nice article describing the whole sphinx bootstrap procedure:
+  https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/
+* Solve common problems with sphinxdoc-quickstart / apidoc
+  https://macgregor.gitbooks.io/developer-notes/content/python/autodoc-import.html
+* Configuration file options for sphinx:
+  http://www.sphinx-doc.org/en/stable/config.html
+* Awesome sphinx: https://github.com/yoloseem/awesome-sphinxdoc
+* Cheatsheets
+    * http://www.sphinx-doc.org/en/stable/domains.html#id2
+    * https://pythonhosted.org/an_example_pypi_project/sphinx.html
+    *  http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/rest_syntax.html#internal-and-external-links
+* Add custom links: https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html#use-custom-link-text
+* Common stuff between markdown and rst: https://gist.github.com/dupuy/1855764
+* Use a conf.py variable from an rst file: https://stackoverflow.com/a/40264720/2843583
+* External links support - avoid duplication of links among files: http://www.sphinx-doc.org/en/master/usage/extensions/extlinks.html
+
+== Add Inline Images ==
+
+{{{rst
+Some text and a link to my wonderful |img|
+
+.. |img| image:: ../path/to/image.png
+    :alt:    alt display
+}}}
+
+Source: https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#more-about-aliases
+
+== Document C++ with Sphinx + Breathe ==
+
+* Walkthrough: https://devblogs.microsoft.com/cppblog/clear-functional-c-documentation-with-sphinx-breathe-doxygen-cmake/
+* More detailed document on using it: https://readthedocs.org/projects/breathe/downloads/pdf/latest/
+* Cpp directives - sphinx (probably not useful): https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html#cpp-domain
+
+* Install `doxygen`, `sphinx`, `breathe`
+* Compile and point breathe to the doxygen xml output:
+  {{{
+  cd docs
+  doxygen
+  sphinx-build -b html -Dbreathe_projects.CatCutifier=xml/ . _build/
+  }}}
+
+== Document whole project - Doxygen-style ==
+
+The intention here is to have separate pages for each one of your
+classes/structs, files, functions etc. Using `doxygenindex` or
+`autodoxygenindex` is not appropriate here since it dumps all items regardless
+of type to a single long long page.
+
+Instead use either of these:
+
+* breathe-apidoc: Looks good, produces `rst` files
+* exhale: seems to be abandoned :/
+
+=== sphinx/breathe combination is very slow ===
+
+Use `-j` to spawn multiple workers.
+
+== FAQ ==
+
+* Center text:
+
+  {{{rst
+  .. centered::
+  }}}
+* Add links to downloadable files:
+  {{{rst
+  :download:`some description <test.py>`
+  }}}
+* Generate HTML documentation
+    * `make html` or, alternatively
+    * `sphinx-build -M html "source" "build"`
+
+== Themes ==
+
+* ReadTheDocs: `pip install sphinx_rtd_theme`
+
+

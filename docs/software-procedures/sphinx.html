@@ -1,0 +1,295 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>sphinx</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="Documenting a codebases or creating technical articles with Sphinx"><h1 id="Documenting a codebases or creating technical articles with Sphinx" class="header"><a href="#Documenting a codebases or creating technical articles with Sphinx">Documenting a codebases or creating technical articles with Sphinx</a></h1></div>
+
+<div id="Documenting a codebases or creating technical articles with Sphinx-Documenting your code"><h2 id="Documenting your code" class="header"><a href="#Documenting a codebases or creating technical articles with Sphinx-Documenting your code">Documenting your code</a></h2></div>
+
+<p>
+If you want to generate documentation for your methods, functions, classes,
+objects in general, after running sphinx-quickstart you need to run
+<code>sphinx-autodoc</code>
+</p>
+
+<ul>
+<li>
+Create doc/ directory, cd to it
+
+<li>
+Run sphinx-quickstart . &amp;&amp; sphinx-apidoc -o . ..
+
+<li>
+Change conf.py and include the absolute paths as needed
+<pre python>
+  import os
+  import sys
+  sys.path.insert(0, os.path.abspath('.'))
+  sys.path.insert(0, os.path.abspath('..'))
+</pre>
+
+<li>
+Sample <code>conf.py</code> file + <code>.rst</code> files: <a href="https://github.com/bergercookie/pymendeley/tree/master/doc">https://github.com/bergercookie/pymendeley/tree/master/doc</a>
+
+<li>
+In case you have a setup.py file:
+
+<ul>
+<li>
+remove the generated setup.rst file as it will generate unnecessary warnings
+
+<li>
+Remove the setup.py line from modules.rst
+
+</ul>
+<li>
+Update the <code>index.rst</code> file to include &lt;your-python-module-name&gt;
+
+</ul>
+<div id="Documenting a codebases or creating technical articles with Sphinx-Resources"><h2 id="Resources" class="header"><a href="#Documenting a codebases or creating technical articles with Sphinx-Resources">Resources</a></h2></div>
+
+<ul>
+<li>
+Sphinx Sandbox - Live experimentation: <a href="https://livesphinx.herokuapp.com/">https://livesphinx.herokuapp.com/</a>
+
+<li>
+Opinionated style checker for sphinx: <a href="https://pypi.org/project/doc8/">https://pypi.org/project/doc8/</a>
+
+<li>
+Tabbed-view: <code>sphinx-tabs</code>
+
+<li>
+Linting tools for documentation
+
+<ul>
+<li>
+<a href="https://github.com/pycqa/doc8">https://github.com/pycqa/doc8</a>
+
+<li>
+<a href="https://errata-ai.gitbook.io/vale/">vale</a>
+
+<li>
+<a href="https://github.com/btford/write-good">write-good</a>
+
+<li>
+<a href="https://github.com/amperser/proselint">proselint</a>
+
+</ul>
+<li>
+Sphinx Primer:
+
+<ul>
+<li>
+<a href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a>
+
+<li>
+<a href="http://www.sphinx-doc.org/en/stable/rest.html">http://www.sphinx-doc.org/en/stable/rest.html</a>
+
+</ul>
+<li>
+Very nice article describing the whole sphinx bootstrap procedure:
+  <a href="https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/">https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/</a>
+
+<li>
+Solve common problems with sphinxdoc-quickstart / apidoc
+  <a href="https://macgregor.gitbooks.io/developer-notes/content/python/autodoc-import.html">https://macgregor.gitbooks.io/developer-notes/content/python/autodoc-import.html</a>
+
+<li>
+Configuration file options for sphinx:
+  <a href="http://www.sphinx-doc.org/en/stable/config.html">http://www.sphinx-doc.org/en/stable/config.html</a>
+
+<li>
+Awesome sphinx: <a href="https://github.com/yoloseem/awesome-sphinxdoc">https://github.com/yoloseem/awesome-sphinxdoc</a>
+
+<li>
+Cheatsheets
+
+<ul>
+<li>
+<a href="http://www.sphinx-doc.org/en/stable/domains.html#id2">http://www.sphinx-doc.org/en/stable/domains.html#id2</a>
+
+<li>
+<a href="https://pythonhosted.org/an_example_pypi_project/sphinx.html">https://pythonhosted.org/an_example_pypi_project/sphinx.html</a>
+
+<li>
+ <a href="http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/rest_syntax.html#internal-and-external-links">http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/rest_syntax.html#internal-and-external-links</a>
+
+</ul>
+<li>
+Add custom links: <a href="https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html#use-custom-link-text">https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html#use-custom-link-text</a>
+
+<li>
+Common stuff between markdown and rst: <a href="https://gist.github.com/dupuy/1855764">https://gist.github.com/dupuy/1855764</a>
+
+<li>
+Use a conf.py variable from an rst file: <a href="https://stackoverflow.com/a/40264720/2843583">https://stackoverflow.com/a/40264720/2843583</a>
+
+<li>
+External links support - avoid duplication of links among files: <a href="http://www.sphinx-doc.org/en/master/usage/extensions/extlinks.html">http://www.sphinx-doc.org/en/master/usage/extensions/extlinks.html</a>
+
+</ul>
+<div id="Documenting a codebases or creating technical articles with Sphinx-Add Inline Images"><h2 id="Add Inline Images" class="header"><a href="#Documenting a codebases or creating technical articles with Sphinx-Add Inline Images">Add Inline Images</a></h2></div>
+
+<pre rst>
+Some text and a link to my wonderful |img|
+
+.. |img| image:: ../path/to/image.png
+    :alt:    alt display
+</pre>
+
+<p>
+Source: <a href="https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#more-about-aliases">https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#more-about-aliases</a>
+</p>
+
+<div id="Documenting a codebases or creating technical articles with Sphinx-Document C++ with Sphinx + Breathe"><h2 id="Document C++ with Sphinx + Breathe" class="header"><a href="#Documenting a codebases or creating technical articles with Sphinx-Document C++ with Sphinx + Breathe">Document C++ with Sphinx + Breathe</a></h2></div>
+
+<ul>
+<li>
+Walkthrough: <a href="https://devblogs.microsoft.com/cppblog/clear-functional-c-documentation-with-sphinx-breathe-doxygen-cmake/">https://devblogs.microsoft.com/cppblog/clear-functional-c-documentation-with-sphinx-breathe-doxygen-cmake/</a>
+
+<li>
+More detailed document on using it: <a href="https://readthedocs.org/projects/breathe/downloads/pdf/latest/">https://readthedocs.org/projects/breathe/downloads/pdf/latest/</a>
+
+<li>
+Cpp directives - sphinx (probably not useful): <a href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html#cpp-domain">https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html#cpp-domain</a>
+
+<li>
+Install <code>doxygen</code>, <code>sphinx</code>, <code>breathe</code>
+
+<li>
+Compile and point breathe to the doxygen xml output:
+<pre>
+  cd docs
+  doxygen
+  sphinx-build -b html -Dbreathe_projects.CatCutifier=xml/ . _build/
+</pre>
+
+</ul>
+<div id="Documenting a codebases or creating technical articles with Sphinx-Document whole project - Doxygen-style"><h2 id="Document whole project - Doxygen-style" class="header"><a href="#Documenting a codebases or creating technical articles with Sphinx-Document whole project - Doxygen-style">Document whole project - Doxygen-style</a></h2></div>
+
+<p>
+The intention here is to have separate pages for each one of your
+classes/structs, files, functions etc. Using <code>doxygenindex</code> or
+<code>autodoxygenindex</code> is not appropriate here since it dumps all items regardless
+of type to a single long long page.
+</p>
+
+<p>
+Instead use either of these:
+</p>
+
+<ul>
+<li>
+breathe-apidoc: Looks good, produces <code>rst</code> files
+
+<li>
+exhale: seems to be abandoned :/
+
+</ul>
+<div id="Documenting a codebases or creating technical articles with Sphinx-Document whole project - Doxygen-style-sphinx/breathe combination is very slow"><h3 id="sphinx/breathe combination is very slow" class="header"><a href="#Documenting a codebases or creating technical articles with Sphinx-Document whole project - Doxygen-style-sphinx/breathe combination is very slow">sphinx/breathe combination is very slow</a></h3></div>
+
+<p>
+Use <code>-j</code> to spawn multiple workers.
+</p>
+
+<div id="Documenting a codebases or creating technical articles with Sphinx-FAQ"><h2 id="FAQ" class="header"><a href="#Documenting a codebases or creating technical articles with Sphinx-FAQ">FAQ</a></h2></div>
+
+<ul>
+<li>
+Center text:
+<pre rst>
+  .. centered::
+</pre>
+
+<li>
+Add links to downloadable files:
+<pre rst>
+  :download:`some description &lt;test.py&gt;`
+</pre>
+
+<li>
+Generate HTML documentation
+
+<ul>
+<li>
+<code>make html</code> or, alternatively
+
+<li>
+<code>sphinx-build -M html "source" "build"</code>
+
+</ul>
+</ul>
+<div id="Documenting a codebases or creating technical articles with Sphinx-Themes"><h2 id="Themes" class="header"><a href="#Documenting a codebases or creating technical articles with Sphinx-Themes">Themes</a></h2></div>
+
+<ul>
+<li>
+ReadTheDocs: <code>pip install sphinx_rtd_theme</code>
+
+</ul>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>
