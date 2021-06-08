@@ -1,0 +1,17 @@
+= photography =
+
+* Composition: https://www.bhphotovideo.com/explora/photography/tips-and-solutions/11-thoughts-introduction-photographic-composition
+* Sunstar formation factors:
+    * The pointiness of the sunstar depends on how *straight your aperture blades are* (that's a lens thing)
+    * The *number of rays depends on the number of aperture blades in your lens* (2n if n % 2 == 0 or n if n % 2 == 1)
+    * Then you need to stop down quite a lot (to f11 or f16 on my lens on full-frame)
+    * And you need some very specular light. This can be achieved by partially hiding the sun or just shoot at night, then most lamps on the street will do this
+
+== /photography site ==
+
+* To add new images, move them under `<photography-repo>/images` and then run
+  `gulp` to generate the images and their thumbnails.
+
+== Articles ==
+
+* Using wide-angle lenses in sports photography: https://shultzphotoschool.com/wide-angle-great-sports-photography/

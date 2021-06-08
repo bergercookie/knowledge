@@ -264,6 +264,7 @@ Link: https://stackoverflow.com/a/10092179/2843583
 * [[pip.wiki|Using Pip]]
 * [[keyring-issue.wiki|Debugging: Keyring Issue]]
 * [[unpackb-msgpack-error.wiki|Debugging: unpackb-msgpack Error]]
+* [[simulate-pushd.wiki|Simulate pushd using @contextmanager]]
 * [[poetry package manager.wiki|Poetry Package Manager]]
 * [[handling-of-integer-objects.wiki|Handling Integer Objects]]
 * [[debugging.wiki|Debugging Tools]]

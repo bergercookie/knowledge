@@ -1,0 +1,106 @@
+= chess =
+:activity:
+
+== Terms ==
+
+* `Square Clearance`
+* `Clearance Sacrifice`
+* `Exchange Sacrifice` / `Exchange Sacrifice` - Sacrifice a Rook for a minor piece
+* `Pawn Storm`: Two or more pawns attack the castled king
+* `Fishing Pole Trap`
+* `Mating Net`: Catch the King before escaping the checkmate
+* `Greek Gift Sacrifice`: Sacrificing the Bishop at the `h7` square
+* `Zugzwang`: where all possible moves are losing moves
+* `Windmill` - Repeat a discovered check multiple times (like blades of a windmill) gain material each time
+    Rook-Bishop combination
+    Torre - Lasker "Windmill"
+* The skewer
+* `Pigs on the seventh`
+* Battery
+* Alekhine's loaded gun
+* `Rook lift` - bringing the rook forward
+
+== Mating Strategies ==
+
+=== Basic ===
+
+* `4-move` or `Scholar's` Mate - Ναπολεόντειο
+* `Smothered` Mate - King surrounded by pieces - Knight delivers mate
+* `Back-rank` Mate
+
+=== Intermidiate ===
+
+* `Arabian` Mate - Rook + Knight trap king in the corner
+* `Boden's` Mate - With 2 bishops, and pieces around the King
+* `Epaulette` Mate - Pieces cover the sides of the King (squares directly to his left and right)
+    * Similar: `Swallow's Tail` - pieces on the back right and left of King
+* `Morphy's` Mate
+* `Dovetail` Mate
+* !!`Anastasia's` Mate - Knight blocks the diagonals of a King, Rook delivers mate
+* !!`Blackburne's` Mate - Sacrifice Queen, Deliver mate with 2 Bishops and Knight
+* !!`Damiano's` Mate - 2 Rook sacrifices, open up path for Queen to checkmate
+
+== Gambits ==
+
+* *Blackburne_Shilling_Gambit* - https://www.youtube.com/watch?v=Ayfo1CfaMAc
+* Queen's Gambit
+
+== Endgame tactics: ==
+
+1. Don't rush
+2. Activate your king
+3. Rooks belong *behind panws*
+   Both when attacking and defending
+
+
+=== Hints ===
+
+* *Skewer* the king and rook in the endgame!!
+
+* "rook-pawn" and wrong colored bishop -> Opponent can get draw if they can block the "rook-pawn"
+
+* If you end up with `King` and `Pawn` *do not separate them!!* the Rook will eat it
+
+=== King-pawn endings ===
+
+*DIRECT OPPOSITION* of your king with the opponent's
+
+* When the opponent has the pawn:
+    * `do not` take your king off the passed pawn file
+* When you have the pawn:
+    * You have to move your king in front of the pawn *by two squares*
+    * In order to advance your pawn to one-before-promotion  square, you have to
+      do this `without check`
+* When you do have direct opposition as white, and your king is in front by two
+  squares, *push the pawn forward*
+
+*DISTANT OPPOSITION*
+
+You want your king to end up at the same file as the opposite King and with an
+odd number of squares between them *to draw*; regardless of whether you have the
+pawn or not
+
+*King Triangulation Movement*
+
+=== King-Rook-Pawn endings ===
+
+* Lucena endgame - attack as white
+    * Rf4 - building a bridge
+* Philidor position - defend as black
+    * Third rank defence
+    * Keep the rook on the third rank until the opponent pushes the pawn forward
+
+=== Double bishop checkmate ===
+
+You have to force the king to the corner of the board to deliver checkmate
+
+=== Opposite-color bishop endings ===
+
+https://www.chess.com/lessons/opposite-colored-bishops-endgames
+
+== Famous Chess players ==
+
+* `Wilhelm Steinitz`
+    * First World Champion
+* `Joseph Henry Blackburne`
+    * At the same time as `Emannuel Lasker` and `Wilhelm Steinitz`

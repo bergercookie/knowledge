@@ -272,6 +272,33 @@ Generate HTML documentation
 <code>sphinx-build -M html "source" "build"</code>
 
 </ul>
+<li>
+Add link directly to HTML page in <code>index.rst</code>:
+<pre rst>
+  .. toctree::
+    :maxdepth: 1
+    :caption: API
+
+    Title of Page &lt;/path/to/html-doc.html#http://&gt;
+</pre>
+  You may have to delete and re-make the output HTML directory for this change
+  to take effect and see the new link in the toctree of all your pages.
+
+<li>
+Include custom css - <a href="https://stackoverflow.com/questions/23462494/how-to-add-custom-css-file-to-sphinx">https://stackoverflow.com/questions/23462494/how-to-add-custom-css-file-to-sphinx</a>
+
+<ul>
+<li>
+In your <code>conf.py</code>:
+<pre python>
+    def setup(app):
+        app.add_css_file('css/custom.css')  # may also be an URL
+</pre>
+
+<li>
+Then create a file with CSS under <code>_static/css/custom.css</code>
+
+</ul>
 </ul>
 <div id="Documenting a codebases or creating technical articles with Sphinx-Themes"><h2 id="Themes" class="header"><a href="#Documenting a codebases or creating technical articles with Sphinx-Themes">Themes</a></h2></div>
 

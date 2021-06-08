@@ -1,0 +1,19 @@
+= Simulate pushd using @contextmanager =
+
+:python:
+:programming:
+:snippet:
+
+{{{python
+@contextmanager
+def pushd(new_dir):
+    """
+    Simulate the manipulation of the stack (like pushd and popd in BASH) and change the folder
+    with the usage of the context manager
+    """
+
+    previous_dir = os.getcwd()
+    os.chdir(new_dir)
+    yield
+    os.chdir(previous_dir)
+}}}

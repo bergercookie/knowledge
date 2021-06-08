@@ -1,0 +1,10 @@
+= Activities =
+
+
+== Contents ==
+
+* [[hiking.wiki|hiking]]
+* [[bike - safety.wiki|Bike safety]]
+* [[running.wiki|running]]
+* [[photography.wiki|photography]]
+* [[chess.wiki|chess]]

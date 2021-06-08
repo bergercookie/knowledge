@@ -1,7 +1,12 @@
-= mental-models =
+= Mental Models =
 
 Mentals models help us simplify, and therefore, navigate the world around us
 
 * FS - On mental models: https://fs.blog/mental-models/
 * James Clear - On mental models: https://jamesclear.com/mental-models
 * Map to Mental Models: https://coggle.it/diagram/X-g-vCrTPmLCD_K7/t/mental-models
+
+== Related ==
+
+* Appearances vs Experiences: https://fs.blog/2020/07/appearances-vs-experiences/
+* 100-tips-for-a-better-life: https://www.lesswrong.com/posts/7hFeMWC6Y5eaSixbD/100-tips-for-a-better-life

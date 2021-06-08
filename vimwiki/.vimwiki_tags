@@ -5,6 +5,8 @@
 !_TAG_PROGRAM_NAME	Vimwiki Tags
 !_TAG_PROGRAM_URL	https://github.com/vimwiki/vimwiki
 !_TAG_PROGRAM_VERSION	2.5
+book	books/talking-to-strangers.wiki	2;"	vimwiki:books/talking-to-strangers\tbooks/talking-to-strangers#Talking to Strangers
+flashcards	top10/painters.wiki	3;"	vimwiki:top10/painters\ttop10/painters#Painters
 organise	software-procedures/documenting-a-project-w-vimwiki.wiki	8;"	vimwiki:software-procedures/documenting-a-project-w-vimwiki\tsoftware-procedures/documenting-a-project-w-vimwiki#organise
 organise	software-procedures/presentation-tools.wiki	4;"	vimwiki:software-procedures/presentation-tools\tsoftware-procedures/presentation-tools#organise
 present	software-procedures/presentation-tools.wiki	3;"	vimwiki:software-procedures/presentation-tools\tsoftware-procedures/presentation-tools#Presentation Tools
@@ -12,6 +14,7 @@ productivity	software-procedures/documenting-a-project-w-vimwiki.wiki	9;"	vimwik
 programming	software-procedures/documenting-a-project-w-vimwiki.wiki	10;"	vimwiki:software-procedures/documenting-a-project-w-vimwiki\tsoftware-procedures/documenting-a-project-w-vimwiki#programming
 programming	software/python/concurency.wiki	4;"	vimwiki:software/python/concurency\tsoftware/python/concurency#programming
 programming	software/python/keyring-issue.wiki	4;"	vimwiki:software/python/keyring-issue\tsoftware/python/keyring-issue#programming
+programming	software/python/simulate-pushd.wiki	4;"	vimwiki:software/python/simulate-pushd\tsoftware/python/simulate-pushd#programming
 programming	software/python/unittest-runner-script.wiki	4;"	vimwiki:software/python/unittest-runner-script\tsoftware/python/unittest-runner-script#programming
 programming	software/rust/HashMap.wiki	4;"	vimwiki:software/rust/HashMap\tsoftware/rust/HashMap#programming
 programming	software/rust/default-vs-new-method.wiki	4;"	vimwiki:software/rust/default-vs-new-method\tsoftware/rust/default-vs-new-method#programming
@@ -22,6 +25,7 @@ programming	software/rust/pattern-matching-on-slice-patterns.wiki	3;"	vimwiki:so
 programming	software/rust/phantom-data.wiki	3;"	vimwiki:software/rust/phantom-data\tsoftware/rust/phantom-data#On the use of std::marker::PhantomData
 python	software/python/concurency.wiki	3;"	vimwiki:software/python/concurency\tsoftware/python/concurency#Concurrency and AsyncIO
 python	software/python/keyring-issue.wiki	3;"	vimwiki:software/python/keyring-issue\tsoftware/python/keyring-issue#Debugging: Keyring Issue
+python	software/python/simulate-pushd.wiki	3;"	vimwiki:software/python/simulate-pushd\tsoftware/python/simulate-pushd#Simulate pushd using @contextmanager
 python	software/python/unittest-runner-script.wiki	3;"	vimwiki:software/python/unittest-runner-script\tsoftware/python/unittest-runner-script#unittest runner script
 rust	software/rust/HashMap.wiki	3;"	vimwiki:software/rust/HashMap\tsoftware/rust/HashMap#Rust - Examples of std::collections::HashMap
 rust	software/rust/default-vs-new-method.wiki	3;"	vimwiki:software/rust/default-vs-new-method\tsoftware/rust/default-vs-new-method#Default vs New Method of a struct
@@ -30,9 +34,11 @@ rust	software/rust/hashmap.wiki	3;"	vimwiki:software/rust/hashmap\tsoftware/rust
 rust	software/rust/pass-path-as-ref.wiki	3;"	vimwiki:software/rust/pass-path-as-ref\tsoftware/rust/pass-path-as-ref#Pass Path or PathBuf by reference
 rust	software/rust/pattern-matching-on-slice-patterns.wiki	5;"	vimwiki:software/rust/pattern-matching-on-slice-patterns\tsoftware/rust/pattern-matching-on-slice-patterns#rust
 rust	software/rust/phantom-data.wiki	2;"	vimwiki:software/rust/phantom-data\tsoftware/rust/phantom-data#On the use of std::marker::PhantomData
+snippet	software/python/simulate-pushd.wiki	5;"	vimwiki:software/python/simulate-pushd\tsoftware/python/simulate-pushd#snippet
 snippet	software/python/unittest-runner-script.wiki	5;"	vimwiki:software/python/unittest-runner-script\tsoftware/python/unittest-runner-script#snippet
 snippet	software/rust/HashMap.wiki	5;"	vimwiki:software/rust/HashMap\tsoftware/rust/HashMap#snippet
 snippet	software/rust/embedonomicon.wiki	3;"	vimwiki:software/rust/embedonomicon\tsoftware/rust/embedonomicon#Embedonomicon
 snippet	software/rust/hashmap.wiki	5;"	vimwiki:software/rust/hashmap\tsoftware/rust/hashmap#snippet
 snippet	software/rust/pass-path-as-ref.wiki	5;"	vimwiki:software/rust/pass-path-as-ref\tsoftware/rust/pass-path-as-ref#snippet
 snippet	software/rust/pattern-matching-on-slice-patterns.wiki	4;"	vimwiki:software/rust/pattern-matching-on-slice-patterns\tsoftware/rust/pattern-matching-on-slice-patterns#snippet
+top10	top10/painters.wiki	4;"	vimwiki:top10/painters\ttop10/painters#top10

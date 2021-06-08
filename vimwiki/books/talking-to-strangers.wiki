@@ -6,15 +6,14 @@
 
 == Notes ==
 
-* The language of the Aztecs had a `reverential mode`
-
-    A royal figure such as Montezuma would speak in a kind of code, according to
-    a cultural tradition in which the powerful projected their status through an
-    elaborate false humility. The word in Nahuatl for a noble, the historian
-    Matthew Restall points out, is all but identical to the word for child. When
-    a ruler such as Montezuma spoke of himself as small and weak, in other
-    words, he was actually subtly drawing attention to the fact that he was
-    esteemed and powerful.
+* The language of the Aztecs had a `reverential mode`.
+    * A royal figure such as Montezuma would speak in a kind of code, according
+      to a cultural tradition in which the powerful projected their status
+      through an elaborate false humility. The word in _Nahuatl_ for a _noble_, the
+      historian Matthew Restall points out, is all but identical to the word for
+      child. When a ruler such as Montezuma spoke of himself as small and weak,
+      in other words, he was actually subtly drawing attention to the fact that
+      he was esteemed and powerful.
 * The Mountain Climber was one of the most talented people at one of the most
   sophisticated institutions in the world. _Yet he’d been witness three times to humiliating betrayal—first by Fidel Castro, then by the East Germans, and then, at CIA headquarters itself, by a lazy drunk. And if the CIA’s best can be misled so completely, so many times_, then what of the rest of us?
 * Chamberlain was acting on the same assumption that we all follow in our

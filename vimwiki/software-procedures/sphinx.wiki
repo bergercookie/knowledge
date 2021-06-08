@@ -108,8 +108,29 @@ Use `-j` to spawn multiple workers.
     * `make html` or, alternatively
     * `sphinx-build -M html "source" "build"`
 
+* Add link directly to HTML page in `index.rst`:
+
+  {{{rst
+  .. toctree::
+    :maxdepth: 1
+    :caption: API
+
+    Title of Page </path/to/html-doc.html#http://>
+  }}}
+
+  You may have to delete and re-make the output HTML directory for this change
+  to take effect and see the new link in the toctree of all your pages.
+* Include custom css - https://stackoverflow.com/questions/23462494/how-to-add-custom-css-file-to-sphinx
+
+
+  * In your `conf.py`:
+
+    {{{python
+    def setup(app):
+        app.add_css_file('css/custom.css')  # may also be an URL
+    }}}
+  * Then create a file with CSS under `_static/css/custom.css`
+
 == Themes ==
 
 * ReadTheDocs: `pip install sphinx_rtd_theme`
-
-

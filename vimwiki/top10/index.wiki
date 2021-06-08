@@ -7,5 +7,6 @@
 * [[top-movies.wiki|Movies]]
 * [[top-movie-scenes.wiki|Top Movie Scenes]]
 * [[top-music-artists.wiki|Favorite Music Artists]]
+* [[painters.wiki|Painters]]
 * [[top-series.wiki|Top Series]]
 * [[top-podcasts.wiki|Top Podcasts]]

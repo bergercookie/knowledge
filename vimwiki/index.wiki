@@ -3,6 +3,10 @@
 Hi there, this is my knowledge base, at least the portion of it I'm feeling OK
 with making available to the wider public 😉.
 
+There's not a great deal of structure in the following notes. If something
+noteworthy arises though in parts of these note collections, I'll pick it up and
+put it into a proper article with start and finish.
+
 == Robotics ==
 
 * [[software/ros/index.wiki|ROS - Robot Operating System]]
@@ -18,6 +22,7 @@ Software-related articles, cheatsheets and guides
 
 == General ==
 
+* [[activities/index.wiki|Notes on activities (mainly sports)]]
 * [[top10/index.wiki|Top-10 Lists (Music, Movies, Art)]]
 * [[military-service/index.wiki|Greek Military Service]]
 * [[philosophy/index.wiki|Behavioral Psychology, Philosophy, Stoicism and Habits]]

@@ -1,4 +1,5 @@
 = Behavioral Psychology, Philosophy, Stoicism and Habits =
+%title Behavioral Psychology, Philosophy, Stoicism and Habits
 
 Resources and thought with regards to a wide variety of subjects:
 
@@ -33,7 +34,7 @@ the human brain works and what sort of biases and pitfalls we can fall to
 
 == Contents ==
 
-* [[mental-models.wiki|mental-models]]
+* [[mental-models.wiki|Mental Models]]
 * [[school-of-life.wiki|School of Life]]
 * [[inspection-bias.wiki|Inspection Paradox / Bias]]
 * [[stoicism.wiki|Stoisism]]
