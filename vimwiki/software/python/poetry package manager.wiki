@@ -41,6 +41,13 @@
     * Clear the cache!
         * `poetry cache:clear --all `# OR
         * `rm -rf ~/.cache/pypoetry/cache`
+* Poetry seems to be using the wrong python version for my virtualenv, even
+  though I have used pyenv to put the right python version in my path.
+
+  * This was actually solved after installing poetry via its own installer
+    (https://python-poetry.org/docs/)
+  * After this you also probably need to remove the virtuaenv and possibly the
+    `poetry.lock` file
 
 == Questions to Answer ==
 
@@ -134,3 +141,4 @@ def start() -> None:
 def test() -> None:
     check_call(["pytest", "tests/"])
 }}}
+

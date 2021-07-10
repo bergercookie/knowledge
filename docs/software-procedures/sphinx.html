@@ -156,6 +156,9 @@ Configuration file options for sphinx:
 Awesome sphinx: <a href="https://github.com/yoloseem/awesome-sphinxdoc">https://github.com/yoloseem/awesome-sphinxdoc</a>
 
 <li>
+Automatically generate the plots from a list of python plotting files: <a href="https://github.com/sphinx-gallery/sphinx-gallery">https://github.com/sphinx-gallery/sphinx-gallery</a>
+
+<li>
 Cheatsheets
 
 <ul>
@@ -218,6 +221,23 @@ Compile and point breathe to the doxygen xml output:
   sphinx-build -b html -Dbreathe_projects.CatCutifier=xml/ . _build/
 </pre>
 
+<li>
+Important directives added by breathe:
+
+<ul>
+<li>
+<code>doxygenclass</code> Directive      — <a href="https://breathe.readthedocs.io/en/latest/class.html">https://breathe.readthedocs.io/en/latest/class.html</a>
+
+<li>
+<code>doxygenfile</code> Directive       — <a href="https://breathe.readthedocs.io/en/latest/file.html">https://breathe.readthedocs.io/en/latest/file.html</a>
+
+<li>
+<code>doxygenstruct</code> Directive     — <a href="https://breathe.readthedocs.io/en/latest/struct.html">https://breathe.readthedocs.io/en/latest/struct.html</a>
+
+<li>
+<code>doxygennamespace</code> Directive  — <a href="https://breathe.readthedocs.io/en/latest/namespace.html">https://breathe.readthedocs.io/en/latest/namespace.html</a>
+
+</ul>
 </ul>
 <div id="Documenting a codebases or creating technical articles with Sphinx-Document whole project - Doxygen-style"><h2 id="Document whole project - Doxygen-style" class="header"><a href="#Documenting a codebases or creating technical articles with Sphinx-Document whole project - Doxygen-style">Document whole project - Doxygen-style</a></h2></div>
 

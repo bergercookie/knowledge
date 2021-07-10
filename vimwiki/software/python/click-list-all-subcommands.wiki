@@ -1,0 +1,6 @@
+= Click - List all visible, registered subcommands =
+
+{{{python
+# Assumming you have the context...
+list(click.core._complete_visible_commands(ctx, ""))
+}}}

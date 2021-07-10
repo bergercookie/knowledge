@@ -1,0 +1,6 @@
+= SQLlite =
+
+* `sqllite` databases only allow a single connection at the time. So for
+  example, with software like, [[https://apps.ankiweb.net/|Anki]] you are only
+  supposed to have a single connection open and a single tool accessing the DB,
+  even if that's only for read operations.

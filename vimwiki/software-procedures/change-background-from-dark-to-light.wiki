@@ -8,7 +8,7 @@ Make changes in the following places:
 * `colorscheme` in `vimrc` - use `:colorscheme<TAB>` to experiment interactively
 * Airline theme in `vimrc` - Use `:AirlineTheme<TAB>` to experiment
 * `:set background=light` in Vim.
-* colours section in `alacritty.yml` - Put it in `{{{ ... }}}` for easy fold
+* colors section in `alacritty.yml` - Put it in `{{{ ... }}}` for easy fold
   unfold when editing with Vim
 * i3 colors section
   NOTE: Color management and switching is not really maintainable in i3, should

@@ -1,0 +1,89 @@
+= Kubernetes =
+
+:flashcards:
+:software:
+:cloud:
+
+See the accompanying flashcards at: <TODO>
+
+== Definition (wikipedia) ==
+
+Open-source *container-orchestration* system for automating computer application
+deployment, scaling, and management.
+
+It aims to provide a "platform for automating deployment, scaling, and
+operations of application containers across clusters of hosts". It works with a
+range of container tools and runs containers in a cluster, often with images
+built using Docker.
+
+== Intro ==
+
+* In Docker swarms you have:
+    * a docker `master`
+    * and you have docker `workers`
+* In a Kubernetes replication set you have:
+    * a master
+    * `node`s
+
+== Kubernetes Model ==
+
+Kubernetes is a container orchestrator to provision, manage, and scale apps. You
+can use it to manage the lifecycle of containerized apps in a cluster of nodes,
+which is a collection of worker machines such as VMs or physical machines.
+
+Your apps might need many other resources to run, such as volumes, networks, and
+secrets that can help you connect to databases, talk to firewalled back ends,
+and secure keys. With Kubernetes, you can add those resources into your app.
+Infrastructure resources that your apps need are managed declaratively.
+
+The key paradigm of Kubernetes is its declarative model. You provide the state
+that you want and Kubernetes makes it happen. If you need five instances, you
+don't start five separate instances on your own. Instead, you `tell Kubernetes that you need five instances`,
+and Kubernetes automatically reconciles the state. If something goes wrong with
+one of your instances and it fails, Kubernetes still knows the state that you
+want and creates instances on an available node.
+
+=== Inside the K8s master ===
+
+Control Plane:
+
+* API Server
+    * Scheduling
+    * REST Services
+        * Scheduler
+        * `etcd`
+            * Replication Controllers
+
+* A `replica` is a series of `pod`s - all of these are handled by the
+  replication controller
+    * This happens by contacting the API server
+* `etcd` controls the state of K8s.
+    * It tells K8s what node is available, etc.
+    * Distributed Consistent and Watchable key-value store
+* A YAML - fed to the master - defines the desired state of the K8s system.
+
+* `Master` controls `Node`s
+    * `Master` schedules `Pod`s to run inside `Node`s.
+
+== Usages ==
+
+== Q&A ==
+
+What is a Kubernetes `replication set`?
+
+    * I suppose it's the equivalent of a `Docker` Swarm
+
+== Unrelated bits ==
+
+A Volume may span multiple VMs or maybe multiple datacenters
+In Kubernetes we don't really talk about VMs but rather about Nodes
+
+
+
+== Related articles ==
+
+* Applications based on `Heroku` vs `Kubernetes`: https://www.fairwinds.com/blog/heroku-vs.-kubernetes-the-big-differences-you-should-know
+
+== Links ==
+
+* https://www.ibm.com/cloud/architecture/content/course/kubernetes-101/

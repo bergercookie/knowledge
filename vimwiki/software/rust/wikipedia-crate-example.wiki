@@ -1,0 +1,32 @@
+Crate URL: https://seppo0010.github.io/wikipedia-rs/wikipedia/struct.Page.html
+
+* Rather basic parsing of a Wikipedia page. Not really suitable for parsing specific parts of the page
+
+{{{rust
+use http;
+use wikipedia;
+
+fn main() {
+    let wiki = wikipedia::Wikipedia::<wikipedia::http::default::Client>::default();
+    let page = wiki.page_from_title("Gary Lineker".to_owned());
+
+    let refs = page.get_references().unwrap();
+
+    println!("References:\n\n");
+    for ref_ in refs.into_iter() {
+        println!("ref: {:#?}", ref_);
+    }
+
+    let sections = page.get_sections();
+    println!("sections: {:#?}", sections);
+
+    let summary = page.get_summary().unwrap();
+    println!("summary: {:#?}", summary);
+
+    let images = page.get_images().unwrap();
+    println!("Images:\n\n");
+    for img in images.into_iter() {
+        println!("img: {:#?}", img);
+    }
+}
+}}}

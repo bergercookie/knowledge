@@ -1,0 +1,246 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>kubernetes</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="Kubernetes"><h1 id="Kubernetes" class="header"><a href="#Kubernetes">Kubernetes</a></h1></div>
+
+<p>
+<span id="Kubernetes-flashcards"></span><span class="tag" id="flashcards">flashcards</span>
+<span id="Kubernetes-software"></span><span class="tag" id="software">software</span>
+<span id="Kubernetes-cloud"></span><span class="tag" id="cloud">cloud</span>
+</p>
+
+<p>
+See the accompanying flashcards at: &lt;<span class="todo">TODO</span>&gt;
+</p>
+
+<div id="Kubernetes-Definition (wikipedia)"><h2 id="Definition (wikipedia)" class="header"><a href="#Kubernetes-Definition (wikipedia)">Definition (wikipedia)</a></h2></div>
+
+<p>
+Open-source <span id="Kubernetes-Definition (wikipedia)-container-orchestration"></span><strong id="container-orchestration">container-orchestration</strong> system for automating computer application
+deployment, scaling, and management.
+</p>
+
+<p>
+It aims to provide a "platform for automating deployment, scaling, and
+operations of application containers across clusters of hosts". It works with a
+range of container tools and runs containers in a cluster, often with images
+built using Docker.
+</p>
+
+<div id="Kubernetes-Intro"><h2 id="Intro" class="header"><a href="#Kubernetes-Intro">Intro</a></h2></div>
+
+<ul>
+<li>
+In Docker swarms you have:
+
+<ul>
+<li>
+a docker <code>master</code>
+
+<li>
+and you have docker <code>workers</code>
+
+</ul>
+<li>
+In a Kubernetes replication set you have:
+
+<ul>
+<li>
+a master
+
+<li>
+<code>node</code>s
+
+</ul>
+</ul>
+<div id="Kubernetes-Kubernetes Model"><h2 id="Kubernetes Model" class="header"><a href="#Kubernetes-Kubernetes Model">Kubernetes Model</a></h2></div>
+
+<p>
+Kubernetes is a container orchestrator to provision, manage, and scale apps. You
+can use it to manage the lifecycle of containerized apps in a cluster of nodes,
+which is a collection of worker machines such as VMs or physical machines.
+</p>
+
+<p>
+Your apps might need many other resources to run, such as volumes, networks, and
+secrets that can help you connect to databases, talk to firewalled back ends,
+and secure keys. With Kubernetes, you can add those resources into your app.
+Infrastructure resources that your apps need are managed declaratively.
+</p>
+
+<p>
+The key paradigm of Kubernetes is its declarative model. You provide the state
+that you want and Kubernetes makes it happen. If you need five instances, you
+don't start five separate instances on your own. Instead, you <code>tell Kubernetes that you need five instances</code>,
+and Kubernetes automatically reconciles the state. If something goes wrong with
+one of your instances and it fails, Kubernetes still knows the state that you
+want and creates instances on an available node.
+</p>
+
+<div id="Kubernetes-Kubernetes Model-Inside the K8s master"><h3 id="Inside the K8s master" class="header"><a href="#Kubernetes-Kubernetes Model-Inside the K8s master">Inside the K8s master</a></h3></div>
+
+<p>
+Control Plane:
+</p>
+
+<ul>
+<li>
+API Server
+
+<ul>
+<li>
+Scheduling
+
+<li>
+REST Services
+
+<ul>
+<li>
+Scheduler
+
+<li>
+<code>etcd</code>
+
+<ul>
+<li>
+Replication Controllers
+
+</ul>
+</ul>
+</ul>
+<li>
+A <code>replica</code> is a series of <code>pod</code>s - all of these are handled by the
+  replication controller
+
+<ul>
+<li>
+This happens by contacting the API server
+
+</ul>
+<li>
+<code>etcd</code> controls the state of K8s.
+
+<ul>
+<li>
+It tells K8s what node is available, etc.
+
+<li>
+Distributed Consistent and Watchable key-value store
+
+</ul>
+<li>
+A YAML - fed to the master - defines the desired state of the K8s system.
+
+<li>
+<code>Master</code> controls <code>Node</code>s
+
+<ul>
+<li>
+<code>Master</code> schedules <code>Pod</code>s to run inside <code>Node</code>s.
+
+</ul>
+</ul>
+<div id="Kubernetes-Usages"><h2 id="Usages" class="header"><a href="#Kubernetes-Usages">Usages</a></h2></div>
+
+<div id="Kubernetes-Q&amp;A"><h2 id="Q&amp;A" class="header"><a href="#Kubernetes-Q&amp;A">Q&amp;A</a></h2></div>
+
+<p>
+What is a Kubernetes <code>replication set</code>?
+</p>
+
+<ul>
+<li>
+I suppose it's the equivalent of a <code>Docker</code> Swarm
+
+</ul>
+<div id="Kubernetes-Unrelated bits"><h2 id="Unrelated bits" class="header"><a href="#Kubernetes-Unrelated bits">Unrelated bits</a></h2></div>
+
+<p>
+A Volume may span multiple VMs or maybe multiple datacenters
+In Kubernetes we don't really talk about VMs but rather about Nodes
+</p>
+
+
+
+<div id="Kubernetes-Related articles"><h2 id="Related articles" class="header"><a href="#Kubernetes-Related articles">Related articles</a></h2></div>
+
+<ul>
+<li>
+Applications based on <code>Heroku</code> vs <code>Kubernetes</code>: <a href="https://www.fairwinds.com/blog/heroku-vs.-kubernetes-the-big-differences-you-should-know">https://www.fairwinds.com/blog/heroku-vs.-kubernetes-the-big-differences-you-should-know</a>
+
+</ul>
+<div id="Kubernetes-Links"><h2 id="Links" class="header"><a href="#Kubernetes-Links">Links</a></h2></div>
+
+<ul>
+<li>
+<a href="https://www.ibm.com/cloud/architecture/content/course/kubernetes-101/">https://www.ibm.com/cloud/architecture/content/course/kubernetes-101/</a>
+
+</ul>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

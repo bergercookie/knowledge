@@ -1,0 +1,78 @@
+= Copy Your Data to New Disk =
+
+== Premise ==
+
+I have almost filled my 500GB m2 SATA III drive. I want to move them to a 1TB
+drive instead. All the data of the disk is stored in two partitions. One holds
+`/boot` and the other one holds `/`, which is also the main drive. `/` is also
+an LVM parition, resizing it to use the new size should be straightforward
+
+== Procedure ==
+
+* Buy an m2 SATA III case enclosure and mount your new disk as an external drive
+  on your laptop.
+* Boot your machine using a live USB on which you have tools like `dd` and
+  `gparted` installed.
+* Copy all your data from one disk to the other using `dd`. This will preserve
+  all your partitions without any manual tinkering. I used the following command
+  to do so:
+
+  {{{sh
+  $ dd if=/dev/sda of=/dev/sdb  conv=notrunc,noerror status=progress
+  }}}
+
+* Open gparted and expand your extended partition to use the whole size.
+* Then expand the LVM partition (that's inside the extended) to use the newly
+  available size given to the extended partition in the previous step
+* Now replace the disk with the new one, and boot the system. This should work
+  and you should get the exact same system as before.
+
+However, at this point, your newly available size should still not be available,
+and you can verify that using `df -h /`.
+
+This is because, as an answer in SO explains:
+
+> You are using LVM so when you resized the partition, you just increased the size of the `LVM physical volume`. That space is then allocated to logical volumes.
+
+To expand the logical volume to take up the full size...
+{{{sh
+$ sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-root
+
+Size of logical volume ubuntu-vg/root changed from <460.65 GiB (117926 extents) to 915.22 GiB (234297 extents).
+Logical volume ubuntu-vg/root successfully resized.
+}}}
+
+Then you have to use `resize2fs` to use the expanded logical volume.
+
+According to the latter's manpage:
+
+> The  resize2fs  program will resize ext2, ext3, or ext4 file systems.  It can be used to enlarge or shrink an unmounted file system located on device.  If the filesystem is mounted, it can be used to expand the size of the mounted filesystem, assuming the kernel and the file system supports on-line resizing.   (Mod‐ ern  Linux  2.6  kernels will support on-line resize for file systems mounted using ext3 and ext4; ext3 file systems will require the use of file systems with the resize_inode feature enabled.)
+
+And also:
+
+> The  resize2fs program does not manipulate the size of partitions.  If you wish to enlarge a filesystem, you must make sure you can expand the size of the un‐ derlying partition first.  This can be done using fdisk(8) by deleting the partition and recreating it with a larger size or using lvextend(8), if you're  us‐ ing the logical volume manager lvm(8).  When recreating the partition, make sure you create it with the same starting disk cylinder as before!  Otherwise, the resize operation will certainly not work, and you may lose your entire filesystem.  After running fdisk(8), run resize2fs to resize the ext2 filesystem to use all of the space in the newly enlarged partition.
+
+So using `resize2fs`:
+
+{{{sh
+$ resize2fs /dev/mapper/ubuntu--vg-root
+resize2fs 1.45.5 (07-Jan-2020)
+Filesystem at /dev/mapper/ubuntu--vg-root is mounted on /; online resizing required
+old_desc_blocks = 29, new_desc_blocks = 58
+The filesystem on /dev/mapper/ubuntu--vg-root is now 239920128 (4k) blocks long.
+}}}
+
+And after that, `df -h /` should list the full size that you have available.
+
+To understand why all these operations are necessary take a look at the LVM
+stack and how it interacts with the actual disks and partiitons, here's an
+explanatory picture of this:
+
+{{https://www.brainupdaters.net/wp-content/uploads/2017/01/LogicalVolumenManager.jpg}}
+
+== Related Links ==
+
+* https://access.redhat.com/solutions/44089
+* https://superuser.com/questions/991254/ubuntu-disk-space-increase-in-an-lvm-group-is-not-being-reflected-in-the-os
+* https://www.brainupdaters.net/ca/brief-introduction-logical-volumes-lv-concept-example-application/
+  * This has a very nice diagramzz

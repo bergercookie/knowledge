@@ -43,6 +43,7 @@ objects in general, after running sphinx-quickstart you need to run
 * Configuration file options for sphinx:
   http://www.sphinx-doc.org/en/stable/config.html
 * Awesome sphinx: https://github.com/yoloseem/awesome-sphinxdoc
+* Automatically generate the plots from a list of python plotting files: https://github.com/sphinx-gallery/sphinx-gallery
 * Cheatsheets
     * http://www.sphinx-doc.org/en/stable/domains.html#id2
     * https://pythonhosted.org/an_example_pypi_project/sphinx.html
@@ -76,6 +77,11 @@ Source: https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#more-abou
   doxygen
   sphinx-build -b html -Dbreathe_projects.CatCutifier=xml/ . _build/
   }}}
+* Important directives added by breathe:
+  * `doxygenclass` Directive      — https://breathe.readthedocs.io/en/latest/class.html
+  * `doxygenfile` Directive       — https://breathe.readthedocs.io/en/latest/file.html
+  * `doxygenstruct` Directive     — https://breathe.readthedocs.io/en/latest/struct.html
+  * `doxygennamespace` Directive  — https://breathe.readthedocs.io/en/latest/namespace.html
 
 == Document whole project - Doxygen-style ==
 

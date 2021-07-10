@@ -1,6 +1,8 @@
 = Top 10 Paintings =
 
-1. View of Toledo - El Greco
-1. The Angelus - Jean Francois Millet
-1. Portrait of Dr. Gachet - Vincent Van Gogh - 1890
-1. Torture of St. Anthony - Matthias Grunewald - 1512-1516
+1. Landscape with the Fall of Icarus - Bruegel the Elder
+2. Christ of Saint John of the Cross - Salvador Dali
+3. View of Toledo - El Greco
+4. The Angelus - Jean Francois Millet
+5. Portrait of Dr. Gachet - Vincent Van Gogh - 1890
+6. Torture of St. Anthony - Matthias Grunewald - 1512-1516

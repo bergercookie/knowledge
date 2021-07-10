@@ -1,0 +1,22 @@
+= Iterators vs Generators =
+
+Got the answer from SO (https://stackoverflow.com/questions/56544823/whats-the-difference-between-mypy-iterators-and-generators).
+
+Notice that:
+
+* Iterators only have two methods: __next__ and __iter__ but generators have many more.
+* Generators are a subtype of Iterators -- every single Generator is also an Iterator, but not vice-versa.
+
+But what does this mean on a high-level?
+
+Well, in short, with iterators, the flow of information is `one-way only`. When
+you have an iterator, all you can really do call the `__next__` method to get the
+very next value to be yielded.
+
+In contrast, the flow of information with generators is `bidirectional`: you can
+send information back into the generator via the `send` method.
+
+That's what the other two type parameters are for, actually -- when you do
+Generator[A, B, C], you're stating that the values you yield are of type A, the
+values you send into the generator are of type B, and the value that you return
+from the generator are of type C.

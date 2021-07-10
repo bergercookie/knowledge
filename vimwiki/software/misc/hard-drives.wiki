@@ -1,0 +1,10 @@
+= Hard Drives =
+
+:hardware:
+:linux:
+
+== Get Information about your hard drive on linux ==
+
+E.g., vendor, serial number
+
+* `sudo lshw -class disk`

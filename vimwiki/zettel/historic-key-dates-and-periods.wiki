@@ -1,0 +1,10 @@
+= Historic Key Dates and Periods =
+
+:history:
+:dates:
+:periods:
+
+* `2.5M BC - 3000 BC` - Stone Age
+* `3000 BC - 1300 BC` - Bronze Age
+* `1300 BC - 600  BC` - Iron Age
+* `600  BC - 323  BC` - Classical Age (?)

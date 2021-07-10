@@ -1,13 +1,13 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>change-background-from-dark-to-light</title>
+    <title>mypy-annotate-self-class-itself</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
     <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
     <meta name="author" content="Bergercookie's thoughtstream" />
-    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
   </head>
 
   <body>
@@ -56,40 +56,33 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="Change Background/Colorscheme from Dark to Light in your dev environment"><h1 id="Change Background/Colorscheme from Dark to Light in your dev environment" class="header"><a href="#Change Background/Colorscheme from Dark to Light in your dev environment">Change Background/Colorscheme from Dark to Light in your dev environment</a></h1></div>
+<div id="mypy - annotate self class itself"><h1 id="mypy - annotate self class itself" class="header"><a href="#mypy - annotate self class itself">mypy - annotate self class itself</a></h1></div>
 
 <p>
-A must-have if working with your laptop outdoors, with the sun hitting directly
-on your screen
+<span id="mypy - annotate self class itself-python"></span><span class="tag" id="python">python</span>
+<span id="mypy - annotate self class itself-snippet"></span><span class="tag" id="snippet">snippet</span>
 </p>
 
 <p>
-Make changes in the following places:
+This is for Python &lt;= 3.6. After that you can just use the class name with <code>from __future__ import annotations</code>
 </p>
 
-<ul>
-<li>
-<code>colorscheme</code> in <code>vimrc</code> - use <code>:colorscheme&lt;TAB&gt;</code> to experiment interactively
+<p>
+<a href="https://stackoverflow.com/questions/44640479/mypy-annotation-for-classmethod-returning-instance">https://stackoverflow.com/questions/44640479/mypy-annotation-for-classmethod-returning-instance</a>
+</p>
 
-<li>
-Airline theme in <code>vimrc</code> - Use <code>:AirlineTheme&lt;TAB&gt;</code> to experiment
+<p>
+T = TypeVar('T', bound='Parent')
+</p>
 
-<li>
-<code>:set background=light</code> in Vim.
+<p>
+e.g., for a class method:
+</p>
 
-<li>
-colors section in <code>alacritty.yml</code> - Put it in <code>{{{ ... }}}</code> for easy fold
-  unfold when editing with Vim
-
-<li>
-i3 colors section
-  NOTE: Color management and switching is not really maintainable in i3, should
-  either skip this altogether, or find a plugin / another way of doing it.
-
-<li>
-BG in tmux (No real need for this in the end)
-
-</ul>
+<pre python>
+:classmethod:
+def with_stuff_appended(cls: Type[T], bar: str) -&gt; T:
+</pre>
 
       </div>
     <div class="wrapper-footer">

@@ -1,0 +1,13 @@
+= Fetch hardware information - Linux =
+
+:hardware:
+:linux:
+
+* `hwinfo --cpu`
+* `dmidecode`
+* `cat /proc/cpuinfo`
+* `uname -a` (what architectures does the kernel support)
+* `lshw`
+* `getconf`
+
+Sources: https://unix.stackexchange.com/questions/77718/32-bit-64-bit-cpu-op-mode-on-linux

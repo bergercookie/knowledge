@@ -1,0 +1,206 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>copy-your-data-to-new-disk</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="Copy Your Data to New Disk"><h1 id="Copy Your Data to New Disk" class="header"><a href="#Copy Your Data to New Disk">Copy Your Data to New Disk</a></h1></div>
+
+<div id="Copy Your Data to New Disk-Premise"><h2 id="Premise" class="header"><a href="#Copy Your Data to New Disk-Premise">Premise</a></h2></div>
+
+<p>
+I have almost filled my 500GB m2 SATA III drive. I want to move them to a 1TB
+drive instead. All the data of the disk is stored in two partitions. One holds
+<code>/boot</code> and the other one holds <code>/</code>, which is also the main drive. <code>/</code> is also
+an LVM parition, resizing it to use the new size should be straightforward
+</p>
+
+<div id="Copy Your Data to New Disk-Procedure"><h2 id="Procedure" class="header"><a href="#Copy Your Data to New Disk-Procedure">Procedure</a></h2></div>
+
+<ul>
+<li>
+Buy an m2 SATA III case enclosure and mount your new disk as an external drive
+  on your laptop.
+
+<li>
+Boot your machine using a live USB on which you have tools like <code>dd</code> and
+  <code>gparted</code> installed.
+
+<li>
+Copy all your data from one disk to the other using <code>dd</code>. This will preserve
+  all your partitions without any manual tinkering. I used the following command
+  to do so:
+<pre sh>
+  $ dd if=/dev/sda of=/dev/sdb  conv=notrunc,noerror status=progress
+</pre>
+
+<li>
+Open gparted and expand your extended partition to use the whole size.
+
+<li>
+Then expand the LVM partition (that's inside the extended) to use the newly
+  available size given to the extended partition in the previous step
+
+<li>
+Now replace the disk with the new one, and boot the system. This should work
+  and you should get the exact same system as before.
+
+</ul>
+<p>
+However, at this point, your newly available size should still not be available,
+and you can verify that using <code>df -h /</code>.
+</p>
+
+<p>
+This is because, as an answer in SO explains:
+</p>
+
+<blockquote>
+<p>
+ You are using LVM so when you resized the partition, you just increased the size of the <code>LVM physical volume</code>. That space is then allocated to logical volumes.
+
+</p></blockquote>
+</pre></code>
+<p>
+To expand the logical volume to take up the full size...
+</p>
+<pre sh>
+$ sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-root
+
+Size of logical volume ubuntu-vg/root changed from &lt;460.65 GiB (117926 extents) to 915.22 GiB (234297 extents).
+Logical volume ubuntu-vg/root successfully resized.
+</pre>
+
+<p>
+Then you have to use <code>resize2fs</code> to use the expanded logical volume.
+</p>
+
+<p>
+According to the latter's manpage:
+</p>
+
+<blockquote>
+<p>
+ The  resize2fs  program will resize ext2, ext3, or ext4 file systems.  It can be used to enlarge or shrink an unmounted file system located on device.  If the filesystem is mounted, it can be used to expand the size of the mounted filesystem, assuming the kernel and the file system supports on-line resizing.   (Mod‐ ern  Linux  2.6  kernels will support on-line resize for file systems mounted using ext3 and ext4; ext3 file systems will require the use of file systems with the resize_inode feature enabled.)
+
+</p></blockquote>
+</pre></code>
+<p>
+And also:
+</p>
+
+<blockquote>
+<p>
+ The  resize2fs program does not manipulate the size of partitions.  If you wish to enlarge a filesystem, you must make sure you can expand the size of the un‐ derlying partition first.  This can be done using fdisk(8) by deleting the partition and recreating it with a larger size or using lvextend(8), if you're  us‐ ing the logical volume manager lvm(8).  When recreating the partition, make sure you create it with the same starting disk cylinder as before!  Otherwise, the resize operation will certainly not work, and you may lose your entire filesystem.  After running fdisk(8), run resize2fs to resize the ext2 filesystem to use all of the space in the newly enlarged partition.
+
+</p></blockquote>
+</pre></code>
+<p>
+So using <code>resize2fs</code>:
+</p>
+
+<pre sh>
+$ resize2fs /dev/mapper/ubuntu--vg-root
+resize2fs 1.45.5 (07-Jan-2020)
+Filesystem at /dev/mapper/ubuntu--vg-root is mounted on /; online resizing required
+old_desc_blocks = 29, new_desc_blocks = 58
+The filesystem on /dev/mapper/ubuntu--vg-root is now 239920128 (4k) blocks long.
+</pre>
+
+<p>
+And after that, <code>df -h /</code> should list the full size that you have available.
+</p>
+
+<p>
+To understand why all these operations are necessary take a look at the LVM
+stack and how it interacts with the actual disks and partiitons, here's an
+explanatory picture of this:
+</p>
+
+<p>
+<img src="https://www.brainupdaters.net/wp-content/uploads/2017/01/LogicalVolumenManager.jpg" />
+</p>
+
+<div id="Copy Your Data to New Disk-Related Links"><h2 id="Related Links" class="header"><a href="#Copy Your Data to New Disk-Related Links">Related Links</a></h2></div>
+
+<ul>
+<li>
+<a href="https://access.redhat.com/solutions/44089">https://access.redhat.com/solutions/44089</a>
+
+<li>
+<a href="https://superuser.com/questions/991254/ubuntu-disk-space-increase-in-an-lvm-group-is-not-being-reflected-in-the-os">https://superuser.com/questions/991254/ubuntu-disk-space-increase-in-an-lvm-group-is-not-being-reflected-in-the-os</a>
+
+<li>
+<a href="https://www.brainupdaters.net/ca/brief-introduction-logical-volumes-lv-concept-example-application/">https://www.brainupdaters.net/ca/brief-introduction-logical-volumes-lv-concept-example-application/</a>
+
+<ul>
+<li>
+This has a very nice diagramzz
+
+</ul>
+</ul>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

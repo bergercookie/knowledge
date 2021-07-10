@@ -1,0 +1,17 @@
+= mypy - annotate self class itself =
+
+:python:
+:snippet:
+
+This is for Python <= 3.6. After that you can just use the class name with `from __future__ import annotations`
+
+https://stackoverflow.com/questions/44640479/mypy-annotation-for-classmethod-returning-instance
+
+T = TypeVar('T', bound='Parent')
+
+e.g., for a class method:
+
+{{{python
+:classmethod:
+def with_stuff_appended(cls: Type[T], bar: str) -> T:
+}}}

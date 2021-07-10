@@ -1,4 +1,9 @@
 = Mocking in Python =
+
+== Links ==
+
+* Mocking the `name` attribute: https://bradmontgomery.net/blog/how-world-do-you-mock-name-attribute/
+
 == Mocking subprocess.Popen calls ==
 
 Use `testfixtures` and `mock`: https://testfixtures.readthedocs.io/en/latest/popen.html
