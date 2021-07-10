@@ -19,6 +19,10 @@ Software-related articles, cheatsheets and guides
 * [[software/python/index.wiki|The Python Programming Language]]
 * [[software/c-programming/index.wiki|The C Programming Language]]
 * [[software-procedures/index.wiki|Software Procedures]]
+* [[software/cloud/index.wiki|Cloud-related Notes]]
+* [[software/misc/index.wiki|Software-related miscellaneous Notes]]
+* [[software/misc/index.wiki|Software-related miscellaneous Notes]]
+* [[software/sql/index.wiki|SQL-related Notes]]
 
 == General ==
 
