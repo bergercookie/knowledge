@@ -1,5 +1,6 @@
-Crate URL: https://seppo0010.github.io/wikipedia-rs/wikipedia/struct.Page.html
+= Example usage of the wikipedia crate =
 
+* Crate URL: https://seppo0010.github.io/wikipedia-rs/wikipedia/struct.Page.html
 * Rather basic parsing of a Wikipedia page. Not really suitable for parsing specific parts of the page
 
 {{{rust

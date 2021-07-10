@@ -12,6 +12,7 @@ A collection of snippets, examples and thoughts regarding `Rust`.
 * [[pattern-matching-on-slice-patterns.wiki|pattern matching on slice patterns.rs]]
 * [[associated-types.wiki|rust_associated_types]]
 * [[too-many-linked-lists.wiki|linked-lists]]
+* [[wikipedia-crate-example.wiki|Example usage of the wikipedia crate]]
 * [[wasm.wiki|Rust and Web Assembly]]
 * [[embedonomicon.wiki|Embedonomicon]]
 * [[module-system.wiki|Rust Module System]]
