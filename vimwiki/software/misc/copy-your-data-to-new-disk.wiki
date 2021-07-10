@@ -75,4 +75,3 @@ explanatory picture of this:
 * https://access.redhat.com/solutions/44089
 * https://superuser.com/questions/991254/ubuntu-disk-space-increase-in-an-lvm-group-is-not-being-reflected-in-the-os
 * https://www.brainupdaters.net/ca/brief-introduction-logical-volumes-lv-concept-example-application/
-  * This has a very nice diagramzz
