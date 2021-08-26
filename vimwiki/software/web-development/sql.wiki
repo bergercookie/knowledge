@@ -26,7 +26,7 @@ Links:
 
   Solution:
 
-  `select camera_id from (select distinct on (camera_id) * from "owen@slamcore.com".session_metadata ORDER BY camera_id, start_timestamp_ns DESC) t ORDER by start_timestamp_ns DESC`
+  `select some_id from (select distinct on (some_id) * from "user-table@gmail.com".session_metadata ORDER BY some_id, some_column DESC) t ORDER by some_column DESC`
 
 === Commands ===
 

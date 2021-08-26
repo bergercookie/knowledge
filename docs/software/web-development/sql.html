@@ -107,7 +107,7 @@ Enable logging for queries: <a href="https://tableplus.com/blog/2018/10/how-to-s
   elements needs to be preserved while removing duplicates, the function can be
   designed like the following: (should work from 9.4 onwards)
   Solution:
-  <code>select camera_id from (select distinct on (camera_id) * from "owen@slamcore.com".session_metadata ORDER BY camera_id, start_timestamp_ns DESC) t ORDER by start_timestamp_ns DESC</code>
+  <code>select some_id from (select distinct on (some_id) * from "user-table@gmail.com".session_metadata ORDER BY some_id, some_column DESC) t ORDER by some_column DESC</code>
 
 </ul>
 <div id="SQL-PostgreSQL-Commands"><h3 id="Commands" class="header"><a href="#SQL-PostgreSQL-Commands">Commands</a></h3></div>
