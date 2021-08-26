@@ -1,4 +1,4 @@
-= NPM - Yarn=
+= NPM - Yarn =
 
 :snippet:
 :programming:
