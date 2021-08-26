@@ -1,4 +1,7 @@
-= npm / yarn=
+= NPM - Yarn=
+
+:snippet:
+:programming:
 
 === Update dependencies in package.json ===
 
