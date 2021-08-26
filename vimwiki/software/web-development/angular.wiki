@@ -1,4 +1,4 @@
-= angular =
+= The Angular Javscript Framework =
 
 * Angular vs React: https://www.cleveroad.com/blog/angular-vs-react
   * React comes on top.

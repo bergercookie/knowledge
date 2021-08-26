@@ -1,6 +1,7 @@
-= snippets =
+= Angular Snippets =
 
 :snippet:
+:programming:
 
 == Sample component directory structure ==
 

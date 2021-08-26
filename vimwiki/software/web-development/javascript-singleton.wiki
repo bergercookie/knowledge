@@ -1,4 +1,4 @@
-= Singleton.ts =
+= JavaScript/Typescript Singleton =
 
 :snippet:
 :programming:

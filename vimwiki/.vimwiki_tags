@@ -47,6 +47,9 @@ programming	software/rust/hashmap.wiki	4;"	vimwiki:software/rust/hashmap\tsoftwa
 programming	software/rust/pass-path-as-ref.wiki	4;"	vimwiki:software/rust/pass-path-as-ref\tsoftware/rust/pass-path-as-ref#programming
 programming	software/rust/pattern-matching-on-slice-patterns.wiki	3;"	vimwiki:software/rust/pattern-matching-on-slice-patterns\tsoftware/rust/pattern-matching-on-slice-patterns#pattern matching on slice patterns.rs
 programming	software/rust/phantom-data.wiki	3;"	vimwiki:software/rust/phantom-data\tsoftware/rust/phantom-data#On the use of std::marker::PhantomData
+programming	software/web-development/angular-snippets.wiki	4;"	vimwiki:software/web-development/angular-snippets\tsoftware/web-development/angular-snippets#programming
+programming	software/web-development/javascript-deno-call-subprocess.ts.wiki	4;"	vimwiki:software/web-development/javascript-deno-call-subprocess.ts\tsoftware/web-development/javascript-deno-call-subprocess.ts#programming
+programming	software/web-development/javascript-singleton.wiki	4;"	vimwiki:software/web-development/javascript-singleton\tsoftware/web-development/javascript-singleton#programming
 programming	software/web-development/npm-yarn.wiki	4;"	vimwiki:software/web-development/npm-yarn\tsoftware/web-development/npm-yarn#programming
 python	software/python/concurency.wiki	3;"	vimwiki:software/python/concurency\tsoftware/python/concurency#Concurrency and AsyncIO
 python	software/python/debugging.wiki	2;"	vimwiki:software/python/debugging\tsoftware/python/debugging#Debugging Tools
@@ -79,6 +82,9 @@ snippet	software/rust/embedonomicon.wiki	3;"	vimwiki:software/rust/embedonomicon
 snippet	software/rust/hashmap.wiki	5;"	vimwiki:software/rust/hashmap\tsoftware/rust/hashmap#snippet
 snippet	software/rust/pass-path-as-ref.wiki	5;"	vimwiki:software/rust/pass-path-as-ref\tsoftware/rust/pass-path-as-ref#snippet
 snippet	software/rust/pattern-matching-on-slice-patterns.wiki	4;"	vimwiki:software/rust/pattern-matching-on-slice-patterns\tsoftware/rust/pattern-matching-on-slice-patterns#snippet
+snippet	software/web-development/angular-snippets.wiki	3;"	vimwiki:software/web-development/angular-snippets\tsoftware/web-development/angular-snippets#Angular Snippets
+snippet	software/web-development/javascript-deno-call-subprocess.ts.wiki	3;"	vimwiki:software/web-development/javascript-deno-call-subprocess.ts\tsoftware/web-development/javascript-deno-call-subprocess.ts#Deno call a Subprocess
+snippet	software/web-development/javascript-singleton.wiki	3;"	vimwiki:software/web-development/javascript-singleton\tsoftware/web-development/javascript-singleton#JavaScript/Typescript Singleton
 snippet	software/web-development/npm-yarn.wiki	3;"	vimwiki:software/web-development/npm-yarn\tsoftware/web-development/npm-yarn#NPM - Yarn
 software	software/cloud/kubernetes.wiki	4;"	vimwiki:software/cloud/kubernetes\tsoftware/cloud/kubernetes#software
 top10	top10/painters.wiki	4;"	vimwiki:top10/painters\ttop10/painters#top10

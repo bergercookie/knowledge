@@ -5,12 +5,12 @@ HTML, CSS, and languages used in the web
 
 == Contents ==
 
-* [[angular.wiki|angular]]
+* [[angular.wiki|The Angular Javscript Framework]]
 * [[html.wiki|HTML]]
 * [[npm-yarn.wiki|NPM - Yarn]]
 * [[sql.wiki|SQL]]
 * [[nodejs.wiki|NodeJS]]
-* [[javascript-deno-call-subprocess.ts.wiki|deno-call-subprocess.ts]]
-* [[angular-snippets.wiki|snippets]]
-* [[javascript-singleton.wiki|Singleton.ts]]
+* [[javascript-deno-call-subprocess.ts.wiki|Deno call a Subprocess]]
+* [[angular-snippets.wiki|Angular Snippets]]
+* [[javascript-singleton.wiki|JavaScript/Typescript Singleton]]
 * [[REST APIs.wiki|REST APIs]]
