@@ -7,13 +7,21 @@
 !_TAG_PROGRAM_VERSION	2.5
 book	books/talking-to-strangers.wiki	2;"	vimwiki:books/talking-to-strangers\tbooks/talking-to-strangers#Talking to Strangers
 cloud	software/cloud/kubernetes.wiki	5;"	vimwiki:software/cloud/kubernetes\tsoftware/cloud/kubernetes#cloud
+cpp	software/java/java-vs-cpp.wiki	4;"	vimwiki:software/java/java-vs-cpp\tsoftware/java/java-vs-cpp#cpp
+crypto	software/misc/crypto-hashing-passwords-server-client.wiki	4;"	vimwiki:software/misc/crypto-hashing-passwords-server-client\tsoftware/misc/crypto-hashing-passwords-server-client#crypto
+crypto	software/misc/security-q-a.wiki	4;"	vimwiki:software/misc/security-q-a\tsoftware/misc/security-q-a#crypto
 dates	zettel/historic-key-dates-and-periods.wiki	4;"	vimwiki:zettel/historic-key-dates-and-periods\tzettel/historic-key-dates-and-periods#dates
+decorator	software/python/simple-decorator.wiki	5;"	vimwiki:software/python/simple-decorator\tsoftware/python/simple-decorator#decorator
+decorator	software/python/simple-decorator.wiki	5;"	vimwiki:software/python/simple-decorator\tsoftware/python/simple-decorator#decorator
 flashcards	software/cloud/kubernetes.wiki	3;"	vimwiki:software/cloud/kubernetes\tsoftware/cloud/kubernetes#Kubernetes
 flashcards	top10/painters.wiki	3;"	vimwiki:top10/painters\ttop10/painters#Painters
 flashcards	zettel/the-angelus-jean-francois-millet.wiki	4;"	vimwiki:zettel/the-angelus-jean-francois-millet\tzettel/the-angelus-jean-francois-millet#flashcards
 hardware	software/misc/fetch-hardware-information.wiki	3;"	vimwiki:software/misc/fetch-hardware-information\tsoftware/misc/fetch-hardware-information#Fetch hardware information - Linux
 hardware	software/misc/hard-drives.wiki	3;"	vimwiki:software/misc/hard-drives\tsoftware/misc/hard-drives#Hard Drives
 history	zettel/historic-key-dates-and-periods.wiki	3;"	vimwiki:zettel/historic-key-dates-and-periods\tzettel/historic-key-dates-and-periods#Historic Key Dates and Periods
+java	software/java/find-size-of-a-data-type.wiki	3;"	vimwiki:software/java/find-size-of-a-data-type\tsoftware/java/find-size-of-a-data-type#Find size of a primitive data type
+java	software/java/index.wiki	3;"	vimwiki:software/java/index\tsoftware/java/index#Java Programming Language
+java	software/java/java-vs-cpp.wiki	3;"	vimwiki:software/java/java-vs-cpp\tsoftware/java/java-vs-cpp#Java vs CPP and Conclusions
 linux	software/misc/fetch-hardware-information.wiki	4;"	vimwiki:software/misc/fetch-hardware-information\tsoftware/misc/fetch-hardware-information#linux
 linux	software/misc/hard-drives.wiki	4;"	vimwiki:software/misc/hard-drives\tsoftware/misc/hard-drives#linux
 organise	software-procedures/documenting-a-project-w-vimwiki.wiki	8;"	vimwiki:software-procedures/documenting-a-project-w-vimwiki\tsoftware-procedures/documenting-a-project-w-vimwiki#organise
@@ -23,7 +31,11 @@ periods	zettel/historic-key-dates-and-periods.wiki	5;"	vimwiki:zettel/historic-k
 present	software-procedures/presentation-tools.wiki	3;"	vimwiki:software-procedures/presentation-tools\tsoftware-procedures/presentation-tools#Presentation Tools
 productivity	software-procedures/documenting-a-project-w-vimwiki.wiki	9;"	vimwiki:software-procedures/documenting-a-project-w-vimwiki\tsoftware-procedures/documenting-a-project-w-vimwiki#productivity
 programming	software-procedures/documenting-a-project-w-vimwiki.wiki	10;"	vimwiki:software-procedures/documenting-a-project-w-vimwiki\tsoftware-procedures/documenting-a-project-w-vimwiki#programming
+programming	software/java/find-size-of-a-data-type.wiki	4;"	vimwiki:software/java/find-size-of-a-data-type\tsoftware/java/find-size-of-a-data-type#programming
+programming	software/java/index.wiki	4;"	vimwiki:software/java/index\tsoftware/java/index#programming
+programming	software/java/java-vs-cpp.wiki	5;"	vimwiki:software/java/java-vs-cpp\tsoftware/java/java-vs-cpp#programming
 programming	software/python/concurency.wiki	4;"	vimwiki:software/python/concurency\tsoftware/python/concurency#programming
+programming	software/python/debugging.wiki	3;"	vimwiki:software/python/debugging\tsoftware/python/debugging#Debugging Tools
 programming	software/python/keyring-issue.wiki	4;"	vimwiki:software/python/keyring-issue\tsoftware/python/keyring-issue#programming
 programming	software/python/poetry package manager.wiki	4;"	vimwiki:software/python/poetry package manager\tsoftware/python/poetry package manager#programming
 programming	software/python/simulate-pushd.wiki	4;"	vimwiki:software/python/simulate-pushd\tsoftware/python/simulate-pushd#programming
@@ -36,8 +48,12 @@ programming	software/rust/pass-path-as-ref.wiki	4;"	vimwiki:software/rust/pass-p
 programming	software/rust/pattern-matching-on-slice-patterns.wiki	3;"	vimwiki:software/rust/pattern-matching-on-slice-patterns\tsoftware/rust/pattern-matching-on-slice-patterns#pattern matching on slice patterns.rs
 programming	software/rust/phantom-data.wiki	3;"	vimwiki:software/rust/phantom-data\tsoftware/rust/phantom-data#On the use of std::marker::PhantomData
 python	software/python/concurency.wiki	3;"	vimwiki:software/python/concurency\tsoftware/python/concurency#Concurrency and AsyncIO
+python	software/python/debugging.wiki	2;"	vimwiki:software/python/debugging\tsoftware/python/debugging#Debugging Tools
+python	software/python/functools.wiki	3;"	vimwiki:software/python/functools\tsoftware/python/functools#functools
+python	software/python/functools.wiki	3;"	vimwiki:software/python/functools\tsoftware/python/functools#functools
 python	software/python/keyring-issue.wiki	3;"	vimwiki:software/python/keyring-issue\tsoftware/python/keyring-issue#Debugging: Keyring Issue
 python	software/python/poetry package manager.wiki	3;"	vimwiki:software/python/poetry package manager\tsoftware/python/poetry package manager#Poetry Package Manager
+python	software/python/simple-decorator.wiki	5;"	vimwiki:software/python/simple-decorator\tsoftware/python/simple-decorator#python
 python	software/python/simulate-pushd.wiki	3;"	vimwiki:software/python/simulate-pushd\tsoftware/python/simulate-pushd#Simulate pushd using @contextmanager
 python	software/python/unittest-runner-script.wiki	3;"	vimwiki:software/python/unittest-runner-script\tsoftware/python/unittest-runner-script#unittest runner script
 rust	software/rust/HashMap.wiki	3;"	vimwiki:software/rust/HashMap\tsoftware/rust/HashMap#Rust - Examples of std::collections::HashMap
@@ -47,6 +63,14 @@ rust	software/rust/hashmap.wiki	3;"	vimwiki:software/rust/hashmap\tsoftware/rust
 rust	software/rust/pass-path-as-ref.wiki	3;"	vimwiki:software/rust/pass-path-as-ref\tsoftware/rust/pass-path-as-ref#Pass Path or PathBuf by reference
 rust	software/rust/pattern-matching-on-slice-patterns.wiki	5;"	vimwiki:software/rust/pattern-matching-on-slice-patterns\tsoftware/rust/pattern-matching-on-slice-patterns#rust
 rust	software/rust/phantom-data.wiki	2;"	vimwiki:software/rust/phantom-data\tsoftware/rust/phantom-data#On the use of std::marker::PhantomData
+security	software/misc/crypto-hashing-passwords-server-client.wiki	3;"	vimwiki:software/misc/crypto-hashing-passwords-server-client\tsoftware/misc/crypto-hashing-passwords-server-client#Security Q&A
+security	software/misc/security-q-a.wiki	3;"	vimwiki:software/misc/security-q-a\tsoftware/misc/security-q-a#Security Q&A
+snippet	software/java/find-size-of-a-data-type.wiki	5;"	vimwiki:software/java/find-size-of-a-data-type\tsoftware/java/find-size-of-a-data-type#snippet
+snippet	software/python/debugging.wiki	4;"	vimwiki:software/python/debugging\tsoftware/python/debugging#snippet
+snippet	software/python/functools.wiki	3;"	vimwiki:software/python/functools\tsoftware/python/functools#functools
+snippet	software/python/simple-decorator.wiki	5;"	vimwiki:software/python/simple-decorator\tsoftware/python/simple-decorator#snippet
+snippet	software/python/simple-decorator.wiki	5;"	vimwiki:software/python/simple-decorator\tsoftware/python/simple-decorator#snippet
+snippet	software/python/simple-decorator.wiki	5;"	vimwiki:software/python/simple-decorator\tsoftware/python/simple-decorator#snippet
 snippet	software/python/simulate-pushd.wiki	5;"	vimwiki:software/python/simulate-pushd\tsoftware/python/simulate-pushd#snippet
 snippet	software/python/unittest-runner-script.wiki	5;"	vimwiki:software/python/unittest-runner-script\tsoftware/python/unittest-runner-script#snippet
 snippet	software/rust/HashMap.wiki	5;"	vimwiki:software/rust/HashMap\tsoftware/rust/HashMap#snippet

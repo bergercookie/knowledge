@@ -44,6 +44,17 @@
       compiles the source code into bytecode, which then is run (interpreted)
       inside the Python VM.
     * Link: https://stackoverflow.com/a/2998228/2843583
+* Python is caching the first 257 integers in memory:
+
+  {{{python3
+  # Same identity all the time
+  In [49]: id(256)
+  Out[49]: 9796768
+
+  # Generated on the fly
+  In [50]: id(257)
+  Out[50]: 139740392044752
+  }}}
 
 == Abreviations ==
 
@@ -275,6 +286,9 @@ Link: https://stackoverflow.com/a/10092179/2843583
 * [[check-pid.py.wiki|Check if PID exists]]
 * [[coding-std-thoughts.wiki|Thought on Python coding standards]]
 * [[concurency.wiki|Concurrency and AsyncIO]]
+* [[functools.wiki|functools]]
+* [[decorators.wiki|decorators]]
+* [[decorator-once-per-minute.wiki|decorator once per minute]]
 * [[psrecord.wiki|psrecord]]
 * [[call-live-output.wiki|Call subprocess and print its output as it comes / live]]
 * [[avoid-if-initialisation-cases.wiki|Avoid if-initialisation cases]]
@@ -282,12 +296,15 @@ Link: https://stackoverflow.com/a/10092179/2843583
 * [[find-system-installed-version-that-matches.wiki|Find System Installed Version That Matches]]
 * [[logging.wiki|Logging]]
 * [[code-coverage.wiki|Code Coverage]]
+* [[decorator-with-arguments.wiki|Decorator with Arguments]]
 * [[ipython.wiki|ipython Interpeter]]
+* [[choosing-toml-over-other-formats.wiki|Choosing TOML Over Other Formats]]
 * [[imports.wiki|Importing in Python]]
 * [[readline-enable-tab-completion.wiki|Readline: Enable TAB Completion]]
 * [[click-list-all-subcommands.wiki|Click - List all visible, registered subcommands]]
 * [[ipdb.wiki|pdb / ipdb]]
 * [[pypi_upload.wiki|Upload to PyPI]]
+* [[decorators-for-class-and-object-attributes.wiki|Decorators for Class and Object Attributes]]
 * [[mocking.wiki|Mocking in Python]]
 * [[mypy-annotate-self-class-itself.wiki|mypy - annotate self class itself]]
 * [[find-nth-occurrance.wiki|Find N-th Occurrence]]
@@ -300,4 +317,5 @@ Link: https://stackoverflow.com/a/10092179/2843583
 * [[update-python-project-version.wiki|Bumping the version of your Python Project]]
 * [[language-implementations.wiki|Implementations of the Python Specification]]
 * [[pyproject-toml.wiki|pyproject.toml]]
+* [[simple-decorator.wiki|simple decorator]]
 * [[pyc-files.wiki|pyc-files]]

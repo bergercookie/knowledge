@@ -1,0 +1,160 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>decorators</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="decorators"><h1 id="decorators" class="header"><a href="#decorators">decorators</a></h1></div>
+
+<ul>
+<li>
+<a href="simple-decorator.html">simple-decorator</a>
+
+<li>
+<a href="decorator-with-arguments.html">decorator-with-arguments</a>
+
+<li>
+<a href="decorator-once-per-minute.html">decorator-once-per-minute.wiki</a>
+
+<li>
+<a href="decorators-for-class-and-object-attributes.html">decorators-for-class-and-object-attributes</a>
+
+</ul>
+<div id="decorators-Example usecases"><h2 id="Example usecases" class="header"><a href="#decorators-Example usecases">Example usecases</a></h2></div>
+
+<ul>
+<li>
+Timing results
+
+<li>
+Throttling
+
+<li>
+Memoization - Cache results of function calls and don't call them again
+
+<li>
+Attributes - Give many objects the same attributes, without inheritance
+
+<ul>
+<li>
+With decorators, you can add custom attributes or functionality to either
+      class instances concrete objects of those classes
+
+</ul>
+<li>
+Avoid repeating the docstrings of arguments and parameters using decorators: <a href="https://github.com/Chilipp/docrep">https://github.com/Chilipp/docrep</a>
+
+</ul>
+<div id="decorators-FAQ"><h2 id="FAQ" class="header"><a href="#decorators-FAQ">FAQ</a></h2></div>
+
+<div id="decorators-FAQ-My decorated function has a `wrapper` name and has lost its original docstring"><h3 id="My decorated function has a `wrapper` name and has lost its original docstring" class="header"><a href="#decorators-FAQ-My decorated function has a `wrapper` name and has lost its original docstring">My decorated function has a <code>wrapper</code> name and has lost its original docstring</a></h3></div>
+
+<ul>
+<li>
+Use <code>functools.wraps(f)</code> when defining your wrapper inside the decorator.
+  Without the use of this decorator factory, the name of the example function
+  would have been 'wrapper', and the docstring of the original example() would
+  have been lost.
+<pre python>
+&gt;&gt;&gt; from functools import wraps
+&gt;&gt;&gt; def my_decorator(f):
+...     @wraps(f)
+...     def wrapper(*args, **kwds):
+...         print('Calling decorated function')
+...         return f(*args, **kwds)
+...     return wrapper
+...
+&gt;&gt;&gt; @my_decorator
+... def example():
+...     """Docstring"""
+...     print('Called example function')
+...
+&gt;&gt;&gt; example()
+Calling decorated function
+Called example function
+&gt;&gt;&gt; example.__name__
+'example'
+&gt;&gt;&gt; example.__doc__
+'Docstring'
+</pre>
+
+</ul>
+<div id="decorators-Articles"><h2 id="Articles" class="header"><a href="#decorators-Articles">Articles</a></h2></div>
+
+<ul>
+<li>
+<a href="https://python-patterns.guide/gang-of-four/composition-over-inheritance/">https://python-patterns.guide/gang-of-four/composition-over-inheritance/</a>
+
+<ul>
+<li>
+And because Decorator classes are symmetric — they offer exactly the same
+    interface they wrap — we can now stack several different filters atop the
+    same log!
+
+</ul>
+</ul>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

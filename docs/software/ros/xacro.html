@@ -67,6 +67,9 @@
 <li>
 <a href="http://wiki.ros.org/urdf/Tutorials/Using%20Xacro%20to%20Clean%20Up%20a%20URDF%20File">http://wiki.ros.org/urdf/Tutorials/Using%20Xacro%20to%20Clean%20Up%20a%20URDF%20File</a>
 
+<li>
+<a href="https://answers.ros.org/question/140061/urdf-and-frames-of-reference/?answer=140141#post-id-140141">Frames of Reference, Links Configuration and Appearance</a>
+
 </ul>
 <div id="Xacro-XML constructs"><h2 id="XML constructs" class="header"><a href="#Xacro-XML constructs">XML constructs</a></h2></div>
 
@@ -236,6 +239,23 @@ Multiple blocks will be processed in the specified order
 &lt;xacro:pr2_arm suffix="left" reflect="1" parent="torso" /&gt;
 &lt;xacro:pr2_arm suffix="right" reflect="-1" parent="torso" /&gt;
 </pre>
+
+
+<div id="Xacro-FAQ"><h2 id="FAQ" class="header"><a href="#Xacro-FAQ">FAQ</a></h2></div>
+
+<ul>
+<li>
+Failed to find root link: Two root links found 
+
+<ul>
+<li>
+Each URDF / Xacro file must have a single root link
+
+<li>
+A root link is denoted as <code>&lt;link name="base_footprint"/&gt;</code>
+
+</ul>
+</ul>
 
       </div>
     <div class="wrapper-footer">

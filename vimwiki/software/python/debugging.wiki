@@ -16,7 +16,6 @@
           using the process_vm_readv system call on Linux, the vm_read call on
           OSX or the ReadProcessMemory call on Windows.
         * Can be configured to not block the python program! `--noblocking`
-
 * Print-f style debugging: https://github.com/cool-RR/PySnooper, https://github.com/bergercookie/vim-debugstring
 * Remote debugging with `rpdb`: https://coderwall.com/p/ttbtgq/python-remote-debugging-with-pdb
 * Use `ipython`! - https://switowski.com/blog/ipython-debugging
@@ -24,4 +23,7 @@
   * `%pdb` -> Stop on any error launch the debugger there (when running a script)
   * `from IPython import embed; embed()`
   * `%debug` -> Load a stack trace of the latest exception
-
+* Instead of [[https://pypi.org/project/ipdb/|ipdb]], use [[https://pypi.org/project/pdbpp/0.7/|pdbpp]]:
+  * Use sticky mode: `sticky`
+  * The module is called `pdb.py` so, you can invoke it with the same
+    `import pdb; pdb.set_trace()`

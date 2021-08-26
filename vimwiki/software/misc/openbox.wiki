@@ -1,0 +1,4 @@
+= openbox =
+
+* Tiling windows Vertically and Horizontally: https://askubuntu.com/a/516304/305258
+* Restart `openbox`: `openbox --restart`

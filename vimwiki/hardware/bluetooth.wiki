@@ -1,0 +1,58 @@
+= Bluetooth Protocol and Implementations =
+
+Bluetooth implementations have lots of security holes
+
+* Identify vulnerable digital speakers -> Play sounds
+* BLE/AirDrop case: [[https://www.wired.com/story/airdrop-leaking-email-addresses-and-phone-numbers/|Recover one's phone number]]
+* The original bluetooth protocol (not BLE) is 3k pages long! Super hard to
+  implement as a vendor
+* Bluetooth gets its name and symbol from King Harald Blatand of Norway and
+  Denmark, (KHB in runic alphabet)
+
+    {{http://www.veteranstoday.com/wp-content/uploads/2016/07/ScreenHunter_202-Jul.-01-11.32.jpg}}
+
+    * The concept is that King Harald "connected" Norway and Denmark, Bluetooth
+      connects computers?!
+* Motorola was the first major provider to integrate bluetooth in their devices, around ~2000s
+  * This gave it a major boost
+* 3 classes of Bluetooth when it comes to range:
+  * ~100m - requires external power supply
+  * ~10m - used in bluetooth phones
+  * ~1m - BLE Protocol
+
+== Bluetooth software implementations ==
+
+Each Linux distro has its own bluetooth implementation
+
+* BSD has `netgraph`
+* Linux has `BlueZ`, made by Qualcomm, ,kernel >= `2.4.6`
+  * ++ `dfu` - device firmware upgrade
+* Android has `BlueDroid` / `Fluoride`
+
+== Bluetooth Protocol and Implementation ==
+
+Many different protocols are called Bluetooth:
+
+* `BR` - Basic Rate
+* `EDR` - Enhanced Data Rate
+
+=== Features ===
+
+* Bluetooth 4.0: <= 25Mbps
+* WiFi Direct: <= 250Mbps
+* Packet-based
+* Master-Slave architecture
+* 2.400 - 2.4835 GHz
+* Bluetooth devices declare *profiles* that they are compatible with.
+    * There's no limitation in the accessible profiles!
+        * Headphones may declare they are routers!
+* It's implementation is ~3000p long, or 5000p long with consumer related items
+  included
+* Lots of undefined behavior even with this number of pages!
+* BLE (Bluetooth Low Energy) is a much better protocol. It's official name is
+  `Bluetooth 4.0`
+
+== Various ==
+
+* _Guard Band_: A part between two radio bands that's unused to prevent
+  interferences

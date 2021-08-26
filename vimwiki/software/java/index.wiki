@@ -1,0 +1,11 @@
+= Java Programming Language =
+
+:java:
+:programming:
+
+
+== Contents ==
+
+* [[java-q-a.wiki|Java Q&A]]
+* [[find-size-of-a-data-type.wiki|Find size of a primitive data type]]
+* [[java-vs-cpp.wiki|Java vs CPP and Conclusions]]

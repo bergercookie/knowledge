@@ -1,7 +1,7 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>index</title>
+    <title>decorators-for-class-and-object-attributes</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
@@ -56,31 +56,53 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="Software-related Miscellaneous Notes"><h1 id="Software-related Miscellaneous Notes" class="header"><a href="#Software-related Miscellaneous Notes">Software-related Miscellaneous Notes</a></h1></div>
+<div id="Decorators for Class and Object Attributes"><h1 id="Decorators for Class and Object Attributes" class="header"><a href="#Decorators for Class and Object Attributes">Decorators for Class and Object Attributes</a></h1></div>
 
+<div id="Decorators for Class and Object Attributes-Custom class attributes"><h2 id="Custom class attributes" class="header"><a href="#Decorators for Class and Object Attributes-Custom class attributes">Custom class attributes</a></h2></div>
 
-<div id="Contents" class="toc"><h2 id="Contents" class="header"><a href="#Contents">Contents</a></h2></div>
+<pre python>
+def fancy_repr(a_self):
+    return f"I'm a {type(a_self)}, with vars {vars(a_self)}"
 
-<ul>
-<li>
-<a href="screen.html">screen</a>
+#   (2) The Decorator
+#   v~~~~~~~~~v
+def better_repr(c: type):
+#               ^~^ (1) The decorated class
+    # you don't even need a warpper function here...
+    c.__repr__ == fancy_repr
+    return c # &lt;--- (3) The returned callable
 
-<li>
-<a href="fetch-hardware-information.html">Fetch hardware information - Linux</a>
+# providing a custom repr to classes
+@better_repr
+class Foo:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
 
-<li>
-<a href="openbox.html">openbox</a>
+f = Foo(10, [10, 20, 30])
+print(f)
 
-<li>
-<a href="copy-your-data-to-new-disk.html">Copy Your Data to New Disk</a>
+# will print:
+# I'm a Foo with vars { ... }
+</pre>
 
-<li>
-<a href="hard-drives.html">Hard Drives</a>
+<div id="Decorators for Class and Object Attributes-Custom object attributes"><h2 id="Custom object attributes" class="header"><a href="#Decorators for Class and Object Attributes-Custom object attributes">Custom object attributes</a></h2></div>
 
-<li>
-<a href="security-q-a.html">Security Q&amp;A</a>
+<p>
+Providing a custom <code>_created_at</code> attribute to all the instances of a class:
+</p>
 
-</ul>
+<pre python>
+def object_birthday(c):
+    def wrapper(*args, **kargs):
+        # create the object
+        o = c(*args, **kargs)
+
+        # Inject a method right before returning it.
+        o._created_at = time.time()
+
+    return wrapper
+</pre>
 
       </div>
     <div class="wrapper-footer">

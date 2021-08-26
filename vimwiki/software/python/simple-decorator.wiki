@@ -1,0 +1,41 @@
+= simple decorator =
+
+Link: https://www.youtube.com/watch?v=MjHpMCIvwsY
+
+:python: :decorator: :snippet:
+
+* What does `def add(a, b)` do?
+    * Define a function object, assign that to the variable/name `add`
+* When creating a decorated function, this involves `3 Callables`.
+
+    {{{python
+    @mydeco
+    def add(a, b):
+        return a + b
+
+    # This gets translated to ...
+    def add(a, b):
+        return a + b
+    add = mydeco(add)
+
+    # 3 Callables
+    # * mydeco - callable, receives `add`
+    # * Original decorated function `add`, receives whatever arguments it receives
+    # * Result of mydeco(add). What's returned here is also a callable
+    }}}
+
+* When I call a decorated function, e.g., `add`, I'm not actually calling `add`,
+  but whatever calling my decorator `mydeco` returned.
+
+== Possible decorator implementation ==
+
+{{{python
+def mydeco(fn) -> Callable[...]: # <-- Runs only during decoration - once
+
+    # vv Runs every time we call the decorated function vv
+    def wrapper(*args, **kargs): # <-- *args, **kargs to accomodate any function arguments
+        print(f"I'm just printing the function .... {fn.__name__}")
+
+    # return the callable wrapper...
+    return wrapper
+}}}

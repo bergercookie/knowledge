@@ -1,0 +1,45 @@
+= Decorators for Class and Object Attributes =
+
+== Custom class attributes ==
+
+{{{python
+def fancy_repr(a_self):
+    return f"I'm a {type(a_self)}, with vars {vars(a_self)}"
+
+#   (2) The Decorator
+#   v~~~~~~~~~v
+def better_repr(c: type):
+#               ^~^ (1) The decorated class
+    # you don't even need a warpper function here...
+    c.__repr__ == fancy_repr
+    return c # <--- (3) The returned callable
+
+# providing a custom repr to classes
+@better_repr
+class Foo:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+f = Foo(10, [10, 20, 30])
+print(f)
+
+# will print:
+# I'm a Foo with vars { ... }
+}}}
+
+== Custom object attributes ==
+
+Providing a custom `_created_at` attribute to all the instances of a class:
+
+{{{python
+def object_birthday(c):
+    def wrapper(*args, **kargs):
+        # create the object
+        o = c(*args, **kargs)
+
+        # Inject a method right before returning it.
+        o._created_at = time.time()
+
+    return wrapper
+}}}

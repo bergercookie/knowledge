@@ -1,0 +1,37 @@
+= Find size of a primitive data type =
+
+:java:
+:programming:
+:snippet:
+
+{{{java
+class SizePrimitiveTypes
+{
+  public static void main (String[] args)
+  {
+    System.out.println("Size of byte: " + (Byte.SIZE/8) + " bytes.");
+    System.out.println("Size of short: " + (Short.SIZE/8) + " bytes.");
+    System.out.println("Size of int: " + (Integer.SIZE/8) + " bytes.");
+    System.out.println("Size of long: " + (Long.SIZE/8) + " bytes.");
+    System.out.println("Size of char: " + (Character.SIZE/8) + " bytes.");
+    System.out.println("Size of float: " + (Float.SIZE/8) + " bytes.");
+    System.out.println("Size of double: " + (Double.SIZE/8) + " bytes.");
+  }
+}
+
+}}}
+
+And the output...
+
+{{{console
+D:\JavaPrograms>javac SizePrimitiveTypes.java
+
+D:\JavaPrograms>java SizePrimitiveTypes
+Size of byte: 1 bytes.
+Size of short: 2 bytes.
+Size of int: 4 bytes.
+Size of long: 8 bytes.
+Size of char: 2 bytes.
+Size of float: 4 bytes.
+Size of double: 8 bytes.
+}}}

@@ -1,7 +1,7 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>index</title>
+    <title>functools</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
@@ -56,31 +56,67 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="Software-related Miscellaneous Notes"><h1 id="Software-related Miscellaneous Notes" class="header"><a href="#Software-related Miscellaneous Notes">Software-related Miscellaneous Notes</a></h1></div>
+<div id="functools"><h1 id="functools" class="header"><a href="#functools">functools</a></h1></div>
 
+<p>
+<span id="functools-snippet"></span><span class="tag" id="snippet">snippet</span> <span id="functools-python"></span><span class="tag" id="python">python</span>
+</p>
 
-<div id="Contents" class="toc"><h2 id="Contents" class="header"><a href="#Contents">Contents</a></h2></div>
+<p>
+Here I'm covering a few handy gems I found in the <code>functools</code> module.
+</p>
+
+<div id="functools-@cache"><h2 id="@cache" class="header"><a href="#functools-@cache">@cache</a></h2></div>
+
+<pre python>
+@cache  # &lt;---
+def factorial(n):
+    return n * factorial(n-1) if n else 1
+
+&gt;&gt;&gt; factorial(10)      # no previously cached result, makes 11 recursive calls
+3628800
+&gt;&gt;&gt; factorial(5)       # just looks up cached value result
+120
+&gt;&gt;&gt; factorial(12)      # makes two new recursive calls, the other 10 are cached
+479001600
+</pre>
+
+<div id="functools-@cached_property"><h2 id="@cached_property" class="header"><a href="#functools-@cached_property">@cached_property</a></h2></div>
+
+<p>
+This is an alternative to a combination of <code>@cache</code> + <code>@property</code>
+</p>
+
+<pre python>
+class DataSet:
+
+    def __init__(self, sequence_of_numbers):
+        self._data = tuple(sequence_of_numbers)
+
+    @cached_property
+    def stdev(self):
+        return statistics.stdev(self._data)
+</pre>
 
 <ul>
 <li>
-<a href="screen.html">screen</a>
-
-<li>
-<a href="fetch-hardware-information.html">Fetch hardware information - Linux</a>
-
-<li>
-<a href="openbox.html">openbox</a>
-
-<li>
-<a href="copy-your-data-to-new-disk.html">Copy Your Data to New Disk</a>
-
-<li>
-<a href="hard-drives.html">Hard Drives</a>
-
-<li>
-<a href="security-q-a.html">Security Q&amp;A</a>
+<code>@cached_property</code> caches once and then returns the same value, no matter what.
 
 </ul>
+<p>
+<code>* @property</code> runs the method code every time it is called.
+</p>
+
+<p>
+<a href="https://www.geeksforgeeks.org/python-functools-cached_property/">https://www.geeksforgeeks.org/python-functools-cached_property/</a>
+</p>
+
+<div id="functools-@wraps"><h2 id="@wraps" class="header"><a href="#functools-@wraps">@wraps</a></h2></div>
+
+<p>
+Used in decorator functions, to have the returned wrapped function inherit
+attribites such as <code>__doc__</code> fro mthe
+</p>
 
       </div>
     <div class="wrapper-footer">

@@ -1,0 +1,47 @@
+= Java vs CPP and Conclusions =
+
+:java:
+:cpp:
+:programming:
+
+Learning to use Java when coming from the C/C++ Realm.
+
+- It has the JVM
+    - This has both advantage sadn disadavantages but it allows for some
+      interesting things, like, catch all segfaults, inspect/modify the
+      structure of a class during runtime (e.g., get the name of a method /
+      class etc.), reflections etc.
+- All methods are always virtual -> runtime overhead
+- There's a package scope in class methods and variables. This helps during
+  package testing and to give developers certain priorities
+- You can't have standalone functions, they should be static functions inside
+  a class... not that conventient.
+
+- I want to know the size of a non-primitive data type in Java:
+  - The designers' view is that it is not needed in Java, since the language
+    removes the need for an application to know about how much space needs to be
+    reserved for a primitive value, an object or an array with a given number of
+    elements.  You might think that a sizeof operator would be useful for people
+    that need to know how much space their data structures take. However you can
+    also get this information and more, simply and reliably using a Java memory
+    profiler, so there is no need for a sizeof method.
+  - Well, that's kind of shitty...
+  - https://stackoverflow.com/questions/2370288/is-there-any-sizeof-like-method-in-java
+- Not as expressive as C++. No support for overloads, or defining loose types
+  with `typedef`/`using`.
+- `POJO` stands for `Plain Old Java Object`
+  - It's the equivalent of `POD` in C++
+- `DTO` Data Transfer Object
+  - It is used when we want to pass _data with multiple attributes in one shot from client to server_.
+    Transfer Object is a simple POJO class having getter/setter methods and is
+    `serialized` so that it can be transferred over the network.
+
+
+== Abstract Thoughts ==
+
+- Java developers seem to give too much attention to the IDE they're using.
+  Their IDE is not only about editing Java code, but a tool to build their code,
+  maybe deploy it, interact with Git, etc. I mean, that's not necessarily bad,
+  but at some point you start to overly depend on that sh*t and realise you
+  can't type a single command on the terminal or you don't know what commands
+  are actually used to build your code.

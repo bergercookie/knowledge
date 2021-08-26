@@ -1,0 +1,31 @@
+= radio =
+
+* RF Signal Strength - Intensity: `W / m^2`.
+  * Strength goes down faster, the further away you get from the transmitter
+
+=== Regarding different WiFi Frequencies ===
+
+* 2.4GHz WiFi has 11 channels
+* 5.0GHz WiFi has 23 channels
+
+* 2.4GHz is in ISM band
+    * Does not require FCC validation - unlicensed
+    * Most commercial devices out there talk over this frequency - too many
+      collisions when talking in this frequency
+    * Microwaves and cordless phones are also at 2.45 GHz, adding to the noise
+
+=== AM vs FM ===
+
+* AM is more noisy than FM
+  * AM receives and translates differences in amplitude directly, thus any
+    interference in that amplitude will cause noise
+  * FM doesn't care about amplitude so it amplifies the signal a lot during
+    transmission so that any noise cannot alter the zero-crossing of the signal
+    so, additive noise gets skimmed off.
+
+
+=== Regarding radio towers ===
+
+Towers are triangular  and their signals can overlap with other towers over the
+same channels. Hence towers broadcast to different channels in different
+directions so that they don't interfere with each that of the other tower(s).

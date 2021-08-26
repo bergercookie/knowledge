@@ -1,0 +1,19 @@
+= decorator once per minute =
+
+* Goal: Run the provided function once per minute, using a decorator.
+* Problem: How can you preserve state across multiple function runs -> `nonlocal`
+
+{{{python
+def once_per_minute(func):
+    last_invoked = 0 # <-- Keep the state in the parent function
+
+    def wrapper(*args, **kargs):
+        nonlocal last_invoked  # <----
+        elapsesd_time = time.time() - last_invoked
+        if elapsed_time < 60:
+            raise CalledToOftenError(f"Only {elapsed_time} passed
+        last_invoked = time.time()
+        return func(*args, **kargs)
+
+    return wrapper
+}}}

@@ -187,6 +187,18 @@ Python is a <span id="Python Programming-Articles/Tools-language specification">
 Link: <a href="https://stackoverflow.com/a/2998228/2843583">https://stackoverflow.com/a/2998228/2843583</a>
 
 </ul>
+<li>
+Python is caching the first 257 integers in memory:
+<pre python3>
+  # Same identity all the time
+  In [49]: id(256)
+  Out[49]: 9796768
+
+  # Generated on the fly
+  In [50]: id(257)
+  Out[50]: 139740392044752
+</pre>
+
 </ul>
 <div id="Python Programming-Abreviations"><h2 id="Abreviations" class="header"><a href="#Python Programming-Abreviations">Abreviations</a></h2></div>
 
@@ -560,6 +572,15 @@ Link: <a href="https://stackoverflow.com/a/10092179/2843583">https://stackoverfl
 <a href="concurency.html">Concurrency and AsyncIO</a>
 
 <li>
+<a href="functools.html">functools</a>
+
+<li>
+<a href="decorators.html">decorators</a>
+
+<li>
+<a href="decorator-once-per-minute.html">decorator once per minute</a>
+
+<li>
 <a href="psrecord.html">psrecord</a>
 
 <li>
@@ -581,7 +602,13 @@ Link: <a href="https://stackoverflow.com/a/10092179/2843583">https://stackoverfl
 <a href="code-coverage.html">Code Coverage</a>
 
 <li>
+<a href="decorator-with-arguments.html">Decorator with Arguments</a>
+
+<li>
 <a href="ipython.html">ipython Interpeter</a>
+
+<li>
+<a href="choosing-toml-over-other-formats.html">Choosing TOML Over Other Formats</a>
 
 <li>
 <a href="imports.html">Importing in Python</a>
@@ -597,6 +624,9 @@ Link: <a href="https://stackoverflow.com/a/10092179/2843583">https://stackoverfl
 
 <li>
 <a href="pypi_upload.html">Upload to PyPI</a>
+
+<li>
+<a href="decorators-for-class-and-object-attributes.html">Decorators for Class and Object Attributes</a>
 
 <li>
 <a href="mocking.html">Mocking in Python</a>
@@ -633,6 +663,9 @@ Link: <a href="https://stackoverflow.com/a/10092179/2843583">https://stackoverfl
 
 <li>
 <a href="pyproject-toml.html">pyproject.toml</a>
+
+<li>
+<a href="simple-decorator.html">simple decorator</a>
 
 <li>
 <a href="pyc-files.html">pyc-files</a>

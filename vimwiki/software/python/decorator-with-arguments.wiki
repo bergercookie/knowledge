@@ -1,0 +1,36 @@
+= Decorator with Arguments =
+
+This is a generalised version of: [[decorator-once-per-minute]]
+
+{{{python
+@once_per_n(5) # for every 5 mins
+def add(a, b):
+    return a + b
+
+# Which means...
+add = once_per_n(5)(add)
+#     ^~~~~~~~~~~~^ this  should return a function
+}}}
+
+
+How would you implement that? -> 3 levels of functions.
+
+{{{python
+# Executes once, when we get an argument
+def once_per_n(n):
+    # Executes once, when we decorate the function
+    def middle(func): # <--- This is the decorated function, accepts no args
+        last_invoked = 0
+
+        # Executes every time we invoke the function
+        def wrapper(*args, **kargs):
+            nonlocal last_invoked
+            if time.time() - last_invoked < n:
+                raise ...
+
+            last_invoked = time.time()
+                return fun(*args, **kargs)
+
+        return wrapper
+    return middle
+}}}

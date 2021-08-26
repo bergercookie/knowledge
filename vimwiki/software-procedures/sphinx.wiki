@@ -52,6 +52,7 @@ objects in general, after running sphinx-quickstart you need to run
 * Common stuff between markdown and rst: https://gist.github.com/dupuy/1855764
 * Use a conf.py variable from an rst file: https://stackoverflow.com/a/40264720/2843583
 * External links support - avoid duplication of links among files: http://www.sphinx-doc.org/en/master/usage/extensions/extlinks.html
+* Mouse hover support: https://github.com/readthedocs/sphinx-hoverxref
 
 == Add Inline Images ==
 

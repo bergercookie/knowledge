@@ -1,7 +1,7 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>index</title>
+    <title>choosing-toml-over-other-formats</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
@@ -56,31 +56,22 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="Software-related Miscellaneous Notes"><h1 id="Software-related Miscellaneous Notes" class="header"><a href="#Software-related Miscellaneous Notes">Software-related Miscellaneous Notes</a></h1></div>
-
-
-<div id="Contents" class="toc"><h2 id="Contents" class="header"><a href="#Contents">Contents</a></h2></div>
+<div id="Choosing TOML Over Other Formats"><h1 id="Choosing TOML Over Other Formats" class="header"><a href="#Choosing TOML Over Other Formats">Choosing TOML Over Other Formats</a></h1></div>
 
 <ul>
 <li>
-<a href="screen.html">screen</a>
+TOML vs other formats - discussion regarding PEP-158: <a href="https://www.python.org/dev/peps/pep-0518/#other-file-formats">https://www.python.org/dev/peps/pep-0518/#other-file-formats</a>
 
 <li>
-<a href="fetch-hardware-information.html">Fetch hardware information - Linux</a>
-
-<li>
-<a href="openbox.html">openbox</a>
-
-<li>
-<a href="copy-your-data-to-new-disk.html">Copy Your Data to New Disk</a>
-
-<li>
-<a href="hard-drives.html">Hard Drives</a>
-
-<li>
-<a href="security-q-a.html">Security Q&amp;A</a>
+Longer analysis: <a href="https://gist.github.com/njsmith/78f68204c5d969f8c8bc645ef77d4a8f">https://gist.github.com/njsmith/78f68204c5d969f8c8bc645ef77d4a8f</a>
 
 </ul>
+<div id="Choosing TOML Over Other Formats-Highlights"><h2 id="Highlights" class="header"><a href="#Choosing TOML Over Other Formats-Highlights">Highlights</a></h2></div>
+
+<blockquote>
+<p>
+ <span id="Choosing TOML Over Other Formats-Highlights-TOML implementations"></span><strong id="TOML implementations">TOML implementations</strong>: As mentioned above, the best TOML parser for Python currently appears to be pytoml. It's TOML v0.4.0 compliant, passes the TOML test suite (which appears to give pytoml &gt;90% statement coverage), and the complete parser is 300 lines of code (plus another 100 lines for the TOML writing support). (Compare to PyYAML, which is &gt;4200 lines of code.) Nominally, pyyaml only supports Python 2.7 and 3.4+, while pip also supports 2.6 and 3.3. It turns out that this is trivially fixable, though: it took me about 15 minutes to add 2.6 and 3.3 support.
+</p></blockquote>
 
       </div>
     <div class="wrapper-footer">

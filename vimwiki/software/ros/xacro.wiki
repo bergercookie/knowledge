@@ -4,6 +4,7 @@
 
 * http://wiki.ros.org/xacro
 * http://wiki.ros.org/urdf/Tutorials/Using%20Xacro%20to%20Clean%20Up%20a%20URDF%20File
+* [[https://answers.ros.org/question/140061/urdf-and-frames-of-reference/?answer=140141#post-id-140141|Frames of Reference, Links Configuration and Appearance]]
 
 == XML constructs ==
 
@@ -148,3 +149,10 @@ Then call it like:
 <xacro:pr2_arm suffix="left" reflect="1" parent="torso" />
 <xacro:pr2_arm suffix="right" reflect="-1" parent="torso" />
 }}}
+
+
+== FAQ ==
+
+* Failed to find root link: Two root links found 
+  * Each URDF / Xacro file must have a single root link
+  * A root link is denoted as `<link name="base_footprint"/>`

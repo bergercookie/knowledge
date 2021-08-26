@@ -1,0 +1,42 @@
+= Java Q&A =
+
+
+== Detached Criterai - Get Specific Columns Only ==
+
+{{{java
+Criteria cr = session.createCriteria(User.class)
+    .setProjection(Projections.projectionList()
+      .add(Projections.property("id"), "id")
+      .add(Projections.property("Name"), "Name"))
+    .setResultTransformer(Transformers.aliasToBean(User.class));
+
+List<User> list = cr.list();
+}}}
+
+Source: https://stackoverflow.com/questions/11626761/hibernate-criteria-query-to-get-specific-columns
+
+
+== Oracle, Hibernate/JDBC - Debugging ==
+
+CHAR datatype in oracle: https://docs.oracle.com/cd/B19306_01/server.102/b14200/sql_elements001.htm
+
+* Fixed-length character data of length size bytes. Maximum size is 2000 bytes
+  or characters. Default and minimum size is 1 byte.
+* BYTE and CHAR have the same semantics as for VARCHAR2
+* NCHAR, NVARCHAR2, CLOB, and NCLOB columns are always character-based.
+* List all tables and all owners: `SELECT owner, table_name FROM all_tables;`
+  * https://relentlesscoding.com/posts/oracle-sqlplus-cheatsheet/
+* Hibernate vs JDBC: https://www.devteam.space/blog/hibernate-vs-jdbc-which-to-choose/
+
+
+== Java POJOs ==
+
+* `JavaBeans` are basically more restrictive `POJOs`
+* All `JavaBeans` are `POJOs` but not all `POJOs` are `JavaBeans`.
+  * Serializable i.e. they should implement Serializable interface. Still, some
+    POJOs that don’t implement `Serializable` interface are called `POJOs` because
+    `Serializable` is a marker interface and therefore not of much burden.
+  * Fields should be private. This is to provide the complete control on fields.
+  * Fields should have getters or setters or both.
+  * A no-arg constructor should be there in a bean.
+  * Fields are accessed only by constructor or getter setters.

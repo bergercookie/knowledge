@@ -1,7 +1,7 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>index</title>
+    <title>simple-decorator</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
@@ -56,31 +56,60 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="Software-related Miscellaneous Notes"><h1 id="Software-related Miscellaneous Notes" class="header"><a href="#Software-related Miscellaneous Notes">Software-related Miscellaneous Notes</a></h1></div>
+<div id="simple decorator"><h1 id="simple decorator" class="header"><a href="#simple decorator">simple decorator</a></h1></div>
 
+<p>
+Link: <a href="https://www.youtube.com/watch?v=MjHpMCIvwsY">https://www.youtube.com/watch?v=MjHpMCIvwsY</a>
+</p>
 
-<div id="Contents" class="toc"><h2 id="Contents" class="header"><a href="#Contents">Contents</a></h2></div>
+<p>
+<span id="simple decorator-python"></span><span class="tag" id="python">python</span> <span id="simple decorator-decorator"></span><span class="tag" id="decorator">decorator</span> <span id="simple decorator-snippet"></span><span class="tag" id="snippet">snippet</span>
+</p>
 
 <ul>
 <li>
-<a href="screen.html">screen</a>
+What does <code>def add(a, b)</code> do?
 
+<ul>
 <li>
-<a href="fetch-hardware-information.html">Fetch hardware information - Linux</a>
-
-<li>
-<a href="openbox.html">openbox</a>
-
-<li>
-<a href="copy-your-data-to-new-disk.html">Copy Your Data to New Disk</a>
-
-<li>
-<a href="hard-drives.html">Hard Drives</a>
-
-<li>
-<a href="security-q-a.html">Security Q&amp;A</a>
+Define a function object, assign that to the variable/name <code>add</code>
 
 </ul>
+<li>
+When creating a decorated function, this involves <code>3 Callables</code>.
+<pre python>
+    @mydeco
+    def add(a, b):
+        return a + b
+
+    # This gets translated to ...
+    def add(a, b):
+        return a + b
+    add = mydeco(add)
+
+    # 3 Callables
+    # * mydeco - callable, receives `add`
+    # * Original decorated function `add`, receives whatever arguments it receives
+    # * Result of mydeco(add). What's returned here is also a callable
+</pre>
+
+<li>
+When I call a decorated function, e.g., <code>add</code>, I'm not actually calling <code>add</code>,
+  but whatever calling my decorator <code>mydeco</code> returned.
+
+</ul>
+<div id="simple decorator-Possible decorator implementation"><h2 id="Possible decorator implementation" class="header"><a href="#simple decorator-Possible decorator implementation">Possible decorator implementation</a></h2></div>
+
+<pre python>
+def mydeco(fn) -&gt; Callable[...]: # &lt;-- Runs only during decoration - once
+
+    # vv Runs every time we call the decorated function vv
+    def wrapper(*args, **kargs): # &lt;-- *args, **kargs to accomodate any function arguments
+        print(f"I'm just printing the function .... {fn.__name__}")
+
+    # return the callable wrapper...
+    return wrapper
+</pre>
 
       </div>
     <div class="wrapper-footer">

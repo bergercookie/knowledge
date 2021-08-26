@@ -1,0 +1,29 @@
+= Security Q&A =
+
+:security:
+:crypto:
+
+== When authenticating to a server with a password, where should the hashing happen? client or server side? ==
+
+If a hash is calculated on the client, the client authenticates to the server by
+submitting their hash. The server then compares the hash to the database entry.
+This means that *if the database is exposed, attackers can authenticate as anyone
+by submitting the correct hash. Even though they cannot determine the original
+passwords, they can still use the hashes directly to break authentication*. With
+client-side hashing, the hash effectively becomes the password.
+
+UPDATE: btw, you still have to send it over SSL to send it securely and I
+suppose it's not a bad idea to also hash it client-side so that it's never
+transferred raw.
+
+----
+
+The question whether to hash on the client or the server presents a false
+dilemma: it’s possible to do both. By hashing on the server, passwords are
+adequately protected even in the case of a database leak. By hashing on the
+client, the password doesn’t leave the user’s browser and even the web
+application doesn’t learn the password.
+
+However, client-side hashing protects against innocent mistakes. If the
+application doesn’t handle the password, it can’t accidentally mishandle the
+password.

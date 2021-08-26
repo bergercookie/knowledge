@@ -1,7 +1,7 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>index</title>
+    <title>decorator-once-per-minute</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
@@ -56,29 +56,28 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="Software-related Miscellaneous Notes"><h1 id="Software-related Miscellaneous Notes" class="header"><a href="#Software-related Miscellaneous Notes">Software-related Miscellaneous Notes</a></h1></div>
-
-
-<div id="Contents" class="toc"><h2 id="Contents" class="header"><a href="#Contents">Contents</a></h2></div>
+<div id="decorator once per minute"><h1 id="decorator once per minute" class="header"><a href="#decorator once per minute">decorator once per minute</a></h1></div>
 
 <ul>
 <li>
-<a href="screen.html">screen</a>
+Goal: Run the provided function once per minute, using a decorator.
 
 <li>
-<a href="fetch-hardware-information.html">Fetch hardware information - Linux</a>
+Problem: How can you preserve state across multiple function runs -&gt; <code>nonlocal</code>
+<pre python>
+def once_per_minute(func):
+    last_invoked = 0 # &lt;-- Keep the state in the parent function
 
-<li>
-<a href="openbox.html">openbox</a>
+    def wrapper(*args, **kargs):
+        nonlocal last_invoked  # &lt;----
+        elapsesd_time = time.time() - last_invoked
+        if elapsed_time &lt; 60:
+            raise CalledToOftenError(f"Only {elapsed_time} passed
+        last_invoked = time.time()
+        return func(*args, **kargs)
 
-<li>
-<a href="copy-your-data-to-new-disk.html">Copy Your Data to New Disk</a>
-
-<li>
-<a href="hard-drives.html">Hard Drives</a>
-
-<li>
-<a href="security-q-a.html">Security Q&amp;A</a>
+    return wrapper
+</pre>
 
 </ul>
 

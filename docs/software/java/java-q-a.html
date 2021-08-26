@@ -1,0 +1,149 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>java-q-a</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="Java Q&amp;A"><h1 id="Java Q&amp;A" class="header"><a href="#Java Q&amp;A">Java Q&amp;A</a></h1></div>
+
+
+<div id="Java Q&amp;A-Detached Criterai - Get Specific Columns Only"><h2 id="Detached Criterai - Get Specific Columns Only" class="header"><a href="#Java Q&amp;A-Detached Criterai - Get Specific Columns Only">Detached Criterai - Get Specific Columns Only</a></h2></div>
+
+<pre java>
+Criteria cr = session.createCriteria(User.class)
+    .setProjection(Projections.projectionList()
+      .add(Projections.property("id"), "id")
+      .add(Projections.property("Name"), "Name"))
+    .setResultTransformer(Transformers.aliasToBean(User.class));
+
+List&lt;User&gt; list = cr.list();
+</pre>
+
+<p>
+Source: <a href="https://stackoverflow.com/questions/11626761/hibernate-criteria-query-to-get-specific-columns">https://stackoverflow.com/questions/11626761/hibernate-criteria-query-to-get-specific-columns</a>
+</p>
+
+
+<div id="Java Q&amp;A-Oracle, Hibernate/JDBC - Debugging"><h2 id="Oracle, Hibernate/JDBC - Debugging" class="header"><a href="#Java Q&amp;A-Oracle, Hibernate/JDBC - Debugging">Oracle, Hibernate/JDBC - Debugging</a></h2></div>
+
+<p>
+CHAR datatype in oracle: <a href="https://docs.oracle.com/cd/B19306_01/server.102/b14200/sql_elements001.htm">https://docs.oracle.com/cd/B19306_01/server.102/b14200/sql_elements001.htm</a>
+</p>
+
+<ul>
+<li>
+Fixed-length character data of length size bytes. Maximum size is 2000 bytes
+  or characters. Default and minimum size is 1 byte.
+
+<li>
+BYTE and CHAR have the same semantics as for VARCHAR2
+
+<li>
+NCHAR, NVARCHAR2, CLOB, and NCLOB columns are always character-based.
+
+<li>
+List all tables and all owners: <code>SELECT owner, table_name FROM all_tables;</code>
+
+<ul>
+<li>
+<a href="https://relentlesscoding.com/posts/oracle-sqlplus-cheatsheet/">https://relentlesscoding.com/posts/oracle-sqlplus-cheatsheet/</a>
+
+</ul>
+<li>
+Hibernate vs JDBC: <a href="https://www.devteam.space/blog/hibernate-vs-jdbc-which-to-choose/">https://www.devteam.space/blog/hibernate-vs-jdbc-which-to-choose/</a>
+
+</ul>
+<div id="Java Q&amp;A-Java POJOs"><h2 id="Java POJOs" class="header"><a href="#Java Q&amp;A-Java POJOs">Java POJOs</a></h2></div>
+
+<ul>
+<li>
+<code>JavaBeans</code> are basically more restrictive <code>POJOs</code>
+
+<li>
+All <code>JavaBeans</code> are <code>POJOs</code> but not all <code>POJOs</code> are <code>JavaBeans</code>.
+
+<ul>
+<li>
+Serializable i.e. they should implement Serializable interface. Still, some
+    POJOs that don’t implement <code>Serializable</code> interface are called <code>POJOs</code> because
+    <code>Serializable</code> is a marker interface and therefore not of much burden.
+
+<li>
+Fields should be private. This is to provide the complete control on fields.
+
+<li>
+Fields should have getters or setters or both.
+
+<li>
+A no-arg constructor should be there in a bean.
+
+<li>
+Fields are accessed only by constructor or getter setters.
+
+</ul>
+</ul>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

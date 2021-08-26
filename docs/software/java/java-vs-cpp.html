@@ -1,0 +1,161 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>java-vs-cpp</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="Java vs CPP and Conclusions"><h1 id="Java vs CPP and Conclusions" class="header"><a href="#Java vs CPP and Conclusions">Java vs CPP and Conclusions</a></h1></div>
+
+<p>
+<span id="Java vs CPP and Conclusions-java"></span><span class="tag" id="java">java</span>
+<span id="Java vs CPP and Conclusions-cpp"></span><span class="tag" id="cpp">cpp</span>
+<span id="Java vs CPP and Conclusions-programming"></span><span class="tag" id="programming">programming</span>
+</p>
+
+<p>
+Learning to use Java when coming from the C/C++ Realm.
+</p>
+
+<ul>
+<li>
+It has the JVM
+
+<ul>
+<li>
+This has both advantage sadn disadavantages but it allows for some
+      interesting things, like, catch all segfaults, inspect/modify the
+      structure of a class during runtime (e.g., get the name of a method /
+      class etc.), reflections etc.
+
+</ul>
+<li>
+All methods are always virtual -&gt; runtime overhead
+
+<li>
+There's a package scope in class methods and variables. This helps during
+  package testing and to give developers certain priorities
+
+<li>
+You can't have standalone functions, they should be static functions inside
+  a class... not that conventient.
+
+<li>
+I want to know the size of a non-primitive data type in Java:
+
+<ul>
+<li>
+The designers' view is that it is not needed in Java, since the language
+    removes the need for an application to know about how much space needs to be
+    reserved for a primitive value, an object or an array with a given number of
+    elements.  You might think that a sizeof operator would be useful for people
+    that need to know how much space their data structures take. However you can
+    also get this information and more, simply and reliably using a Java memory
+    profiler, so there is no need for a sizeof method.
+
+<li>
+Well, that's kind of shitty...
+
+<li>
+<a href="https://stackoverflow.com/questions/2370288/is-there-any-sizeof-like-method-in-java">https://stackoverflow.com/questions/2370288/is-there-any-sizeof-like-method-in-java</a>
+
+</ul>
+<li>
+Not as expressive as C++. No support for overloads, or defining loose types
+  with <code>typedef</code>/<code>using</code>.
+
+<li>
+<code>POJO</code> stands for <code>Plain Old Java Object</code>
+
+<ul>
+<li>
+It's the equivalent of <code>POD</code> in C++
+
+</ul>
+<li>
+<code>DTO</code> Data Transfer Object
+
+<ul>
+<li>
+It is used when we want to pass <em>data with multiple attributes in one shot from client to server</em>.
+    Transfer Object is a simple POJO class having getter/setter methods and is
+    <code>serialized</code> so that it can be transferred over the network.
+
+</ul>
+</ul>
+<div id="Java vs CPP and Conclusions-Abstract Thoughts"><h2 id="Abstract Thoughts" class="header"><a href="#Java vs CPP and Conclusions-Abstract Thoughts">Abstract Thoughts</a></h2></div>
+
+<ul>
+<li>
+Java developers seem to give too much attention to the IDE they're using.
+  Their IDE is not only about editing Java code, but a tool to build their code,
+  maybe deploy it, interact with Git, etc. I mean, that's not necessarily bad,
+  but at some point you start to overly depend on that sh*t and realise you
+  can't type a single command on the terminal or you don't know what commands
+  are actually used to build your code.
+
+</ul>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

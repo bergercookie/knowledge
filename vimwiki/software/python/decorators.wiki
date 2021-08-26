@@ -1,0 +1,57 @@
+= decorators =
+
+* [[simple-decorator]]
+* [[decorator-with-arguments]]
+* [[decorator-once-per-minute.wiki]]
+* [[decorators-for-class-and-object-attributes]]
+
+== Example usecases ==
+
+* Timing results
+* Throttling
+* Memoization - Cache results of function calls and don't call them again
+* Attributes - Give many objects the same attributes, without inheritance
+    * With decorators, you can add custom attributes or functionality to either
+      class instances concrete objects of those classes
+* Avoid repeating the docstrings of arguments and parameters using decorators: https://github.com/Chilipp/docrep
+
+== FAQ ==
+
+=== My decorated function has a `wrapper` name and has lost its original docstring ===
+
+* Use `functools.wraps(f)` when defining your wrapper inside the decorator.
+  Without the use of this decorator factory, the name of the example function
+  would have been 'wrapper', and the docstring of the original example() would
+  have been lost.
+
+{{{python
+>>> from functools import wraps
+>>> def my_decorator(f):
+...     @wraps(f)
+...     def wrapper(*args, **kwds):
+...         print('Calling decorated function')
+...         return f(*args, **kwds)
+...     return wrapper
+...
+>>> @my_decorator
+... def example():
+...     """Docstring"""
+...     print('Called example function')
+...
+>>> example()
+Calling decorated function
+Called example function
+>>> example.__name__
+'example'
+>>> example.__doc__
+'Docstring'
+}}}
+
+
+== Articles ==
+
+* https://python-patterns.guide/gang-of-four/composition-over-inheritance/
+
+  * And because Decorator classes are symmetric — they offer exactly the same
+    interface they wrap — we can now stack several different filters atop the
+    same log!

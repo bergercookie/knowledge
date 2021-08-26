@@ -1,13 +1,13 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>index</title>
+    <title>radio</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
     <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
     <meta name="author" content="Bergercookie's thoughtstream" />
-    <link rel="stylesheet" type="text/css" href="../../style.css" />
+    <link rel="stylesheet" type="text/css" href="../style.css" />
   </head>
 
   <body>
@@ -56,31 +56,68 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="Software-related Miscellaneous Notes"><h1 id="Software-related Miscellaneous Notes" class="header"><a href="#Software-related Miscellaneous Notes">Software-related Miscellaneous Notes</a></h1></div>
-
-
-<div id="Contents" class="toc"><h2 id="Contents" class="header"><a href="#Contents">Contents</a></h2></div>
+<div id="radio"><h1 id="radio" class="header"><a href="#radio">radio</a></h1></div>
 
 <ul>
 <li>
-<a href="screen.html">screen</a>
+RF Signal Strength - Intensity: <code>W / m^2</code>.
 
+<ul>
 <li>
-<a href="fetch-hardware-information.html">Fetch hardware information - Linux</a>
-
-<li>
-<a href="openbox.html">openbox</a>
-
-<li>
-<a href="copy-your-data-to-new-disk.html">Copy Your Data to New Disk</a>
-
-<li>
-<a href="hard-drives.html">Hard Drives</a>
-
-<li>
-<a href="security-q-a.html">Security Q&amp;A</a>
+Strength goes down faster, the further away you get from the transmitter
 
 </ul>
+</ul>
+<div id="radio-Regarding different WiFi Frequencies"><h3 id="Regarding different WiFi Frequencies" class="header"><a href="#radio-Regarding different WiFi Frequencies">Regarding different WiFi Frequencies</a></h3></div>
+
+<ul>
+<li>
+2.4GHz WiFi has 11 channels
+
+<li>
+5.0GHz WiFi has 23 channels
+
+<li>
+2.4GHz is in ISM band
+
+<ul>
+<li>
+Does not require FCC validation - unlicensed
+
+<li>
+Most commercial devices out there talk over this frequency - too many
+      collisions when talking in this frequency
+
+<li>
+Microwaves and cordless phones are also at 2.45 GHz, adding to the noise
+
+</ul>
+</ul>
+<div id="radio-AM vs FM"><h3 id="AM vs FM" class="header"><a href="#radio-AM vs FM">AM vs FM</a></h3></div>
+
+<ul>
+<li>
+AM is more noisy than FM
+
+<ul>
+<li>
+AM receives and translates differences in amplitude directly, thus any
+    interference in that amplitude will cause noise
+
+<li>
+FM doesn't care about amplitude so it amplifies the signal a lot during
+    transmission so that any noise cannot alter the zero-crossing of the signal
+    so, additive noise gets skimmed off.
+
+</ul>
+</ul>
+<div id="radio-Regarding radio towers"><h3 id="Regarding radio towers" class="header"><a href="#radio-Regarding radio towers">Regarding radio towers</a></h3></div>
+
+<p>
+Towers are triangular  and their signals can overlap with other towers over the
+same channels. Hence towers broadcast to different channels in different
+directions so that they don't interfere with each that of the other tower(s).
+</p>
 
       </div>
     <div class="wrapper-footer">

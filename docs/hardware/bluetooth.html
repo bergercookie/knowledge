@@ -1,0 +1,207 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>bluetooth</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="Bluetooth Protocol and Implementations"><h1 id="Bluetooth Protocol and Implementations" class="header"><a href="#Bluetooth Protocol and Implementations">Bluetooth Protocol and Implementations</a></h1></div>
+
+<p>
+Bluetooth implementations have lots of security holes
+</p>
+
+<ul>
+<li>
+Identify vulnerable digital speakers -&gt; Play sounds
+
+<li>
+BLE/AirDrop case: <a href="https://www.wired.com/story/airdrop-leaking-email-addresses-and-phone-numbers/">Recover one's phone number</a>
+
+<li>
+The original bluetooth protocol (not BLE) is 3k pages long! Super hard to
+  implement as a vendor
+
+<li>
+Bluetooth gets its name and symbol from King Harald Blatand of Norway and
+  Denmark, (KHB in runic alphabet)
+<pre><code><img src="http://www.veteranstoday.com/wp-content/uploads/2016/07/ScreenHunter_202-Jul.-01-11.32.jpg" />
+</code></pre>
+* The concept is that King Harald "connected" Norway and Denmark, Bluetooth
+connects computers?!
+</code></pre>
+
+<li>
+Motorola was the first major provider to integrate bluetooth in their devices, around ~2000s
+
+<ul>
+<li>
+This gave it a major boost
+
+</ul>
+<li>
+3 classes of Bluetooth when it comes to range:
+
+<ul>
+<li>
+~100m - requires external power supply
+
+<li>
+~10m - used in bluetooth phones
+
+<li>
+~1m - BLE Protocol
+
+</ul>
+</ul>
+<div id="Bluetooth Protocol and Implementations-Bluetooth software implementations"><h2 id="Bluetooth software implementations" class="header"><a href="#Bluetooth Protocol and Implementations-Bluetooth software implementations">Bluetooth software implementations</a></h2></div>
+
+<p>
+Each Linux distro has its own bluetooth implementation
+</p>
+
+<ul>
+<li>
+BSD has <code>netgraph</code>
+
+<li>
+Linux has <code>BlueZ</code>, made by Qualcomm, ,kernel &gt;= <code>2.4.6</code>
+
+<ul>
+<li>
+++ <code>dfu</code> - device firmware upgrade
+
+</ul>
+<li>
+Android has <code>BlueDroid</code> / <code>Fluoride</code>
+
+</ul>
+<div id="Bluetooth Protocol and Implementations-Bluetooth Protocol and Implementation"><h2 id="Bluetooth Protocol and Implementation" class="header"><a href="#Bluetooth Protocol and Implementations-Bluetooth Protocol and Implementation">Bluetooth Protocol and Implementation</a></h2></div>
+
+<p>
+Many different protocols are called Bluetooth:
+</p>
+
+<ul>
+<li>
+<code>BR</code> - Basic Rate
+
+<li>
+<code>EDR</code> - Enhanced Data Rate
+
+</ul>
+<div id="Bluetooth Protocol and Implementations-Bluetooth Protocol and Implementation-Features"><h3 id="Features" class="header"><a href="#Bluetooth Protocol and Implementations-Bluetooth Protocol and Implementation-Features">Features</a></h3></div>
+
+<ul>
+<li>
+Bluetooth 4.0: &lt;= 25Mbps
+
+<li>
+WiFi Direct: &lt;= 250Mbps
+
+<li>
+Packet-based
+
+<li>
+Master-Slave architecture
+
+<li>
+2.400 - 2.4835 GHz
+
+<li>
+Bluetooth devices declare <span id="Bluetooth Protocol and Implementations-Bluetooth Protocol and Implementation-Features-profiles"></span><strong id="profiles">profiles</strong> that they are compatible with.
+
+<ul>
+<li>
+There's no limitation in the accessible profiles!
+
+<ul>
+<li>
+Headphones may declare they are routers!
+
+</ul>
+</ul>
+<li>
+It's implementation is ~3000p long, or 5000p long with consumer related items
+  included
+
+<li>
+Lots of undefined behavior even with this number of pages!
+
+<li>
+BLE (Bluetooth Low Energy) is a much better protocol. It's official name is
+  <code>Bluetooth 4.0</code>
+
+</ul>
+<div id="Bluetooth Protocol and Implementations-Various"><h2 id="Various" class="header"><a href="#Bluetooth Protocol and Implementations-Various">Various</a></h2></div>
+
+<ul>
+<li>
+<em>Guard Band</em>: A part between two radio bands that's unused to prevent
+  interferences
+
+</ul>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

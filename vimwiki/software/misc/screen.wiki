@@ -1,0 +1,6 @@
+= screen =
+
+Oh, well, I guess you're stuck with this and not tmux...
+
+* Change the title of the window: `ctrl-a + A`
+* Change the position of the current window: `C-a :number <X>`

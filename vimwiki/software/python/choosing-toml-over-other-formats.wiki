@@ -1,0 +1,9 @@
+= Choosing TOML Over Other Formats =
+
+* TOML vs other formats - discussion regarding PEP-158: https://www.python.org/dev/peps/pep-0518/#other-file-formats
+* Longer analysis: https://gist.github.com/njsmith/78f68204c5d969f8c8bc645ef77d4a8f
+
+== Highlights ==
+
+> *TOML implementations*: As mentioned above, the best TOML parser for Python currently appears to be pytoml. It's TOML v0.4.0 compliant, passes the TOML test suite (which appears to give pytoml >90% statement coverage), and the complete parser is 300 lines of code (plus another 100 lines for the TOML writing support). (Compare to PyYAML, which is >4200 lines of code.) Nominally, pyyaml only supports Python 2.7 and 3.4+, while pip also supports 2.6 and 3.3. It turns out that this is trivially fixable, though: it took me about 15 minutes to add 2.6 and 3.3 support.
+
