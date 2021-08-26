@@ -1,0 +1,48 @@
+= angular =
+
+* Angular vs React: https://www.cleveroad.com/blog/angular-vs-react
+  * React comes on top.
+
+AngularJS was built by Google ~2010.
+Angular2 (and above) ~2014
+
+Frontend for (single-page?) applications
+    Using Javascript to interact with the DOM requires a lot of heavy-lifting
+    jQuery (a bit old nowadays) was used for this heavy-lifting
+
+^Angular^ or ^React^ or ^View^ have a certain approach to developing a website
+
+
+* ^Component^-based framework. Components such as:
+    * application bars
+    * widgets
+    * sidebars
+* [Angular philosophy] You 've got ^templates^ and you've got ^data^ that fills
+  these templates.
+* You want to have loose coupling and high cohesion when designing websites.
+* In angular you do ^Client^-side routing (not server-side routing)
+    * You don't have to request a new page from the server (e.g., when you click
+      on a link). Angular (i.e., the frontend can handle that without making the
+      request)
+* ^Dependency-injection^ -> Makes unit-testing easier
+    * Easy to mock modules (e.g., no need to make http requests during testing)
+* You use Angular CLI to build components and run your application
+* Isolates the ^View^ layer from the ^Model^ layer
+* Angular plays well with ^Typescript^ and uses a lot of ^ES6^ features
+
+== Links ==
+
+* What is Angular: https://www.youtube.com/watch?v=VAkio68d51A
+* Development Tools: https://angular.io/resources?category=development
+* First-time tutorial: https://angular.io/start
+* TODO Best practices: https://blog.angular.io/with-best-practices-from-the-start-d64881a16de8
+* TODO Debugging Guides: https://blog.angular.io/angular-debugging-guides-dfe0ef915036
+* Interactive Website to experiment with Angular: https://stackblitz.com/
+
+== TODO ==
+
+* Write your first angular application
+* Integrate Angular with Vim
+
+
+

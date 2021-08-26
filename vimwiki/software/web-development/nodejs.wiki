@@ -1,0 +1,91 @@
+= NodeJS =
+
+Node.js is an `open-source` and `cross-platform` *JavaScript runtime environment*
+
+A Node.js app is run in a single process, without creating a new thread for
+every request. Node.js provides a set of asynchronous I/O primitives in its
+standard library that prevent JavaScript code from blocking and generally,
+libraries in Node.js are written using non-blocking paradigms, making blocking
+behavior the exception rather than the norm.
+
+When Node.js performs an I/O operation, like reading from the network, accessing
+a database or the filesystem, `instead of blocking the thread and wasting CPU
+cycles waiting, Node.js will resume the operations when the response comes back`.
+
+In Node.js the `new ECMAScript standards` can be used without problems, as you
+don't have to wait for all your users to update their browsers - you are in
+charge of deciding which ECMAScript version to use by changing the Node.js
+version, and you can also enable specific experimental features by running
+Node.js with flags.
+
+JavaScript is a programming language that was created at Netscape as a scripting
+tool to manipulate web pages inside their browser, Netscape Navigator.
+Part of the business model of `Netscape` was to sell Web Servers, which included
+an environment called `Netscape LiveWire` that could create dynamic pages using
+server-side JavaScript. Unfortunately, Netscape LiveWire wasn't very successful
+and server-side JavaScript wasn't popularized until recently, by the
+introduction of Node.js.
+
+
+== Hello World ==
+
+{{{javascript
+const http = require('http')
+
+const hostname = '127.0.0.1'
+const port = process.env.PORT
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200
+  res.setHeader('Content-Type', 'text/plain')
+  res.end('Hello World!\n')
+})
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`)
+})
+}}}
+
+== Links ==
+
+* Web server tutorial using `nodejs`, `CSS`, etc.
+  https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/skeleton_website
+
+== Multiprocessing and Multithreading in NodeJS ==
+
+All (your) JavaScript code in V8 is running in a single thread. However, you can
+split parts of the computations to other threads or processes:
+
+{{{javascript
+// multi-processing example
+const workerFarm = require('worker-farm')
+const service = workerFarm(require.resolve('./script'))
+...
+}}}
+
+And you could also use worker threads:
+
+{{{javascript
+const { Worker } = require('worker_threads')
+
+function runService(workerData) {
+  return new Promise((resolve, reject) => {
+    const worker = new Worker('./service.js', { workerData }); // service.js code to run on a separate thread
+    worker.on('message', resolve);
+    worker.on('error', reject);
+    worker.on('exit', (code) => {
+      if (code !== 0)
+        reject(new Error(`Worker stopped with exit code ${code}`));
+    })
+  })
+}
+
+async function run() {
+  const result = await runService('world')
+  console.log(result);
+}
+
+run().catch(err => console.error(err))
+}}}
+
+Data passed to the `service.js` script is cloned and is not in any shared memory.

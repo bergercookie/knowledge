@@ -1,7 +1,7 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>index</title>
+    <title>angular-snippets</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
@@ -56,20 +56,34 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="SQL"><h1 id="SQL" class="header"><a href="#SQL">SQL</a></h1></div>
+<div id="snippets"><h1 id="snippets" class="header"><a href="#snippets">snippets</a></h1></div>
 
 <p>
-SQL Related resources
+<span id="snippets-snippet"></span><span class="tag" id="snippet">snippet</span>
 </p>
 
+<div id="snippets-Sample component directory structure"><h2 id="Sample component directory structure" class="header"><a href="#snippets-Sample component directory structure">Sample component directory structure</a></h2></div>
 
-<div id="Contents" class="toc"><h2 id="Contents" class="header"><a href="#Contents">Contents</a></h2></div>
+<pre>
+component-name/
+  directory-name.css
+  directory-name.html
+  directory-name.ts
+</pre>
 
-<ul>
-<li>
-<a href="sqllite.html">SQLlite</a>
+<div id="snippets-Sample"><h2 id="Sample" class="header"><a href="#snippets-Sample">Sample</a></h2></div>
 
-</ul>
+<pre typescript>
+import { Component } from '@angular/core';
+
+import { products } from '../products';
+
+@Component({
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css']
+})
+</pre>
 
       </div>
     <div class="wrapper-footer">

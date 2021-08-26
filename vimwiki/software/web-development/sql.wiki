@@ -1,0 +1,136 @@
+= SQL =
+
+== SQL Indices ==
+
+They speed up qeuries in an SQL database
+They take up space - DB needs to be reindexed when new data is added.
+
+Links:
+   * https://www.youtube.com/watch?v=fsG1XaZEa78
+   * http://www.sqlnuggets.com/blog/index-basics-hidden-costs-associated-indexes/
+   * https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html
+
+* upsert: update or insert of not there
+    * https://www.postgresqltutorial.com/postgresql-upsert/
+* Date/numerics formatting: https://www.postgresql.org/docs/current/functions-formatting.html
+    * `to_char(current_timestamp, 'HH12:MI:SS')`
+* Enable logging for queries: https://tableplus.com/blog/2018/10/how-to-show-queries-log-in-postgresql.html
+
+== PostgreSQL ==
+
+* `DISTINCT` in postgres, implicitly sorts the array of data!
+
+  Using DISTINCT implicitly sorts the array. If the relative order of the array
+  elements needs to be preserved while removing duplicates, the function can be
+  designed like the following: (should work from 9.4 onwards)
+
+  Solution:
+
+  `select camera_id from (select distinct on (camera_id) * from "owen@slamcore.com".session_metadata ORDER BY camera_id, start_timestamp_ns DESC) t ORDER by start_timestamp_ns DESC`
+
+=== Commands ===
+
+
+* `\list`
+* List all schemas: `\dn` / `\dnS+`
+* Connect to database: `\c example`
+* List all databases: `select datname from pg_catalog.pg_database;`
+* `\q`
+* List all roles (users + groups) -> `\du` OR `\dg`
+* Add a new role with superuser rights, e.g., `berger` -> `CREATE USER berger WITH SUPERUSER;`
+* Add a new attribute to a role, e.g., `berger` -> `ALTER USER berger WITH SUPERUSER;`
+* Remove an attribute from a role, e.g., `berger` -> `ALTER USER berger WITH NOSUPERUSER;`
+* Change password fora a role/user: `ALTER USER <username> WITH PASSWORD '<passwd>';`
+* Show all tables:
+    * `\d` OR `\dt` OR `\dtS`
+* Show information about a table
+    * `\d <pg_am>`
+* Create a table:
+    {{{pgsql
+    CREATE TABLE comics(
+      name varchar(80),
+      publisher varchar(80),
+      date_published date
+    );
+    }}}
+* Create table under a particular `schema`
+    {{{pgsql
+    create table myschema.company(
+      ID   INT              NOT NULL,
+      NAME VARCHAR (20)     NOT NULL,
+      AGE  INT              NOT NULL,
+      ADDRESS  CHAR (25),
+      SALARY   DECIMAL (18, 2),
+      PRIMARY KEY (ID)
+    );
+    }}}
+* Find out if a table exists:
+   {{{psql
+   SELECT EXISTS (
+   SELECT FROM pg_tables
+   WHERE  schemaname = '<schema-name-or-if-none == public>'
+   AND    tablename  = '<some-table-name>'
+   );
+  }}}
+* Find out if a database exists:
+    * `select datname from pg_catalog.pg_database WHERE lower(datname) = lower('<your-db-name>');`
+* Find out if a schema exists:
+    * `select nspname from pg_catalog.pg_namespace WHERE nspname='someuser@gmail.com'`
+* See all the tables of a schema:
+    * `\dt "schema_name".*`
+* Show location of config file for postgres: `SHOW config_file;`
+* Convert an integer to string/varchar
+    * `myintegervalue::varchar(255)`
+    * https://stackoverflow.com/questions/13809547/how-do-i-convert-an-integer-to-string-as-part-of-a-postgresql-query
+* Check that an integer is in array of integers:
+    * `WHERE 10 = ANY(values)`
+    * https://stackoverflow.com/questions/8242643/search-in-integer-array-in-postgres
+
+==== Shell Commands ====
+
+* Restore a pg dump file:
+    * `pg_restore -f <path/to/dump/file>`
+* `dropuser <user-name>`
+* When installing, create a db for your user so that you can login with `psql`
+    {{{sh
+    createdb
+    psql # this should now work from your user account
+    }}}
+* `dropdb <dbname>`
+* Connect as a specific user (other than your UNIX username): `psql --host=localhost --dbname=example --username=grafanareader`
+
+=== Terminology ===
+
+* *Schema:* A schema is a named collection of tables. A schema can also contain
+  views, indexes, sequences, data types, operators, and functions. Schemas are
+  analogous to directories at the operating system level, except that schemas
+  cannot be nested. PostgreSQL statement CREATE SCHEMA creates a schema.
+
+* 4 Types of SQL Commands;
+  * `DDL`: Data Definition Language
+  * `DML`: Data Manipulation Language
+  * `DCL`: Data Control Language
+  * `TCL`: Transaction Control Language
+
+  * What's the difference between `DDL` and `DML`?
+  * `DDL` vs `DML`:
+    * https://stackoverflow.com/a/44796508/2843583
+    * https://www.educba.com/ddl-vs-dml/
+    * `DDL` is used to *define* data structures.
+    * `DML` is used to *manipulate* data itself.
+    * `DDL` statements get executed in their transaction and so get committed
+      instantly as the changes made by each of these statements are permanently.
+
+{{https://wtmatter.com/wp-content/uploads/2020/01/SQL-Command-Types-%E2%80%93-DDL-DQL-DML-DCL-TCL.png}}
+
+== SQL Software / Clients ==
+
+* How to you set the `instantclient`/`tnsnames` path in SQL Developer:
+  * `Tools` > `Preferences Database` > `Advanced` > `Tnsnames Directory`
+
+=== SQLite ===
+
+* `sqlite` databases only allow a single connection at the time. So for
+  example, with software like, [[https://apps.ankiweb.net/|Anki]] you are only
+  supposed to have a single connection open and a single tool accessing the DB,
+  even if that's only for read operations.

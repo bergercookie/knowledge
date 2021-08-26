@@ -1,0 +1,6 @@
+= HTML =
+
+Applying two classes to an element in HTML:
+
+* `<tag class="a b">....</tag>`
+

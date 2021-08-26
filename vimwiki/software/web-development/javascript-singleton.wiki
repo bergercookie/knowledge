@@ -1,0 +1,40 @@
+= Singleton.ts =
+
+:snippet:
+:programming:
+
+{{{typescript
+class Singleton {
+  protected static instance: Singleton | null;
+
+  protected constructor() { // <-- Important to make it *private*
+    this.id = Math.random();
+  }
+
+  public static getInstance(): Singleton {
+    if (!Singleton.instance) {
+      Singleton.instance = new Singleton();
+    }
+
+    return Singleton.instance;
+  }
+
+  private id = 0;
+  getId() {
+    return this.id;
+  }
+}
+
+const classes = [
+  Singleton.getInstance(),
+  Singleton.getInstance(),
+  Singleton.getInstance(),
+  Singleton.getInstance(),
+];
+
+for (const c of classes) {
+  console.log(`c: `, c);
+  console.log(`c.id: `, c.getId());
+  console.log("----------------");
+}
+}}}

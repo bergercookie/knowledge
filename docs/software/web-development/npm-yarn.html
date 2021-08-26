@@ -1,13 +1,13 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>index</title>
+    <title>npm-yarn</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
     <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
     <meta name="author" content="Bergercookie's thoughtstream" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
   </head>
 
   <body>
@@ -56,74 +56,16 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="Knowledge Base"><h1 id="Knowledge Base" class="header"><a href="#Knowledge Base">Knowledge Base</a></h1></div>
+<div id="npm / yarn"><h1 id="npm / yarn" class="header"><a href="#npm / yarn">npm / yarn</a></h1></div>
 
-<p>
-Hi there, this is my knowledge base, at least the portion of it I'm feeling OK
-with making available to the wider public 😉.
-</p>
+<div id="npm / yarn-Update dependencies in package.json"><h3 id="Update dependencies in package.json" class="header"><a href="#npm / yarn-Update dependencies in package.json">Update dependencies in package.json</a></h3></div>
 
-<p>
-There's not a great deal of structure in the following notes. If something
-noteworthy arises though in parts of these note collections, I'll pick it up and
-put it into a proper article with start and finish.
-</p>
-
-<div id="Knowledge Base-Robotics"><h2 id="Robotics" class="header"><a href="#Knowledge Base-Robotics">Robotics</a></h2></div>
-
-<ul>
-<li>
-<a href="software/ros/index.html">ROS - Robot Operating System</a>
-
-</ul>
-<div id="Knowledge Base-Software"><h2 id="Software" class="header"><a href="#Knowledge Base-Software">Software</a></h2></div>
-
-<p>
-Software-related articles, cheatsheets and guides
-</p>
-
-<ul>
-<li>
-<a href="software/rust/index.html">The Rust Programming Language</a>
-
-<li>
-<a href="software/python/index.html">The Python Programming Language</a>
-
-<li>
-<a href="software/c-programming/index.html">The C Programming Language</a>
-
-<li>
-<a href="software-procedures/index.html">Software Procedures</a>
-
-<li>
-<a href="software/web-development/index.html">Web-development Resources</a>
-
-<li>
-<a href="software/cloud/index.html">Cloud-related Notes</a>
-
-<li>
-<a href="software/misc/index.html">Software-related Miscellaneous Notes</a>
-
-</ul>
-<div id="Knowledge Base-General"><h2 id="General" class="header"><a href="#Knowledge Base-General">General</a></h2></div>
-
-<ul>
-<li>
-<a href="activities/index.html">Notes on activities (mainly sports)</a>
-
-<li>
-<a href="top10/index.html">Top-10 Lists (Music, Movies, Art)</a>
-
-<li>
-<a href="military-service/index.html">Greek Military Service</a>
-
-<li>
-<a href="philosophy/index.html">Behavioral Psychology, Philosophy, Stoicism and Habits</a>
-
-<li>
-<a href="books/index.html">Notes on Books</a>
-
-</ul>
+<pre sh>
+yarn global add npm-check-updates
+ncu -u
+# compile new dependencies now...
+yarn install
+</pre>
 
       </div>
     <div class="wrapper-footer">

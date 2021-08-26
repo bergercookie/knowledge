@@ -1,0 +1,363 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>sql</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="SQL"><h1 id="SQL" class="header"><a href="#SQL">SQL</a></h1></div>
+
+<div id="SQL-SQL Indices"><h2 id="SQL Indices" class="header"><a href="#SQL-SQL Indices">SQL Indices</a></h2></div>
+
+<p>
+They speed up qeuries in an SQL database
+They take up space - DB needs to be reindexed when new data is added.
+</p>
+
+<p>
+Links:
+</p>
+<ul>
+<li>
+<a href="https://www.youtube.com/watch?v=fsG1XaZEa78">https://www.youtube.com/watch?v=fsG1XaZEa78</a>
+
+<li>
+<a href="http://www.sqlnuggets.com/blog/index-basics-hidden-costs-associated-indexes/">http://www.sqlnuggets.com/blog/index-basics-hidden-costs-associated-indexes/</a>
+
+<li>
+<a href="https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html">https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html</a>
+
+</ul>
+<li>
+upsert: update or insert of not there
+
+<ul>
+<li>
+<a href="https://www.postgresqltutorial.com/postgresql-upsert/">https://www.postgresqltutorial.com/postgresql-upsert/</a>
+
+</ul>
+<li>
+Date/numerics formatting: <a href="https://www.postgresql.org/docs/current/functions-formatting.html">https://www.postgresql.org/docs/current/functions-formatting.html</a>
+
+<ul>
+<li>
+<code>to_char(current_timestamp, 'HH12:MI:SS')</code>
+
+</ul>
+<li>
+Enable logging for queries: <a href="https://tableplus.com/blog/2018/10/how-to-show-queries-log-in-postgresql.html">https://tableplus.com/blog/2018/10/how-to-show-queries-log-in-postgresql.html</a>
+
+<div id="SQL-PostgreSQL"><h2 id="PostgreSQL" class="header"><a href="#SQL-PostgreSQL">PostgreSQL</a></h2></div>
+
+<ul>
+<li>
+<code>DISTINCT</code> in postgres, implicitly sorts the array of data!
+  Using DISTINCT implicitly sorts the array. If the relative order of the array
+  elements needs to be preserved while removing duplicates, the function can be
+  designed like the following: (should work from 9.4 onwards)
+  Solution:
+  <code>select camera_id from (select distinct on (camera_id) * from "owen@slamcore.com".session_metadata ORDER BY camera_id, start_timestamp_ns DESC) t ORDER by start_timestamp_ns DESC</code>
+
+</ul>
+<div id="SQL-PostgreSQL-Commands"><h3 id="Commands" class="header"><a href="#SQL-PostgreSQL-Commands">Commands</a></h3></div>
+
+
+<ul>
+<li>
+<code>\list</code>
+
+<li>
+List all schemas: <code>\dn</code> / <code>\dnS+</code>
+
+<li>
+Connect to database: <code>\c example</code>
+
+<li>
+List all databases: <code>select datname from pg_catalog.pg_database;</code>
+
+<li>
+<code>\q</code>
+
+<li>
+List all roles (users + groups) -&gt; <code>\du</code> OR <code>\dg</code>
+
+<li>
+Add a new role with superuser rights, e.g., <code>berger</code> -&gt; <code>CREATE USER berger WITH SUPERUSER;</code>
+
+<li>
+Add a new attribute to a role, e.g., <code>berger</code> -&gt; <code>ALTER USER berger WITH SUPERUSER;</code>
+
+<li>
+Remove an attribute from a role, e.g., <code>berger</code> -&gt; <code>ALTER USER berger WITH NOSUPERUSER;</code>
+
+<li>
+Change password fora a role/user: <code>ALTER USER &lt;username&gt; WITH PASSWORD '&lt;passwd&gt;';</code>
+
+<li>
+Show all tables:
+
+<ul>
+<li>
+<code>\d</code> OR <code>\dt</code> OR <code>\dtS</code>
+
+</ul>
+<li>
+Show information about a table
+
+<ul>
+<li>
+<code>\d &lt;pg_am&gt;</code>
+
+</ul>
+<li>
+Create a table:
+<pre pgsql>
+    CREATE TABLE comics(
+      name varchar(80),
+      publisher varchar(80),
+      date_published date
+    );
+</pre>
+
+<li>
+Create table under a particular <code>schema</code>
+<pre pgsql>
+    create table myschema.company(
+      ID   INT              NOT NULL,
+      NAME VARCHAR (20)     NOT NULL,
+      AGE  INT              NOT NULL,
+      ADDRESS  CHAR (25),
+      SALARY   DECIMAL (18, 2),
+      PRIMARY KEY (ID)
+    );
+</pre>
+
+<li>
+Find out if a table exists:
+<pre psql>
+   SELECT EXISTS (
+   SELECT FROM pg_tables
+   WHERE  schemaname = '&lt;schema-name-or-if-none == public&gt;'
+   AND    tablename  = '&lt;some-table-name&gt;'
+   );
+</pre>
+
+<li>
+Find out if a database exists:
+
+<ul>
+<li>
+<code>select datname from pg_catalog.pg_database WHERE lower(datname) = lower('&lt;your-db-name&gt;');</code>
+
+</ul>
+<li>
+Find out if a schema exists:
+
+<ul>
+<li>
+<code>select nspname from pg_catalog.pg_namespace WHERE nspname='someuser@gmail.com'</code>
+
+</ul>
+<li>
+See all the tables of a schema:
+
+<ul>
+<li>
+<code>\dt "schema_name".*</code>
+
+</ul>
+<li>
+Show location of config file for postgres: <code>SHOW config_file;</code>
+
+<li>
+Convert an integer to string/varchar
+
+<ul>
+<li>
+<code>myintegervalue::varchar(255)</code>
+
+<li>
+<a href="https://stackoverflow.com/questions/13809547/how-do-i-convert-an-integer-to-string-as-part-of-a-postgresql-query">https://stackoverflow.com/questions/13809547/how-do-i-convert-an-integer-to-string-as-part-of-a-postgresql-query</a>
+
+</ul>
+<li>
+Check that an integer is in array of integers:
+
+<ul>
+<li>
+<code>WHERE 10 = ANY(values)</code>
+
+<li>
+<a href="https://stackoverflow.com/questions/8242643/search-in-integer-array-in-postgres">https://stackoverflow.com/questions/8242643/search-in-integer-array-in-postgres</a>
+
+</ul>
+</ul>
+<div id="SQL-PostgreSQL-Commands-Shell Commands"><h4 id="Shell Commands" class="header"><a href="#SQL-PostgreSQL-Commands-Shell Commands">Shell Commands</a></h4></div>
+
+<ul>
+<li>
+Restore a pg dump file:
+
+<ul>
+<li>
+<code>pg_restore -f &lt;path/to/dump/file&gt;</code>
+
+</ul>
+<li>
+<code>dropuser &lt;user-name&gt;</code>
+
+<li>
+When installing, create a db for your user so that you can login with <code>psql</code>
+<pre sh>
+    createdb
+    psql # this should now work from your user account
+</pre>
+
+<li>
+<code>dropdb &lt;dbname&gt;</code>
+
+<li>
+Connect as a specific user (other than your UNIX username): <code>psql --host=localhost --dbname=example --username=grafanareader</code>
+
+</ul>
+<div id="SQL-PostgreSQL-Terminology"><h3 id="Terminology" class="header"><a href="#SQL-PostgreSQL-Terminology">Terminology</a></h3></div>
+
+<ul>
+<li>
+<span id="SQL-PostgreSQL-Terminology-Schema:"></span><strong id="Schema:">Schema:</strong> A schema is a named collection of tables. A schema can also contain
+  views, indexes, sequences, data types, operators, and functions. Schemas are
+  analogous to directories at the operating system level, except that schemas
+  cannot be nested. PostgreSQL statement CREATE SCHEMA creates a schema.
+
+<li>
+4 Types of SQL Commands;
+
+<ul>
+<li>
+<code>DDL</code>: Data Definition Language
+
+<li>
+<code>DML</code>: Data Manipulation Language
+
+<li>
+<code>DCL</code>: Data Control Language
+
+<li>
+<code>TCL</code>: Transaction Control Language
+
+<li>
+What's the difference between <code>DDL</code> and <code>DML</code>?
+
+<li>
+<code>DDL</code> vs <code>DML</code>:
+
+<ul>
+<li>
+<a href="https://stackoverflow.com/a/44796508/2843583">https://stackoverflow.com/a/44796508/2843583</a>
+
+<li>
+<a href="https://www.educba.com/ddl-vs-dml/">https://www.educba.com/ddl-vs-dml/</a>
+
+<li>
+<code>DDL</code> is used to <span id="SQL-PostgreSQL-Terminology-define"></span><strong id="define">define</strong> data structures.
+
+<li>
+<code>DML</code> is used to <span id="SQL-PostgreSQL-Terminology-manipulate"></span><strong id="manipulate">manipulate</strong> data itself.
+
+<li>
+<code>DDL</code> statements get executed in their transaction and so get committed
+      instantly as the changes made by each of these statements are permanently.
+
+</ul>
+</ul>
+</ul>
+<p>
+<img src="https://wtmatter.com/wp-content/uploads/2020/01/SQL-Command-Types-%E2%80%93-DDL-DQL-DML-DCL-TCL.png" />
+</p>
+
+<div id="SQL-SQL Software / Clients"><h2 id="SQL Software / Clients" class="header"><a href="#SQL-SQL Software / Clients">SQL Software / Clients</a></h2></div>
+
+<ul>
+<li>
+How to you set the <code>instantclient</code>/<code>tnsnames</code> path in SQL Developer:
+
+<ul>
+<li>
+<code>Tools</code> &gt; <code>Preferences Database</code> &gt; <code>Advanced</code> &gt; <code>Tnsnames Directory</code>
+
+</ul>
+</ul>
+<div id="SQL-SQL Software / Clients-SQLite"><h3 id="SQLite" class="header"><a href="#SQL-SQL Software / Clients-SQLite">SQLite</a></h3></div>
+
+<ul>
+<li>
+<code>sqlite</code> databases only allow a single connection at the time. So for
+  example, with software like, <a href="https://apps.ankiweb.net/">Anki</a> you are only
+  supposed to have a single connection open and a single tool accessing the DB,
+  even if that's only for read operations.
+
+</ul>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

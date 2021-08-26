@@ -1,0 +1,12 @@
+= npm / yarn=
+
+=== Update dependencies in package.json ===
+
+{{{sh
+yarn global add npm-check-updates
+ncu -u
+# compile new dependencies now...
+yarn install
+}}}
+
+

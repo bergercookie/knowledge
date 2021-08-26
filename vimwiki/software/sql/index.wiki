@@ -1,8 +1,0 @@
-= SQL =
-
-SQL Related resources
-
-
-== Contents ==
-
-* [[sqllite.wiki|SQLlite]]

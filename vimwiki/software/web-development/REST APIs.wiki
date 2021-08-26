@@ -1,0 +1,36 @@
+= REST APIs =
+== Best practices ==
+
+Best practices for designing a REST API: https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/
+
+* Use nouns instead of verbs in endpoint paths
+* The action should be indicated by the HTTP request method that we’re making.
+  The most common methods include GET, POST, PUT, and DELETE.
+* GET retrieves resources. POST submits new data to the server. PUT updates
+  existing data. DELETE removes data. The verbs map to the `CRUD` operations.
+* Name collections with plural nouns -> `articles/`, not `article/`
+* Nesting resources for hierarchical objects
+* Allow filtering, sorting, and pagination
+* Cache data to improve performance
+
+== What responses to send back ==
+
+* `400` Bad Request – This means that client-side input fails validation.
+* `401` Unauthorized – This means the user isn’t not authorized to access a resource. It usually returns when the user isn’t authenticated.
+* `403` Forbidden – This means the user is authenticated, but it’s not allowed to access a resource.
+* `404` Not Found – This indicates that a resource is not found.
+* `500` Internal server error – This is a generic server error. It probably shouldn’t be thrown explicitly.
+* `502` Bad Gateway – This indicates an invalid response from an upstream server.
+* `503` Service Unavailable – This indicates that something unexpected happened on server side (It can be anything like server overload, some parts of the system failed, etc.).
+
+
+=== Example ===
+
+If try to submit the payload with the email value that already exists in users,
+we’ll get a `400` response status code with a 'User already exists' message to let
+users know that the user already exists. With that information, the user can
+correct the action by changing the email to something that doesn’t exist.
+
+== PUT vs PATCH ==
+
+* Links: https://stackoverflow.com/questions/28459418/use-of-put-vs-patch-methods-in-rest-api-real-life-scenarios

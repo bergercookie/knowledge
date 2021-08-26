@@ -1,0 +1,181 @@
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
+    <title>nodejs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
+    <meta property="og:description" content="Of course you have a purpose -- to find a purpose :cow:" />
+    <meta name="author" content="Bergercookie's thoughtstream" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+  </head>
+
+  <body>
+    <!--
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars0.githubusercontent.com/u/5816719?v=3"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Bergercookie's thoughtstream</a></h1>
+            <p class="site-description">Of course you have a purpose -- to find a purpose <img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20">
+            </p>
+          </div>
+
+          <nav>
+            <a href="../../">Blog</a>
+            <a href="../../scratchpad">Scratchpad</a>
+            <a href="/knowledge/index.html">Knowledge Base</a>
+            <a href="../../projects">Projects</a>
+            <a href="../../photography">Photography</a>
+            <a href="../../about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+    -->
+
+    <style>
+    .wrapper-footer {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    footer {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    </style>
+
+    <div id="main" role="main" class="container">
+      <div class="container">
+		
+<div id="NodeJS"><h1 id="NodeJS" class="header"><a href="#NodeJS">NodeJS</a></h1></div>
+
+<p>
+Node.js is an <code>open-source</code> and <code>cross-platform</code> <span id="NodeJS-JavaScript runtime environment"></span><strong id="JavaScript runtime environment">JavaScript runtime environment</strong>
+</p>
+
+<p>
+A Node.js app is run in a single process, without creating a new thread for
+every request. Node.js provides a set of asynchronous I/O primitives in its
+standard library that prevent JavaScript code from blocking and generally,
+libraries in Node.js are written using non-blocking paradigms, making blocking
+behavior the exception rather than the norm.
+</p>
+
+<p>
+When Node.js performs an I/O operation, like reading from the network, accessing
+a database or the filesystem, `instead of blocking the thread and wasting CPU
+cycles waiting, Node.js will resume the operations when the response comes back`.
+</p>
+
+<p>
+In Node.js the <code>new ECMAScript standards</code> can be used without problems, as you
+don't have to wait for all your users to update their browsers - you are in
+charge of deciding which ECMAScript version to use by changing the Node.js
+version, and you can also enable specific experimental features by running
+Node.js with flags.
+</p>
+
+<p>
+JavaScript is a programming language that was created at Netscape as a scripting
+tool to manipulate web pages inside their browser, Netscape Navigator.
+Part of the business model of <code>Netscape</code> was to sell Web Servers, which included
+an environment called <code>Netscape LiveWire</code> that could create dynamic pages using
+server-side JavaScript. Unfortunately, Netscape LiveWire wasn't very successful
+and server-side JavaScript wasn't popularized until recently, by the
+introduction of Node.js.
+</p>
+
+
+<div id="NodeJS-Hello World"><h2 id="Hello World" class="header"><a href="#NodeJS-Hello World">Hello World</a></h2></div>
+
+<pre javascript>
+const http = require('http')
+
+const hostname = '127.0.0.1'
+const port = process.env.PORT
+
+const server = http.createServer((req, res) =&gt; {
+  res.statusCode = 200
+  res.setHeader('Content-Type', 'text/plain')
+  res.end('Hello World!\n')
+})
+
+server.listen(port, hostname, () =&gt; {
+  console.log(`Server running at http://${hostname}:${port}/`)
+})
+</pre>
+
+<div id="NodeJS-Links"><h2 id="Links" class="header"><a href="#NodeJS-Links">Links</a></h2></div>
+
+<ul>
+<li>
+Web server tutorial using <code>nodejs</code>, <code>CSS</code>, etc.
+  <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/skeleton_website">https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/skeleton_website</a>
+
+</ul>
+<div id="NodeJS-Multiprocessing and Multithreading in NodeJS"><h2 id="Multiprocessing and Multithreading in NodeJS" class="header"><a href="#NodeJS-Multiprocessing and Multithreading in NodeJS">Multiprocessing and Multithreading in NodeJS</a></h2></div>
+
+<p>
+All (your) JavaScript code in V8 is running in a single thread. However, you can
+split parts of the computations to other threads or processes:
+</p>
+
+<pre javascript>
+// multi-processing example
+const workerFarm = require('worker-farm')
+const service = workerFarm(require.resolve('./script'))
+...
+</pre>
+
+<p>
+And you could also use worker threads:
+</p>
+
+<pre javascript>
+const { Worker } = require('worker_threads')
+
+function runService(workerData) {
+  return new Promise((resolve, reject) =&gt; {
+    const worker = new Worker('./service.js', { workerData }); // service.js code to run on a separate thread
+    worker.on('message', resolve);
+    worker.on('error', reject);
+    worker.on('exit', (code) =&gt; {
+      if (code !== 0)
+        reject(new Error(`Worker stopped with exit code ${code}`));
+    })
+  })
+}
+
+async function run() {
+  const result = await runService('world')
+  console.log(result);
+}
+
+run().catch(err =&gt; console.error(err))
+</pre>
+
+<p>
+Data passed to the <code>service.js</code> script is cloned and is not in any shared memory.
+</p>
+
+      </div>
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+            <a style="font-weight:bold;" href="/">Back to Blog</a>
+            <a style="font-weight:bold;padding-left:10em;" href="/knowledge">Knowledge Base</a>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

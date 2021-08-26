@@ -1,0 +1,26 @@
+= snippets =
+
+:snippet:
+
+== Sample component directory structure ==
+
+{{{
+component-name/
+  directory-name.css
+  directory-name.html
+  directory-name.ts
+}}}
+
+== Sample ==
+
+{{{typescript
+import { Component } from '@angular/core';
+
+import { products } from '../products';
+
+@Component({
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css']
+})
+}}}

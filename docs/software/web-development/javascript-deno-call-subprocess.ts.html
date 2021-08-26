@@ -1,7 +1,7 @@
 <html>
   <head>
 	<link rel="shortcut icon" type="image/x-icon" href="https://bergercookie.dev/favicon.ico">
-    <title>sqllite</title>
+    <title>javascript-deno-call-subprocess.ts</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <meta name="description" content="Of course you have a purpose -- to find a purpose :cow:">
@@ -56,16 +56,44 @@
     <div id="main" role="main" class="container">
       <div class="container">
 		
-<div id="SQLlite"><h1 id="SQLlite" class="header"><a href="#SQLlite">SQLlite</a></h1></div>
+<div id="deno-call-subprocess.ts"><h1 id="deno-call-subprocess.ts" class="header"><a href="#deno-call-subprocess.ts">deno-call-subprocess.ts</a></h1></div>
 
-<ul>
-<li>
-<code>sqllite</code> databases only allow a single connection at the time. So for
-  example, with software like, <a href="https://apps.ankiweb.net/">Anki</a> you are only
-  supposed to have a single connection open and a single tool accessing the DB,
-  even if that's only for read operations.
+<p>
+<span id="deno-call-subprocess.ts-snippet"></span><span class="tag" id="snippet">snippet</span>
+<span id="deno-call-subprocess.ts-programming"></span><span class="tag" id="programming">programming</span>
+</p>
 
-</ul>
+<pre typescript>
+Deno.test("Run LS", async () =&gt; {
+  const cmd = Deno.run({
+    cmd: ["ls"],
+    stdout: "piped",
+    stderr: "piped",
+  });
+  const f = async () =&gt; {
+    const [status_, stdout_, stderr_] = await Promise.all([
+      cmd.status(),
+      cmd.output(),
+      cmd.stderrOutput(),
+    ]);
+    cmd.close();
+
+    return {
+      status: status_,
+      stdout: new TextDecoder().decode(stdout_),
+      stderr: new TextDecoder().decode(stderr_),
+    };
+  };
+  try {
+    const { status, stderr, stdout } = await f();
+    console.log("status:", status);
+    console.log("stdout:", stdout);
+    console.log("stderr:", stderr);
+  } catch (error) {
+    console.log("Caught error:", error);
+  }
+});
+</pre>
 
       </div>
     <div class="wrapper-footer">

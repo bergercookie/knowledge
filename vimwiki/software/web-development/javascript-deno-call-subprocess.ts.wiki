@@ -1,0 +1,36 @@
+= deno-call-subprocess.ts =
+
+:snippet:
+:programming:
+
+{{{typescript
+Deno.test("Run LS", async () => {
+  const cmd = Deno.run({
+    cmd: ["ls"],
+    stdout: "piped",
+    stderr: "piped",
+  });
+  const f = async () => {
+    const [status_, stdout_, stderr_] = await Promise.all([
+      cmd.status(),
+      cmd.output(),
+      cmd.stderrOutput(),
+    ]);
+    cmd.close();
+
+    return {
+      status: status_,
+      stdout: new TextDecoder().decode(stdout_),
+      stderr: new TextDecoder().decode(stderr_),
+    };
+  };
+  try {
+    const { status, stderr, stdout } = await f();
+    console.log("status:", status);
+    console.log("stdout:", stdout);
+    console.log("stderr:", stderr);
+  } catch (error) {
+    console.log("Caught error:", error);
+  }
+});
+}}}
