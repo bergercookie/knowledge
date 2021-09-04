@@ -1,0 +1,78 @@
+= Dominica Degrandis - Making work visible - Exposing time theft to optimize work and flow =
+
+:book:
+
+Relevant slides that sum it up: https://www.slideshare.net/ddegrandis/time-theft-how-hidden-unplanned-work-commit-the-perfect-crime-78706707
+
+
+== Main points ==
+
+* There's 5 main thieves of time and productivity in teams
+  1. Too much WIP (Work-in-progress) (too much stuff to work on, all priority #1, too much context-switching)
+  2. Unknown Dependencies (e.g., across team boundaries)
+  3. Unplanned Work
+  4. Conflicting Priorities
+  5. Neglected Work (e.g., Technical Debt)
+* Indicators/Symptoms of too much WIP:
+  1. Context Switching is common
+  2. YOur customers wait fro long periods of time
+  3. Quality Suffers
+  4. Irritated Staff
+  5. Someone asks you if you have 5 minutes and you say yes.
+* Why do we take on more work than we have capacity for?
+  1. We are team players
+  2. We fear humiliation
+  3. We like new and shiny
+  4. We don't realize how big a request is until we start working on it
+  5. We like to please people
+* There are three main types of (unknown) dependencies:
+  1. Architectural
+  2. Expertise
+  3. Activity (progress cannot be made until another activity is complete)
+* Indicators/Symptoms of unknown dependencies:
+  1. Coordination needs are high
+  2. People are not available when you need them
+  3. A change in one part of the code/outline/plan unexpectedly changes something
+    else
+* You know there are conflicting priorities when you hear people say:
+  1. When will my thing be done?
+  2. My thing is high priority!
+  3. If my thing doesn't get done by ..., then...
+* A ten minute task probably doesn't need to be tracked (in your task management
+  software) unless one ofthe following is true:
+  1. Only one person knows how to do it (Thief Unknown Dependency)
+  2. The work impacts other teams (Thief Unknown Dependencies)
+  3. Someone's job primarily involves doing tasks that take fifteen minutes or
+    less, meaning if that person's work isn't tracked, then it's available.
+* Ideas to expose unknown dependencies:
+  1. Use cross-functional team stand-ups to flag dependencies
+  2. Identify dependencies using a dependency matrix
+  3. Implement explicit rules for work flowing between different team Kanban
+     boards.
+  4. Create a rotating dependency scout role, an enterprise wide system
+     architect who knows the system inside out.
+
+== Definitions ==
+
+* Cycle time: the amount of elapsed time that a work item spends as
+  work-in-progress.
+* Leads time: The amount it takes to complete a request from the time it was
+  first requested
+* Throughput: The number of things completed over a period of time
+* Little's Law: `Avg Cycle Time` = `Avg WIP` / `Avg Throughput`
+
+== Quotes to note ==
+
+* Deliberately say yes to only the most important thing at a time.
+* Kanban  is Japanese for signal card
+
+== Conclusions ==
+
+* Easy to read and digest. That being said, you can probably get away just by
+  reading the main points at the end of each chapter.
+* What the book says is not something groundbreaking. One interesting thing to
+  keep in mind is the exercises at the end of each chapter. Maybe they can be
+  used in meetings to identify the aforementioned thieves of time and to
+  increase productivity
+* See chapter 2.7 for a list of useful board designs to keep in mind (multilevel
+  boards, Done vs Done Done, PDCA, Home Project

@@ -348,6 +348,24 @@ How to you set the <code>instantclient</code>/<code>tnsnames</code> path in SQL 
   even if that's only for read operations.
 
 </ul>
+<div id="SQL-SQL Software / Clients-Oracle Clilents"><h3 id="Oracle Clilents" class="header"><a href="#SQL-SQL Software / Clients-Oracle Clilents">Oracle Clilents</a></h3></div>
+
+<div id="SQL-SQL Software / Clients-Oracle Clilents-What's the difference between the Oracle Client and the Oracle Instant Client"><h4 id="What's the difference between the Oracle Client and the Oracle Instant Client" class="header"><a href="#SQL-SQL Software / Clients-Oracle Clilents-What's the difference between the Oracle Client and the Oracle Instant Client">What's the difference between the Oracle Client and the Oracle Instant Client</a></h4></div>
+
+<ul>
+<li>
+Oracle Client comes with an installer and a lot of executable like <code>sqlplus</code>,
+  <code>tnsping</code>, it's complete and huge.
+
+<li>
+Oracle Instant client is a basic lightweight client which can be unzipped in a
+  location <span id="SQL-SQL Software / Clients-Oracle Clilents-What's the difference between the Oracle Client and the Oracle Instant Client-without any installation"></span><strong id="without any installation">without any installation</strong>, it contains only the communication layer to
+  be able to connect to oracle. It can be extended by adding for example sqlplus
+  which ships as a separate executable. When using Instant Client, just unzip it
+  to a location, set your ORACLE_HOME environment variable to this location and
+  you are ready to go.
+
+</ul>
 
       </div>
     <div class="wrapper-footer">

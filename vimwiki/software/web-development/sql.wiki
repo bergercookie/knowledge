@@ -134,3 +134,16 @@ Links:
   example, with software like, [[https://apps.ankiweb.net/|Anki]] you are only
   supposed to have a single connection open and a single tool accessing the DB,
   even if that's only for read operations.
+
+=== Oracle Clilents ===
+
+==== What's the difference between the Oracle Client and the Oracle Instant Client ====
+
+* Oracle Client comes with an installer and a lot of executable like `sqlplus`,
+  `tnsping`, it's complete and huge.
+* Oracle Instant client is a basic lightweight client which can be unzipped in a
+  location *without any installation*, it contains only the communication layer to
+  be able to connect to oracle. It can be extended by adding for example sqlplus
+  which ships as a separate executable. When using Instant Client, just unzip it
+  to a location, set your ORACLE_HOME environment variable to this location and
+  you are ready to go.

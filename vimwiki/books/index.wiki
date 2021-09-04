@@ -7,6 +7,7 @@ Lists to consider books from:
 
 == Contents ==
 
+* [[making-work-visible-exposing-time-theft-to-optimize-work-and-flow.wiki|Dominica Degrandis - Making work visible - Exposing time theft to optimize work and flow]]
 * [[talking-to-strangers.wiki|Talking to Strangers]]
 * [[the_art_of_multiprocessor_programming.wiki|The Art of Multiprocessor Programming]]
 * [[exactly-what-to-say-phil-m-jones.wiki|Exactly What to Say - Phil M. Jones]]
