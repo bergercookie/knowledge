@@ -4,7 +4,6 @@
 
 Relevant slides that sum it up: https://www.slideshare.net/ddegrandis/time-theft-how-hidden-unplanned-work-commit-the-perfect-crime-78706707
 
-
 == Main points ==
 
 * There's 5 main thieves of time and productivity in teams
@@ -40,7 +39,7 @@ Relevant slides that sum it up: https://www.slideshare.net/ddegrandis/time-theft
   3. If my thing doesn't get done by ..., then...
 * A ten minute task probably doesn't need to be tracked (in your task management
   software) unless one ofthe following is true:
-  1. Only one person knows how to do it (Thief Unknown Dependency)
+  1. Only one person knows how to do it (Thief Unknown Dependencies)
   2. The work impacts other teams (Thief Unknown Dependencies)
   3. Someone's job primarily involves doing tasks that take fifteen minutes or
     less, meaning if that person's work isn't tracked, then it's available.
@@ -61,7 +60,7 @@ Relevant slides that sum it up: https://www.slideshare.net/ddegrandis/time-theft
 * Throughput: The number of things completed over a period of time
 * Little's Law: `Avg Cycle Time` = `Avg WIP` / `Avg Throughput`
 
-== Quotes to note ==
+== Misc. Things to note ==
 
 * Deliberately say yes to only the most important thing at a time.
 * Kanban  is Japanese for signal card
